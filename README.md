@@ -2,6 +2,8 @@
 
 COMPONENT MAP
 <App>
-    <PlacementsComponent>
-        <IndividualPlacementComponent>
-            <PlacementControlsComponent>
+    <MainComponent>
+        <PlacementsComponent>
+            <IndividualPlacementComponent>
+                <PlacementControlsComponent>
+        <CreatePlacementComponent>
