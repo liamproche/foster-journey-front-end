@@ -1,10 +1,12 @@
-import IndividualPlaceComponent from './IndividualPlacementComponent/'
+import IndividualPlacementComponent from './IndividualPlacementComponent/'
+import CreatePlacementComponent from './CreatePlacementComponent/CreatePlacementComponent';
 import './PlacementComponent.css'
 
 function PlacementComponent() {
     return (
       <div className="PlacementComponent">
-        <IndividualPlaceComponent></IndividualPlaceComponent>
+        <IndividualPlacementComponent></IndividualPlacementComponent>
+        <CreatePlacementComponent></CreatePlacementComponent>
       </div>
     );
 }
