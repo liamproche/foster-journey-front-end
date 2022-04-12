@@ -5,5 +5,7 @@ COMPONENT MAP
     <MainComponent>
         <PlacementsComponent>
             <IndividualPlacementComponent>
+                <FosterParentComponent>
+                <FosterSiblingComponent>
                 <PlacementControlsComponent>
         <CreatePlacementComponent>

@@ -7,9 +7,20 @@ function PlacementComponent() {
   const[placements, setPlacements] = useState([])
   const getPlacements = async () => {
     const placements = await fetch('http://localhost:8000/api/placements')
-    const parsedResponse = await placements.json();
-    console.log(parsedResponse)
+    const parsedResponse = await placements.json()
     setPlacements(parsedResponse)
+  }
+  const createNewPlacement= async(newPlacement)=>{
+    console.log(newPlacement)
+    const newPlacementResponse = await fetch('http://localhost:8000/api/placements',{
+      method: "POST",
+      body: JSON.stringify(newPlacement),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    const parsedResponse = await newPlacementResponse.json()
+    console.log(parsedResponse)
   }
   useEffect(()=>{getPlacements()},[])
   return (
@@ -17,8 +28,7 @@ function PlacementComponent() {
         {placements.map((placement)=>{
           return <IndividualPlacementComponent key={placement.id} placement={placement}></IndividualPlacementComponent>
         })}
-   
-        <CreatePlacementComponent></CreatePlacementComponent>
+        <CreatePlacementComponent createNewPlacement={createNewPlacement}></CreatePlacementComponent>
       </div>
     );
 }

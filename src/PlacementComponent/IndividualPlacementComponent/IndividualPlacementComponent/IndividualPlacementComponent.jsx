@@ -10,12 +10,12 @@ function IndividualPlacementComponent(props) {
           <p>Placement Name: {props.placement.name}</p>
           <p>Start Date: {props.placement.start_date}</p>
           <p>End Date: {props.placement.end_date}</p>
-          <p>Foster Parents:</p>{props.placement.foster_parents.map((parent)=>{
+          {/* <p>Foster Parents:</p>{props.placement.foster_parents.map((parent)=>{
             return <FosterParents key={parent} parent={parent}></FosterParents>
-          })}
-          <p>Foster Siblings:</p>{props.placement.foster_siblings.map((sibling)=>{
+          })} */}
+          {/* <p>Foster Siblings:</p>{props.placement.foster_siblings.map((sibling)=>{
             return <FosterSiblings key={sibling} sibling={sibling}></FosterSiblings>
-          })}
+          })} */}
           <PlacementControlsComponent></PlacementControlsComponent>
       </div>
     );
