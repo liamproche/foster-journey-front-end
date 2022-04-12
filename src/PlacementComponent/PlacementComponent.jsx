@@ -9,7 +9,6 @@ function PlacementComponent() {
     const placements = await fetch('http://localhost:8000/api/placements')
     const parsedResponse = await placements.json()
     setPlacements(parsedResponse)
-    console.log(parsedResponse)
   }
   const createNewPlacement= async(newPlacement)=>{
     const newPlacementResponse = await fetch('http://localhost:8000/api/placements',{
