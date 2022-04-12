@@ -1,23 +1,18 @@
-import PlacementControlsComponent from './PlacementControlsComponent/PlacementControlsComponent'
-import FosterParents from './FosterParents/FosterParents';
-import FosterSiblings from './FosterSiblings.jsx/FosterSiblings';
+import { useState } from 'react';
+import DetailsComponent from '../DetailsComponent/DetailsComponent';
 import './IndividualPlacementComponent.css'
 
 function IndividualPlacementComponent(props) {
-    return (
+  const[showDetails, setShowDetails] = useState(false)  
+  return (
       <div className="IndividualPlacementComponent">
-          <p>Placement Number: {props.placement.num}</p>
-          <p>Placement Name: {props.placement.name}</p>
-          <p>Start Date: {props.placement.start_date}</p>
-          <p>End Date: {props.placement.end_date}</p>
-          {/* <p>Foster Parents:</p>{props.placement.foster_parents.map((parent)=>{
-            return <FosterParents key={parent} parent={parent}></FosterParents>
-          })} */}
-          {/* <p>Foster Siblings:</p>{props.placement.foster_siblings.map((sibling)=>{
-            return <FosterSiblings key={sibling} sibling={sibling}></FosterSiblings>
-          })} */}
-          <PlacementControlsComponent></PlacementControlsComponent>
-      </div>
+          <p>Placement: {props.placement.num}</p>
+          <p>{props.placement.name}</p>
+          {!showDetails?
+          <a href="#" onClick={()=>setShowDetails(true)}>Show Details</a>:
+          <DetailsComponent placement={props.placement} deletePlacement={props.deletePlacement} editPlacement={props.editPlacement}></DetailsComponent>
+          }
+        </div>
     );
 }
 

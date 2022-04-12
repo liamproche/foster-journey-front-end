@@ -9,8 +9,7 @@ function CreatePlacementComponent(props) {
     end_date: "",
     location: "",
   })
-  const submitNewPlacement=(e)=>{
-    e.preventDefault()
+  const submitNewPlacement=()=>{
     props.createNewPlacement(newPlacement)
   }
     
@@ -26,7 +25,7 @@ function CreatePlacementComponent(props) {
           <h1>Create a Placement</h1>
           <form id="placement-form" onSubmit={submitNewPlacement}>
                 <label htmlFor="num">Placement Number:</label>
-                <input type="number" name="num" required onChange={handleInputChange}></input>
+                <input type="number" name="num" min="1" required onChange={handleInputChange}></input>
                 <br/>
                 <label htmlFor="name">Create a name for this placement</label>
                 <input type="text" name="name" placeholder="Optional" onChange={handleInputChange}></input>

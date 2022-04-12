@@ -7,5 +7,4 @@ function FosterSiblings(props) {
       </div>
     );
 }
-
 export default FosterSiblings;
