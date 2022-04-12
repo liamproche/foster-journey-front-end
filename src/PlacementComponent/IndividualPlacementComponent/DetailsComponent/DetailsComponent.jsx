@@ -27,6 +27,7 @@ function DetailsComponent(props) {
       <div className="DetailsComponent">
         <p>Start Date: {placement.start_date}</p>
         <p>End Date: {placement.end_date}</p>
+        <p>Location: {placement.location}</p>
         <p>Foster Parents:</p>
         {placement.foster_parents.length !==0?
         placement.foster_parents.map((parent)=>{

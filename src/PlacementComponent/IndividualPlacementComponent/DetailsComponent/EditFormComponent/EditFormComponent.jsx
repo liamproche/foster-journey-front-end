@@ -23,6 +23,24 @@ function EditFormComponent(props) {
                 <label htmlFor="location">Location</label>
                 <input type="text" name="location" value={props.placement.location}></input>
                 <br/>
+                <label htmlFor="parents">Foster parents:</label>
+                {props.placement.foster_parents.length !==0?
+                props.placement.foster_parents.map((parent)=>{
+                  return <button>Delete {parent}</button>
+                }):<p>None Added</p>}
+                <br/>
+                <label htmlFor="siblings">Foster siblings:</label>
+                {props.placement.foster_siblings.length !==0?
+                props.placement.foster_siblings.map((sibling)=>{
+                  return <button>Delete {sibling}</button>
+                }):<p>None Added</p>}
+                <br/>
+                <label htmlFor="notes">Notes:</label>
+                {props.placement.notes.length !==0?
+                props.placement.notes.map((note)=>{
+                  return <button>Delete {note}</button>
+                }):<p>None Added</p>}
+                <br/>
                 <br/>
                 <button type="Submit">Submit Placement</button>
             </form>
