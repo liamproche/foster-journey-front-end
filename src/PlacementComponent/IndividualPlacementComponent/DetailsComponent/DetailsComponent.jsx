@@ -5,12 +5,12 @@ import NotesComponent from './NotesComponent/NotesComponent'
 import EditFormComponent from './EditFormComponent/EditFormComponent'
 import './DetailsComponent.css'
 
-
 function DetailsComponent(props) {
   const[placement, setPlacement] = useState(props.placement)
   const[parent, setParent] = useState("")
   const[sibling, setSibling] = useState("")
   const[note, setNote] = useState("")
+  const[showEditForm, setShowEditForm] = useState(false)
   const addParentInputChange=(e)=>{
     setParent(e.target.value)
   }
@@ -19,6 +19,9 @@ function DetailsComponent(props) {
     }
   const addNoteInputChange=(e)=>{
     setNote(e.target.value)
+  }
+  const toggleEditForm=()=>{
+    setShowEditForm(!showEditForm)
   }
   return (
       <div className="DetailsComponent">
@@ -66,7 +69,10 @@ function DetailsComponent(props) {
               document.getElementById('note-input-field').value=""
               setNote('')
             }}>Add Note</button>
+          {!showEditForm?
+          <button onClick={toggleEditForm}>Edit Placement</button>:
           <EditFormComponent placement={props.placement} deletePlacement={props.deletePlacement}></EditFormComponent>
+          }
       </div>
     );
 }

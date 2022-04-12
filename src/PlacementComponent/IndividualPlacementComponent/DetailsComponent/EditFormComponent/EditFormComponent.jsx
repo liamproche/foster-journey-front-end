@@ -6,7 +6,7 @@ import './EditFormComponent.css'
 function EditFormComponent(props) {
     return (
       <div className="EditFormComponent">
-          <button>Edit Placement</button>
+          <h1>THIS IS THE EDIT FORM</h1>
           <button onClick={()=>{
             props.deletePlacement(props.placement.id)
           }}>Delete placement</button>
