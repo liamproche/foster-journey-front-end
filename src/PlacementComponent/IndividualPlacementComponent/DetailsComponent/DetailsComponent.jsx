@@ -17,7 +17,9 @@ function DetailsComponent(props) {
   const addSiblingInputChange=(e)=>{
       setSibling(e.target.value)
     }
-  
+  const addNoteInputChange=(e)=>{
+    setNote(e.target.value)
+  }
   return (
       <div className="DetailsComponent">
         <p>Start Date: {placement.start_date}</p>
@@ -51,7 +53,13 @@ function DetailsComponent(props) {
         placement.notes.map((note)=>{
             return <NotesComponent key={note} note={note}></NotesComponent>
           }):<p>None Added</p>}
-
+            <input type="text" name="note" onChange={addNoteInputChange}></input>
+            <button onClick={()=>{
+              const updatedPlacement = {...placement}
+              updatedPlacement.notes.push(note)
+              setPlacement(updatedPlacement)
+              props.editPlacement(updatedPlacement)
+            }}>Add Note</button>
           <PlacementControlsComponent placement={props.placement} deletePlacement={props.deletePlacement}></PlacementControlsComponent>
       </div>
     );
