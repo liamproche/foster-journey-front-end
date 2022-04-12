@@ -29,36 +29,39 @@ function DetailsComponent(props) {
         placement.foster_parents.map((parent)=>{
             return <FosterParents key={parent} parent={parent}></FosterParents>
           }):<p>None Added</p>}
-            <input type="text" name="parent" onChange={addParentInputChange}></input>
+            <input id="parent-input-field" type="text" name="parent" onChange={addParentInputChange}></input>
             <button onClick={()=>{
               const updatedPlacement = {...placement}
               updatedPlacement.foster_parents.push(parent)
               setPlacement(updatedPlacement)
               props.editPlacement(updatedPlacement)
+              document.getElementById('parent-input-field').value=""
             }}>Add Parent</button>
         <p>Foster Siblings:</p>
         {placement.foster_siblings.length !==0?
         placement.foster_siblings.map((sibling)=>{
             return <FosterSiblings key={sibling} sibling={sibling}></FosterSiblings>
           }):<p>None Added</p>}
-            <input type="text" name="sibling" onChange={addSiblingInputChange}></input>
+            <input id="sibling-input-field" type="text" name="sibling" onChange={addSiblingInputChange}></input>
             <button onClick={()=>{
               const updatedPlacement = {...placement}
               updatedPlacement.foster_siblings.push(sibling)
               setPlacement(updatedPlacement)
               props.editPlacement(updatedPlacement)
+              document.getElementById('sibling-input-field').value=""
             }}>Add Sibling</button>
         <p>Notes:</p>
         {placement.notes.length !==0?
         placement.notes.map((note)=>{
             return <NotesComponent key={note} note={note}></NotesComponent>
           }):<p>None Added</p>}
-            <input type="text" name="note" onChange={addNoteInputChange}></input>
+            <input id="note-input-field" type="text" name="note" onChange={addNoteInputChange}></input>
             <button onClick={()=>{
               const updatedPlacement = {...placement}
               updatedPlacement.notes.push(note)
               setPlacement(updatedPlacement)
               props.editPlacement(updatedPlacement)
+              document.getElementById('note-input-field').value=""
             }}>Add Note</button>
           <PlacementControlsComponent placement={props.placement} deletePlacement={props.deletePlacement}></PlacementControlsComponent>
       </div>
