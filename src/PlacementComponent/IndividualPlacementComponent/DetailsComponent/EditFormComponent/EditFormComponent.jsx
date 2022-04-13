@@ -1,5 +1,6 @@
 import FosterParents from '../FosterParents/FosterParents'
 import FosterSiblings from '../FosterSiblings.jsx/FosterSiblings'
+import NotesComponent from '../NotesComponent/NotesComponent';
 import './EditFormComponent.css'
 
 
@@ -26,23 +27,23 @@ function EditFormComponent(props) {
                 <label htmlFor="parents">Foster parents:</label>
                 {props.placement.foster_parents.length !==0?
                 props.placement.foster_parents.map((parent)=>{
-                  return <button>Delete {parent}</button>
+                  return <FosterParents parent={parent}></FosterParents>
                 }):<p>None Added</p>}
                 <br/>
                 <label htmlFor="siblings">Foster siblings:</label>
                 {props.placement.foster_siblings.length !==0?
                 props.placement.foster_siblings.map((sibling)=>{
-                  return <button>Delete {sibling}</button>
+                  return <FosterSiblings sibling={sibling}></FosterSiblings>
                 }):<p>None Added</p>}
                 <br/>
                 <label htmlFor="notes">Notes:</label>
                 {props.placement.notes.length !==0?
                 props.placement.notes.map((note)=>{
-                  return <button>Delete {note}</button>
+                  return <NotesComponent note={note}></NotesComponent>
                 }):<p>None Added</p>}
                 <br/>
                 <br/>
-                <button type="Submit">Submit Placement</button>
+                <button type="Submit">Submit Edits</button>
             </form>
           <button onClick={()=>{
             props.deletePlacement(props.placement.id)

@@ -31,7 +31,8 @@ function DetailsComponent(props) {
         <p>Foster Parents:</p>
         {placement.foster_parents.length !==0?
         placement.foster_parents.map((parent)=>{
-            return <FosterParents key={parent} parent={parent}></FosterParents>
+            return <p>{parent}</p>
+            // return <FosterParents key={parent} parent={parent}></FosterParents>
           }):<p>None Added</p>}
             <input id="parent-input-field" type="text" name="parent" onChange={addParentInputChange} required></input>
             <button onClick={()=>{
