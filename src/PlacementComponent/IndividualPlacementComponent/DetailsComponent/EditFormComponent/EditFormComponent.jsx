@@ -9,7 +9,7 @@ function EditFormComponent(props) {
   const[editedPlacement, setEditedPlacement]=useState({...props.placement})
   const handleInputChange=(e)=>{
     setEditedPlacement({
-      ...props.placement,
+      ...editedPlacement,
       [e.target.name]: e.target.value
     })
   }
@@ -18,7 +18,18 @@ function EditFormComponent(props) {
       ...editedPlacement,
       foster_parents: editedPlacement.foster_parents.filter((parent)=>{return parent !== parentToDelete})
     })
-  console.log(editedPlacement)
+  }
+  const deleteFosterSibling=(siblingToDelete)=>{
+    setEditedPlacement({
+      ...editedPlacement,
+      foster_siblings: editedPlacement.foster_siblings.filter((sibling)=>{return sibling !== siblingToDelete})
+    })
+  }
+  const deleteNote=(noteToDelete)=>{
+    setEditedPlacement({
+      ...editedPlacement,
+      notes: editedPlacement.notes.filter((note)=>{return note !== noteToDelete})
+    })
   }
   const submitEditPlacement=()=>{
     props.setPlacement(editedPlacement)
@@ -50,15 +61,15 @@ function EditFormComponent(props) {
                 }):<p>None Added</p>}
                 <br/>
                 <label htmlFor="siblings">Foster siblings:</label>
-                {props.placement.foster_siblings.length !==0?
-                props.placement.foster_siblings.map((sibling)=>{
-                  return <FosterSiblings key={props.placement.foster_siblings.indexOf(sibling)} sibling={sibling}></FosterSiblings>
+                {editedPlacement.foster_siblings.length !==0?
+                editedPlacement.foster_siblings.map((sibling)=>{
+                  return <FosterSiblings key={editedPlacement.foster_siblings.indexOf(sibling)} sibling={sibling} deleteFosterSibling={deleteFosterSibling}></FosterSiblings>
                 }):<p>None Added</p>}
                 <br/>
                 <label htmlFor="notes">Notes:</label>
-                {props.placement.notes.length !==0?
-                props.placement.notes.map((note)=>{
-                  return <NotesComponent key={props.placement.notes.indexOf(note)} note={note}></NotesComponent>
+                {editedPlacement.notes.length !==0?
+                editedPlacement.notes.map((note)=>{
+                  return <NotesComponent key={editedPlacement.notes.indexOf(note)} note={note} deleteNote={deleteNote}></NotesComponent>
                 }):<p>None Added</p>}
                 <br/>
                 <br/>

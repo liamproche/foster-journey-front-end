@@ -4,7 +4,10 @@ function FosterSiblings(props) {
     return (
       <div className="FosterSiblings">
           <p>{props.sibling}</p>
-          <button>Delete Sibling</button>
+          <button onClick={(e)=>{
+            e.preventDefault()
+            props.deleteFosterSibling(props.sibling)
+          }}>Delete Sibling</button>
       </div>
     );
 }
