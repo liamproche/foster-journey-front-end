@@ -46,7 +46,7 @@ function DetailsComponent(props) {
         <p>Foster Siblings:</p>
         {placement.foster_siblings.length !==0?
         placement.foster_siblings.map((sibling)=>{
-            return <FosterSiblings key={sibling} sibling={sibling}></FosterSiblings>
+            return <p>{sibling}</p>
           }):<p>None Added</p>}
             <input id="sibling-input-field" type="text" name="sibling" onChange={addSiblingInputChange} required></input>
             <button onClick={()=>{
@@ -60,7 +60,7 @@ function DetailsComponent(props) {
         <p>Notes:</p>
         {placement.notes.length !==0?
         placement.notes.map((note)=>{
-            return <NotesComponent key={note} note={note}></NotesComponent>
+            return <p>{note}</p>
           }):<p>None Added</p>}
             <input id="note-input-field" type="text" name="note" onChange={addNoteInputChange} required></input>
             <button onClick={()=>{
