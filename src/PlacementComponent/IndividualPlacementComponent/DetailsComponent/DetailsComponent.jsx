@@ -1,7 +1,4 @@
 import { useState } from 'react'
-import FosterParents from './FosterParents/FosterParents'
-import FosterSiblings from './FosterSiblings.jsx/FosterSiblings'
-import NotesComponent from './NotesComponent/NotesComponent'
 import EditFormComponent from './EditFormComponent/EditFormComponent'
 import './DetailsComponent.css'
 
@@ -72,7 +69,7 @@ function DetailsComponent(props) {
             }}>Add Note</button>
           {!showEditForm?
           <button onClick={toggleEditForm}>Edit Placement</button>:
-          <EditFormComponent placement={props.placement} deletePlacement={props.deletePlacement} editPlacement={props.editPlacement}></EditFormComponent>
+          <EditFormComponent placement={props.placement} deletePlacement={props.deletePlacement} editPlacement={props.editPlacement} setPlacement={setPlacement}></EditFormComponent>
           }
       </div>
     );

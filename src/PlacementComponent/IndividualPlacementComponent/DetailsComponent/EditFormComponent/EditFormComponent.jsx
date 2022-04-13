@@ -1,21 +1,26 @@
 import { useState } from 'react'
-import FosterParents from '../FosterParents/FosterParents'
-import FosterSiblings from '../FosterSiblings.jsx/FosterSiblings'
+import FosterParents from './FosterParents/FosterParents'
+import FosterSiblings from './FosterSiblings.jsx/FosterSiblings'
 import NotesComponent from '../NotesComponent/NotesComponent';
 import './EditFormComponent.css'
 
-
 function EditFormComponent(props) {
-  const[editedPlacement, setEditedPlacement]=useState(props.placement)
+  const[editedPlacement, setEditedPlacement]=useState({...props.placement})
   const handleInputChange=(e)=>{
-    console.log(e.target.value)
     setEditedPlacement({
-      ...editedPlacement,
+      ...props.placement,
       [e.target.name]: e.target.value
     })
-    console.log(editedPlacement)
+  }
+  const deleteFosterParent=(parentToDelete)=>{
+    setEditedPlacement({
+      ...editedPlacement,
+      foster_parents: props.placement.foster_parents.filter((parent)=>{return parent !== parentToDelete})
+    })
+  console.log(editedPlacement)
   }
   const submitEditPlacement=()=>{
+    props.setPlacement(editedPlacement)
     props.editPlacement(editedPlacement)
   }
   return (
@@ -23,7 +28,7 @@ function EditFormComponent(props) {
           <h1>Edit a placement:</h1>
           <form id="placement-form" onSubmit={submitEditPlacement}>
                 <label htmlFor="num">Placement Number:</label>
-                <input type="number" name="num" min="1" required placeholder={props.placement.num} onChange={handleInputChange}></input>
+                <input type="number" name="num" min="1" placeholder={props.placement.num} onChange={handleInputChange}></input>
                 <br/>
                 <label htmlFor="name">Placement Name:</label>
                 <input type="text" name="name" placeholder={props.placement.name} onChange={handleInputChange}></input>
@@ -40,13 +45,13 @@ function EditFormComponent(props) {
                 <label htmlFor="parents">Foster parents:</label>
                 {props.placement.foster_parents.length !==0?
                 props.placement.foster_parents.map((parent)=>{
-                  return <FosterParents key={props.placement.foster_parents.indexOf(parent)} parent={parent}></FosterParents>
+                  return <FosterParents key={props.placement.foster_parents.indexOf(parent)} parent={parent} deleteFosterParent={deleteFosterParent}></FosterParents>
                 }):<p>None Added</p>}
                 <br/>
                 <label htmlFor="siblings">Foster siblings:</label>
                 {props.placement.foster_siblings.length !==0?
                 props.placement.foster_siblings.map((sibling)=>{
-                  return <FosterSiblings key={props.placement.foster_siblings.indexOf(sibling)}sibling={sibling}></FosterSiblings>
+                  return <FosterSiblings key={props.placement.foster_siblings.indexOf(sibling)} sibling={sibling}></FosterSiblings>
                 }):<p>None Added</p>}
                 <br/>
                 <label htmlFor="notes">Notes:</label>
