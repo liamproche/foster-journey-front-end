@@ -1,5 +1,6 @@
 import './App.css';
 import PlacementComponent from './PlacementComponent/PlacementComponent';
+import './custom.scss'
 
 function App() {
   return (
