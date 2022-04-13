@@ -6,12 +6,12 @@ import './PlacementComponent.css'
 function PlacementComponent() {
   const[placements, setPlacements] = useState([])
   const getPlacements = async () => {
-    const placements = await fetch('http://localhost:8000/api/placements')
+    const placements = await fetch('https://gentle-ocean-67775.herokuapp.com/api/placements')
     const parsedResponse = await placements.json()
     setPlacements(parsedResponse)
   }
   const createNewPlacement= async(newPlacement)=>{
-    const newPlacementResponse = await fetch('http://localhost:8000/api/placements',{
+    const newPlacementResponse = await fetch('https://gentle-ocean-67775.herokuapp.com/api/placements',{
       method: "POST",
       body: JSON.stringify(newPlacement),
       headers: {
@@ -22,7 +22,7 @@ function PlacementComponent() {
     console.log(newPlacementResponse)
   }
   const deletePlacement=async(id)=>{
-   await fetch(`http://localhost:8000/api/placements/${id}`,{
+   await fetch(`https://gentle-ocean-67775.herokuapp.com/api/placements/${id}`,{
       method: "DELETE"
     })
     setPlacements(
@@ -32,7 +32,7 @@ function PlacementComponent() {
     )
   }
   const editPlacement=async(placementToEdit)=>{
-    const editedPlacementResponse = await fetch(`http://localhost:8000/api/placements/${placementToEdit.id}`,{
+    const editedPlacementResponse = await fetch(`https://gentle-ocean-67775.herokuapp.com/api/placements/${placementToEdit.id}`,{
       method: "PUT",
       body: JSON.stringify(placementToEdit),
       headers:{
