@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import FosterParents from '../FosterParents/FosterParents'
 import FosterSiblings from '../FosterSiblings.jsx/FosterSiblings'
 import NotesComponent from '../NotesComponent/NotesComponent';
@@ -5,24 +6,36 @@ import './EditFormComponent.css'
 
 
 function EditFormComponent(props) {
-    return (
+  const[editedPlacement, setEditedPlacement]=useState(props.placement)
+  const handleInputChange=(e)=>{
+    console.log(e.target.value)
+    setEditedPlacement({
+      ...editedPlacement,
+      [e.target.name]: e.target.value
+    })
+    console.log(editedPlacement)
+  }
+  const submitEditPlacement=()=>{
+    props.editPlacement(editedPlacement)
+  }
+  return (
       <div className="EditFormComponent">
           <h1>Edit a placement:</h1>
-          <form id="placement-form">
+          <form id="placement-form" onSubmit={submitEditPlacement}>
                 <label htmlFor="num">Placement Number:</label>
-                <input type="number" name="num" min="1" required value={props.placement.num}></input>
+                <input type="number" name="num" min="1" required placeholder={props.placement.num} onChange={handleInputChange}></input>
                 <br/>
-                <label htmlFor="name">Create a name for this placement</label>
-                <input type="text" name="name" value={props.placement.name}></input>
+                <label htmlFor="name">Placement Name:</label>
+                <input type="text" name="name" placeholder={props.placement.name} onChange={handleInputChange}></input>
                 <br/>
                 <label htmlFor="start_date">Start Date</label>
-                <input type="date" name="start_date" value={props.placement.start_date}></input>
+                <input type="date" name="start_date" onChange={handleInputChange}></input>
                 <br/>
                 <label htmlFor="end_date">End Date</label>
-                <input type="date" name="end_date" value={props.placement.end_date}></input>
+                <input type="date" name="end_date" onChange={handleInputChange}></input>
                 <br/>
                 <label htmlFor="location">Location</label>
-                <input type="text" name="location" value={props.placement.location}></input>
+                <input type="text" name="location" placeholder={props.placement.location} onChange={handleInputChange}></input>
                 <br/>
                 <label htmlFor="parents">Foster parents:</label>
                 {props.placement.foster_parents.length !==0?
