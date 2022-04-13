@@ -31,8 +31,7 @@ function DetailsComponent(props) {
         <p>Foster Parents:</p>
         {placement.foster_parents.length !==0?
         placement.foster_parents.map((parent)=>{
-            return <p>{parent}</p>
-            // return <FosterParents key={parent} parent={parent}></FosterParents>
+            return <p key={props.placement.foster_parents.indexOf(parent)}>{parent}</p>
           }):<p>None Added</p>}
             <input id="parent-input-field" type="text" name="parent" onChange={addParentInputChange} required></input>
             <button onClick={()=>{
@@ -46,7 +45,7 @@ function DetailsComponent(props) {
         <p>Foster Siblings:</p>
         {placement.foster_siblings.length !==0?
         placement.foster_siblings.map((sibling)=>{
-            return <p>{sibling}</p>
+            return <p key={props.placement.foster_siblings.indexOf(sibling)}>{sibling}</p>
           }):<p>None Added</p>}
             <input id="sibling-input-field" type="text" name="sibling" onChange={addSiblingInputChange} required></input>
             <button onClick={()=>{
@@ -60,7 +59,7 @@ function DetailsComponent(props) {
         <p>Notes:</p>
         {placement.notes.length !==0?
         placement.notes.map((note)=>{
-            return <p>{note}</p>
+            return <p key={props.placement.notes.indexOf(note)}>{note}</p>
           }):<p>None Added</p>}
             <input id="note-input-field" type="text" name="note" onChange={addNoteInputChange} required></input>
             <button onClick={()=>{

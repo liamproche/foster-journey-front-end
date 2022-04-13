@@ -27,19 +27,19 @@ function EditFormComponent(props) {
                 <label htmlFor="parents">Foster parents:</label>
                 {props.placement.foster_parents.length !==0?
                 props.placement.foster_parents.map((parent)=>{
-                  return <FosterParents parent={parent}></FosterParents>
+                  return <FosterParents key={props.placement.foster_parents.indexOf(parent)} parent={parent}></FosterParents>
                 }):<p>None Added</p>}
                 <br/>
                 <label htmlFor="siblings">Foster siblings:</label>
                 {props.placement.foster_siblings.length !==0?
                 props.placement.foster_siblings.map((sibling)=>{
-                  return <FosterSiblings sibling={sibling}></FosterSiblings>
+                  return <FosterSiblings key={props.placement.foster_siblings.indexOf(sibling)}sibling={sibling}></FosterSiblings>
                 }):<p>None Added</p>}
                 <br/>
                 <label htmlFor="notes">Notes:</label>
                 {props.placement.notes.length !==0?
                 props.placement.notes.map((note)=>{
-                  return <NotesComponent note={note}></NotesComponent>
+                  return <NotesComponent key={props.placement.notes.indexOf(note)} note={note}></NotesComponent>
                 }):<p>None Added</p>}
                 <br/>
                 <br/>
