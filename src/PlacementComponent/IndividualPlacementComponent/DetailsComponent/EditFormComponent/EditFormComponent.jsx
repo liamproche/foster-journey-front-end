@@ -4,6 +4,7 @@ import FosterSiblings from './FosterSiblings.jsx/FosterSiblings'
 import NotesComponent from '../NotesComponent/NotesComponent';
 import './EditFormComponent.css'
 
+
 function EditFormComponent(props) {
   const[editedPlacement, setEditedPlacement]=useState({...props.placement})
   const handleInputChange=(e)=>{
@@ -15,7 +16,7 @@ function EditFormComponent(props) {
   const deleteFosterParent=(parentToDelete)=>{
     setEditedPlacement({
       ...editedPlacement,
-      foster_parents: props.placement.foster_parents.filter((parent)=>{return parent !== parentToDelete})
+      foster_parents: editedPlacement.foster_parents.filter((parent)=>{return parent !== parentToDelete})
     })
   console.log(editedPlacement)
   }
@@ -43,9 +44,9 @@ function EditFormComponent(props) {
                 <input type="text" name="location" placeholder={props.placement.location} onChange={handleInputChange}></input>
                 <br/>
                 <label htmlFor="parents">Foster parents:</label>
-                {props.placement.foster_parents.length !==0?
-                props.placement.foster_parents.map((parent)=>{
-                  return <FosterParents key={props.placement.foster_parents.indexOf(parent)} parent={parent} deleteFosterParent={deleteFosterParent}></FosterParents>
+                {editedPlacement.foster_parents.length !==0?
+                editedPlacement.foster_parents.map((parent)=>{
+                  return <FosterParents key={editedPlacement.foster_parents.indexOf(parent)} parent={parent} deleteFosterParent={deleteFosterParent}></FosterParents>
                 }):<p>None Added</p>}
                 <br/>
                 <label htmlFor="siblings">Foster siblings:</label>
