@@ -13,10 +13,11 @@ function NavBar(){
   return (
     <nav>
       <h1>Foster Journey Nav</h1>
-      <Link to="/">Placements</Link>
+
       <span>  |  </span>
       {user ? (
-        <p onClick={logoutUser}>Logout</p>
+        <p onClick={logoutUser}>Logout</p>,
+        <Link to="/">Placements</Link>
       ):(
         <Link to="/login">Login</Link>
       )}
