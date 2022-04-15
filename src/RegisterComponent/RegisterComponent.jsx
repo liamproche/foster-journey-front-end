@@ -63,7 +63,7 @@ function Register(){
         <br/>
         <label htmlFor='password'>Password:</label> 
         <br/>
-        <input name='password' type='password' value={password} onChange={(e)=>setPassword(e.target.value)} required/>{' '}
+        <input name='password' type='password' value={password} onChange={(e)=>setPassword(e.target.value)} minLength="8" required/>{' '}
         <br/>
         <button type='submit'>Signup</button>
       </form>

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, Fragment } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 
@@ -13,7 +13,7 @@ function NavBar(){
   return (
     <nav>
       <h1>Foster Journey Nav</h1>
-      <Link to="/">Home</Link>
+      <Link to="/">Placements</Link>
       <span>  |  </span>
       {user ? (
         <p onClick={logoutUser}>Logout</p>
@@ -23,7 +23,6 @@ function NavBar(){
       <span>  |  </span>
       <Link to="/register">Create Account</Link>
       {user && <p>Hello, {user.user_id}</p>}
-
     </nav>
   );
 };
