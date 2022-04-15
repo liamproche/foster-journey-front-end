@@ -1,68 +1,56 @@
 import React, { useState, useEffect } from 'react'
+import jwt_decode from 'jwt-decode'
+
 
 function Login(){
-  const[username, setUsername] = useState('')
-  const[email, setEmail] = useState('');
-  const[password, setPassword] = useState('')
-  const[errors, setErrors] = useState(false)
-  const[loading, setLoading] = useState(true)
+  const[authTokens, setAuthTokens] = useState(false)
+  const[userDataFromToken , setUserDataFromToken] = useState({})
+  const[user, setUser] = useState({
+    username: "",
+    email: "",
+    password: "",
+  })
 
-  useEffect(()=>{
-    if (localStorage.getItem('token') !== null) {
-      window.location.replace('http://localhost:3000/dashboard')
-    } else {
-      setLoading(false)
-    }
-  }, []);
-
-  const onSubmit=(e)=>{
+  const handleInputChange=(e)=>{
     e.preventDefault()
-
-    const user = {
-      username: username,
-      email: email,
-      password: password
-    };
-
-    fetch('http://localhost:8000/api/auth/login/', {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value
+    })
+  }
+  
+  const loginUser= async(e)=>{
+    e.preventDefault()
+    console.log('login form submitted')
+    const response = await fetch('http://localhost:8000/api/auth/login/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(user)
     })
-      .then(res => res.json())
-      .then(data => {
-        if (data.key) {
-          localStorage.clear()
-          localStorage.setItem('token', data.key)
-          window.location.replace('http://localhost:3000/dashboard')
-        } else {
-          setEmail('')
-          setPassword('')
-          localStorage.clear()
-          setErrors(true)
-        }
-      })
+    const data = await response.json()
+    console.log(data)
+    console.log(response)
+    if(response.status === 200){
+      setAuthTokens(data)
+      setUserDataFromToken(jwt_decode(data.access))
+    }
+    else{
+      alert('Something went wrong with the login api call')
+      //TODO: ERROR HANDLING
+    }
   }
+  
+  
   return (
     <div>
-      {loading === false && <h1>Login</h1>}
-      {errors === true && <h2>Cannot log in with provided credentials</h2>}
-      {loading === false && (
-        <form onSubmit={onSubmit}>
-          <label htmlFor='username'>Username:</label>
-          <input type='text' name='username' value={username} required onChange={(e)=>setUsername(e.target.value)}/>{' '}
-          <br/>
-          <label htmlFor='email'>Email address:</label> 
-          <input name='email' type='email' value={email} required onChange={(e)=>setEmail(e.target.value)}/>{' '}
-          <br/>
-          <label htmlFor='password'>Password:</label> <br />
-          <input name='password' type='password' value={password} required onChange={(e)=>setPassword(e.target.value)}/>{' '}
-          <br/>
-          <button type='submit' value='Login'>Login</button>
-        </form>
-      )}
+      <form onSubmit={loginUser}> 
+        <input placeholder="enter username" type="text" name="username" onChange={handleInputChange}></input>
+        <input placeholder="enter email" type="email" name="email" onChange={handleInputChange}></input>
+        <input placeholder="enter password" type="password" name="password" onChange={handleInputChange}></input>
+        <button type="submit">Login</button>
+      </form>
     </div>
   );
 };

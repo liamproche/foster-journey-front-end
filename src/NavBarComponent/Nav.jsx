@@ -17,7 +17,7 @@ function NavBar(){
           <Fragment>
             {' '}
             <li>
-              <Link to='/dashboard'>Dashboard</Link>
+              <Link to='/placements'>Placements</Link>
             </li>
             <li>
               <Link to='/logout'>Logout</Link>

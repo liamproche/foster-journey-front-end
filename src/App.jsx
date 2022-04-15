@@ -1,12 +1,14 @@
-import './App.css';
-import PlacementComponent from './PlacementComponent/PlacementComponent';
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import NavBar from './Nav';
+import PlacementComponent from './PlacementComponent/PlacementComponent';
+import NavBar from './NavBarComponent/Nav';
 import Login from './LoginComponent/LoginComponent';
 import Register from './RegisterComponent/RegisterComponent';
 import Logout from './LogoutComponent/LogoutComponent';
+import './App.css';
 
 function App() {
+  const[isAuth, setIsAuth] = useState(false)
   return (
     <div className="App">
       <Router>
@@ -17,6 +19,10 @@ function App() {
           <Route path='/logout' element={<Logout/>} exact/>
         </Routes>
       </Router>
+      {isAuth?
+      <PlacementComponent/>:
+      <p></p>
+      }
       
       
       {/* <h1>Foster Journey</h1>
