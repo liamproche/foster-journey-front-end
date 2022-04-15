@@ -12,29 +12,11 @@ function NavBar(){
   return (
     <nav>
       <h1>Foster Journey Nav</h1>
-      <ul>
-        {isAuth === true ? (
-          <Fragment>
-            {' '}
-            <li>
-              <Link to='/placements'>Placements</Link>
-            </li>
-            <li>
-              <Link to='/logout'>Logout</Link>
-            </li>
-          </Fragment>
-        ) : (
-          <Fragment>
-            {' '}
-            <li>
-              <Link to='/login'>Login</Link>
-            </li>
-            <li>
-              <Link to='/register'>Signup</Link>
-            </li>
-          </Fragment>
-        )}
-      </ul>
+      <Link to="/">Home</Link>
+      <span>  |  </span>
+      <Link to="/login">Login</Link>
+      <span>  |  </span>
+      <Link to="/register">Create Account</Link>
     </nav>
   );
 };
