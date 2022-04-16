@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import AuthContext from '../../../context/AuthContext'
 import './CreatePlacementComponent.css'
 
 function CreatePlacementComponent(props) {
+  const {user}=useContext(AuthContext)
   const[newPlacement, setNewPlacement] = useState({
     num: "",
     name: "",
@@ -10,7 +12,10 @@ function CreatePlacementComponent(props) {
     location: "",
   })
   const submitNewPlacement=()=>{
-    props.createNewPlacement(newPlacement)
+    props.createNewPlacement({
+      ...newPlacement,
+      user: user.user_id
+    })
   }
     
   const handleInputChange=(e)=>{

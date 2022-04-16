@@ -1,15 +1,17 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import IndividualPlacementComponent from './IndividualPlacementComponent/IndividualPlacementComponent/IndividualPlacementComponent';
 import CreatePlacementComponent from './CreatePlacementComponent/CreatePlacementComponent';
 import './PlacementComponent.css'
+import AuthContext from "../../context/AuthContext";
 
 function PlacementComponent() {
+  const {user}=useContext(AuthContext)
   const[placements, setPlacements] = useState([])
   const getPlacements = async () => {
     try{
       const placements = await fetch('http://localhost:8000/api/placements')
       const parsedResponse = await placements.json()
-      setPlacements(parsedResponse)
+      setPlacements(parsedResponse.filter((placement)=>{return placement.user === user.user_id}))
   }catch(err){
     console.log(err)
     //TODO-ERROR HANDLING
@@ -23,6 +25,7 @@ function PlacementComponent() {
           "Content-Type": "application/json"
         }
       })
+      //KEEPING THIS IN FOR NOW EVEN THOUGH IT THROWS A WARNING.... CAN BE CHANGED TO .then() FUNCTION EVENTUALLY
       const parsedResponse = await newPlacementResponse.json()
       console.log(newPlacementResponse)
     }catch(err){
@@ -59,7 +62,7 @@ function PlacementComponent() {
     console.log(err)
     //TODO-ERROR HANDLING
   }}
-  useEffect(()=>{getPlacements()},[])
+  useEffect(()=>{getPlacements()})
   return (
       <div className="PlacementComponent">
         {placements.map((placement)=>{
