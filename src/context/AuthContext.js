@@ -18,15 +18,16 @@ export const AuthProvider=({children})=>{
     //BEGIN USER LOGIN
     const loginUser= async(e)=>{
         e.preventDefault()
-        const response = await fetch('https://foster-journey-backend.herokuapp.com/api/auth/login/', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-                'username': e.target.username.value,
-                'email': e.target.email.value,
-                'password': e.target.password.value
+        try{
+          const response = await fetch('https://foster-journey-backend.herokuapp.com/api/auth/login/', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              'username': e.target.username.value,
+              'email': e.target.email.value,
+              'password': e.target.password.value
             })
         })
         const data = await response.json()
@@ -39,7 +40,9 @@ export const AuthProvider=({children})=>{
           alert('Something went wrong with the login api call')
           //TODO: ERROR HANDLING
         }
-      }
+      }catch(err){
+        console.log(err)
+      }}
 
       //BEGIN LOGOUT FUNCTION
       const logoutUser=()=>{
