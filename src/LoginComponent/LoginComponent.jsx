@@ -3,7 +3,6 @@ import AuthContext from '../context/AuthContext';
 
 function LoginComponent(){
   const {loginUser, user} = useContext(AuthContext)
-  
   return (
     <div>
       {!user?
