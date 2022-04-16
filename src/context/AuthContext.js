@@ -1,5 +1,4 @@
 //CONTEXT ALLOWS SHARING OF INFORMATION THROUGHOUT THE APP INSTEAD OF HAVING TO PASS ITEMS DOWN AS PROPS
-
 import {createContext, useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom'
 import jwt_decode from 'jwt-decode';
@@ -42,6 +41,7 @@ export const AuthProvider=({children})=>{
         }
       }catch(err){
         console.log(err)
+        //TODO: ERROR HANDLING
       }}
 
       //BEGIN LOGOUT FUNCTION
@@ -54,7 +54,8 @@ export const AuthProvider=({children})=>{
       //BEGIN REFRESH
       const updateToken= async () =>{
         console.log('updating token')
-        const response = await fetch('https://foster-journey-backend.herokuapp.com/auth/refresh/', {
+        try{
+          const response = await fetch('https://foster-journey-backend.herokuapp.com/auth/refresh/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -71,6 +72,10 @@ export const AuthProvider=({children})=>{
             logoutUser();
             //TODO: FIGURE OUT MESSAGE TO USER IF THIS BOMBS
           }
+        }catch(err){
+          console.log(err)
+          //TODO: ERROR HANDLING
+        }
       }
 
       //TO CALL REFRESH FUNCTION BEFORE 5MIN UP
