@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import { Route, Redirect } from 'react-router-dom';
 import IndividualPlacementComponent from './IndividualPlacementComponent/IndividualPlacementComponent/IndividualPlacementComponent';
 import CreatePlacementComponent from './CreatePlacementComponent/CreatePlacementComponent';
 import './PlacementComponent.css'
@@ -7,23 +6,33 @@ import './PlacementComponent.css'
 function PlacementComponent() {
   const[placements, setPlacements] = useState([])
   const getPlacements = async () => {
-    const placements = await fetch('http://localhost:8000/api/placements')
-    const parsedResponse = await placements.json()
-    setPlacements(parsedResponse)
-  }
+    try{
+      const placements = await fetch('http://localhost:8000/api/placements')
+      const parsedResponse = await placements.json()
+      setPlacements(parsedResponse)
+  }catch(err){
+    console.log(err)
+    //TODO-ERROR HANDLING
+  }}
   const createNewPlacement= async(newPlacement)=>{
-    const newPlacementResponse = await fetch('http://localhost:8000/api/placements',{
-      method: "POST",
-      body: JSON.stringify(newPlacement),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    const parsedResponse = await newPlacementResponse.json()
-    console.log(newPlacementResponse)
+    try{
+      const newPlacementResponse = await fetch('http://localhost:8000/api/placements',{
+        method: "POST",
+        body: JSON.stringify(newPlacement),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      const parsedResponse = await newPlacementResponse.json()
+      console.log(newPlacementResponse)
+    }catch(err){
+      console.log(err)
+      //TODO-ERROR HANDLING
+    }
   }
   const deletePlacement=async(id)=>{
-   await fetch(`http://localhost:8000/api/placements/${id}`,{
+   try{
+     await fetch(`http://localhost:8000/api/placements/${id}`,{
       method: "DELETE"
     })
     setPlacements(
@@ -31,8 +40,12 @@ function PlacementComponent() {
         return placement.id !== id
       })
     )
-  }
+   }catch(err){
+     console.log(err)
+      //TODO-ERROR HANDLING
+   }}
   const editPlacement=async(placementToEdit)=>{
+    try{
     const editedPlacementResponse = await fetch(`http://localhost:8000/api/placements/${placementToEdit.id}`,{
       method: "PUT",
       body: JSON.stringify(placementToEdit),
@@ -42,7 +55,10 @@ function PlacementComponent() {
     })
     const parsedResponse = await editedPlacementResponse.json()
     console.log(parsedResponse)
-  }
+  }catch(err){
+    console.log(err)
+    //TODO-ERROR HANDLING
+  }}
   useEffect(()=>{getPlacements()},[])
   return (
       <div className="PlacementComponent">

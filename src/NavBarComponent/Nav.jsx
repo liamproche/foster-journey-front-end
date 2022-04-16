@@ -1,28 +1,34 @@
-import React, { useContext, useState, useEffect, Fragment } from 'react';
+import React, { useContext, useEffect, } from 'react';
 import { Link } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
+import './Nav.css'
 
 function NavBar(){
-  const [isAuth, setIsAuth] = useState(false);
   let {user, logoutUser}=useContext(AuthContext)
   useEffect(() => {
     if (localStorage.getItem('token') !== null) {
-      setIsAuth(true);
     }
   }, []);
   return (
     <nav>
       <h1>Foster Journey Nav</h1>
-      <Link to="/">Home</Link>
-      <span>  |  </span>
-      {user ? (
-        <p onClick={logoutUser}>Logout</p>
+      {user? (
+      <Link to="/">Placements</Link>
       ):(
-        <Link to="/login">Login</Link>
+        <p></p>
       )}
-      <span>  |  </span>
+      {user ? (
+        <p className="link" onClick={logoutUser}>Logout</p>
+      ):(
+      <Link to="/login">Login</Link>
+      )}
+      {!user? (
       <Link to="/register">Create Account</Link>
-      {user && <p>Hello, {user.user_id}</p>}
+      ):(
+        <p></p>
+      )}
+      {/* TO-DO- UPDATE TOKEN TO INCLUDE USERNAME AND GREET USER BY USERNAME */}
+      {/* {user && <p>Hello, {user.user_id}</p>} */}
 
     </nav>
   );

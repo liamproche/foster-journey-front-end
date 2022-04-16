@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function Register(){
   const[username, setUsername]=useState('')
@@ -6,7 +7,7 @@ function Register(){
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState(false)
   const [loading, setLoading] = useState(true)
-
+  const navigate = useNavigate() 
   useEffect(() => {
     if (localStorage.getItem('token') !== null) {
       window.location.replace('http://localhost:3000/dashboard')
@@ -16,7 +17,7 @@ function Register(){
     }
   }, []);
 
-  const onSubmit=(e)=>{
+  const onSubmit=async(e)=>{
     e.preventDefault()
     const user = {
       username: username,
@@ -25,29 +26,28 @@ function Register(){
     }
     console.log(user)
     try{
-      fetch('http://localhost:8000/api/auth/register/', {
+      const response = await fetch('http://localhost:8000/api/auth/register/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(user)
       })
-      .then(res => res.json())
-      .then(data => {
-        if (data.key){
-          localStorage.clear()
-          localStorage.setItem('token', data.key)
-          window.location.replace('http://localhost:3000/dashboard')
-        } 
-        else{
-          setEmail('')
-          setPassword('')
-          localStorage.clear()
-          setErrors(true)
-        }
-      })
+      const parsedResponse = await response.json()
+      console.log(parsedResponse)
+      if(parsedResponse.user){
+        console.log('the user has been created')
+        return navigate('/login')
+      }
+      else{
+        setUsername('')
+        setEmail('')
+        setPassword('')
+        setErrors(true)
+      }
     }catch(err){
       console.log(err)
+      //TO-DO ERROR HANDLING
     }
     }
   return(
