@@ -90,6 +90,8 @@ PRESSING TODO
 -Styling
 -User placement filter currently happens in the front-end. This should be changed to the backend so the API only fetches placements for specific user
 -Delete console.logs
+-Update access and refresh tokens to include username so can be used in authcontext
+-Add app description back in
 
 
 ADDITIONAL STRETCH GOALS
@@ -100,3 +102,6 @@ ADDITIONAL STRETCH GOALS
 	-Average length of stay per placement
 	-Average number of foster parents/siblings a foster youth encounters on journey?
 	-Length of placement calculated by start date/end date on placement details page
+
+LINK TO HEROKU DEPLOYMENT
+https://foster-journey-frontend.herokuapp.com/
