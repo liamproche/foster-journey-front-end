@@ -10,7 +10,7 @@ function Register(){
   const navigate = useNavigate() 
   useEffect(() => {
     if (localStorage.getItem('token') !== null) {
-      window.location.replace('http://localhost:3000/dashboard')
+      // window.location.replace('http://localhost:3000/dashboard')
     } 
     else {
       setLoading(false)
@@ -26,7 +26,7 @@ function Register(){
     }
     console.log(user)
     try{
-      const response = await fetch('http://localhost:8000/api/auth/register/', {
+      const response = await fetch('https://foster-journey-backend.herokuapp.com/api/auth/register/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

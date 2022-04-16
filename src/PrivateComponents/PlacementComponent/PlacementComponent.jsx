@@ -9,7 +9,7 @@ function PlacementComponent() {
   const[placements, setPlacements] = useState([])
   const getPlacements = async () => {
     try{
-      const placements = await fetch('http://localhost:8000/api/placements')
+      const placements = await fetch('https://foster-journey-backend.herokuapp.com/api/placements')
       const parsedResponse = await placements.json()
       setPlacements(parsedResponse.filter((placement)=>{return placement.user === user.user_id}))
   }catch(err){
@@ -18,7 +18,7 @@ function PlacementComponent() {
   }}
   const createNewPlacement= async(newPlacement)=>{
     try{
-      const newPlacementResponse = await fetch('http://localhost:8000/api/placements',{
+      const newPlacementResponse = await fetch('https://foster-journey-backend.herokuapp.com/api/placements',{
         method: "POST",
         body: JSON.stringify(newPlacement),
         headers: {
@@ -35,7 +35,7 @@ function PlacementComponent() {
   }
   const deletePlacement=async(id)=>{
    try{
-     await fetch(`http://localhost:8000/api/placements/${id}`,{
+     await fetch(`https://foster-journey-backend.herokuapp.com/api/placements/${id}`,{
       method: "DELETE"
     })
     setPlacements(
@@ -49,7 +49,7 @@ function PlacementComponent() {
    }}
   const editPlacement=async(placementToEdit)=>{
     try{
-    const editedPlacementResponse = await fetch(`http://localhost:8000/api/placements/${placementToEdit.id}`,{
+    const editedPlacementResponse = await fetch(`https://foster-journey-backend.herokuapp.com/api/placements/${placementToEdit.id}`,{
       method: "PUT",
       body: JSON.stringify(placementToEdit),
       headers:{
