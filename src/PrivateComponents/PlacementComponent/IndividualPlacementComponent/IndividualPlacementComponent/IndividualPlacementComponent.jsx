@@ -11,7 +11,7 @@ function IndividualPlacementComponent(props) {
       <div className="IndividualPlacementComponent">
           <p>Placement: {props.placement.num}</p>
           <p>{props.placement.name}</p>
-          <a href="#" onClick={toggleDetails}>Show Details</a>:
+          <p className="link" onClick={toggleDetails}>Show Details</p>:
           {showDetails?
           <DetailsComponent placement={props.placement} deletePlacement={props.deletePlacement} editPlacement={props.editPlacement}></DetailsComponent>:
           <p></p>
