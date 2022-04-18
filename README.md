@@ -12,7 +12,7 @@ Foster Journey is a web app that helps foster youth track their journey through 
 #-Base app will be geared toward a single user with no log-in requirements allowing creation of placements only
 
 
-TECHNOLOGIES
+#TECHNOLOGIES
 #-React front-end
 #-Django/PostgreSQL back-end
 #-JWT Authentication tokens
@@ -44,12 +44,12 @@ USER STORIES
     #-Delete notes on placement that they have added
 	#-Foster parents listed (non-input field)
 	#-Should have option next to foster parent name to delete foster parent
-	-Should have input field option to add a foster parent (NOTE: Added this to placement details page instead of edit page... made more sense)
+	#-Should have input field option to add a foster parent (NOTE: Added this to placement details page instead of edit page... made more sense)
 	#-Foster siblings listed
 	#-Should have option next to foster sibling name to delete foster sibling
-	-Should have input field to add a foster sibling (NOTE: Added this to placement details page instead of edit page... made more sense)
+	#-Should have input field to add a foster sibling (NOTE: Added this to placement details page instead of edit page... made more sense)
 	#-List of notes on they have created on the placement with option to delete a note
-	-Input field to create a new note about the placement (NOTE: Added this to placement details page instead of edit page... made more sense)
+	#-Input field to create a new note about the placement (NOTE: Added this to placement details page instead of edit page... made more sense)
 	#-Option to delete the specific placement at the bottom
 	#-When a user deletes a placement they should be taken back to the user show page (all placemnts)
 
@@ -63,45 +63,51 @@ USERS --> TODO- Edit and delete user routes
 -Last name
 #-Password --> TODO- Confirm password field on register page
 #-Timestamp for account created
--SUPER STRETCH GOAL - Email address for account verification?
-			
-LOCATION
--street address = varChar
--city = varChar
--state = varChar
--country = varChar
-NOTE- How to tie this to placement model?
+
 
 FOSTER PARENT
 -first name = varChar
 -last name = varChar
 -notes? = ArrayField?
--SUPER STRETCH- upload photo
+-Photo url
 NOTE- How to tie this to placement model?
 
 FOSTER SIBLING
 -first name = varChar
 -last name = varChar
+-Photo url?
 NOTE- How to tie this to placement model?
 
 
+VERSION 2 GOALS:
+
 PRESSING TODO
+-Add app description
 -Error handling
--Styling
+-Portfolio-quality styling (NOTE: Complete UX Engineering Module before starting)
 -User placement filter currently happens in the front-end. This should be changed to the backend so the API only fetches placements for specific user
+-Complete user routes
 -Delete console.logs
--Update access and refresh tokens to include username so can be used in authcontext
--Add app description back in
+-User model should collect first name, last name
+-Update access and refresh tokens to include username (maybe first name instead?) and include in UI/UX
+-Fix date format for placement start date and end date
+-Get rid of email requirement for both registration & Login (This might turn into a security nightmare, but what if foster youth doesn't have email?)
 
 
-ADDITIONAL STRETCH GOALS
--Separate models for location, foster parents, foster siblings tied to placement model
--On home page without being logged in option to view journey of random user to help increase awareness of stories of foster children
+ADDITIONAL TODO
+-Separate models for foster parents, foster siblings tied to placement model (one to many)
+-Image upload for foster parents and foster siblings
+-On home page without being logged in option to view journey of random user to help increase awareness of stories of foster youth
 -Statistics on home page pulled from app data
 	-Average number of placements per user
 	-Average length of stay per placement
-	-Average number of foster parents/siblings a foster youth encounters on journey?
-	-Length of placement calculated by start date/end date on placement details page
+	-Average number of foster parents/siblings a foster youth encounters on journey
+-Include password confirmation field when registering and updating password
+	
+STRETCH GOAL
+-Length of placement calculated by start date/end date on placement details page
+
+
 
 LINK TO HEROKU DEPLOYMENT
 https://foster-journey-frontend.herokuapp.com/
