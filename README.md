@@ -96,7 +96,7 @@ PRESSING TODO
 
 ADDITIONAL TODO
 -Separate models for foster parents, foster siblings tied to placement model (one to many)
--Image upload for foster parents and foster siblings
+-Image upload for foster parents (foster siblings?..... This is delicate from a safety perspective)
 -On home page without being logged in option to view journey of random user to help increase awareness of stories of foster youth
 -Statistics on home page pulled from app data
 	-Average number of placements per user
