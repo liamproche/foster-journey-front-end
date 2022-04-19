@@ -63,36 +63,42 @@ USERS --> TODO- Edit and delete user routes
 #-Timestamp for account created
 
 FOSTER PARENT
--first name = varChar
--last name = varChar
--notes? = ArrayField?
--Photo url
-NOTE- How to tie this to placement model?
+#-first name = varChar
+#-last name = varChar
+-notes? = ArrayField? <--Not sure about adding this
+#-Photo url
+#-time_stamp for creation
+#-linked to placement
 
 FOSTER SIBLING
--first name = varChar
--last name = varChar
--Photo url?
-NOTE- How to tie this to placement model?
+#-first name = varChar
+#-last name = varChar
+-Photo url? <--Not sure about adding this
+#-time_stamp for creation
+#-linked to placement
 
 
 VERSION 2 GOALS:
+
+Work on today
+-User model should collect first name, last name
+-Separate models for foster parents, foster siblings tied to placement model (one to many)
+-Complete user routes
+
 
 PRESSING TODO
 #-Add app description
 -Error handling
 -Portfolio-quality styling (NOTE: Complete UX Engineering Module before starting)
 -User placement filter currently happens in the front-end. This should be changed to the backend so the API only fetches placements for specific user
--Complete user routes
 -Delete console.logs
--User model should collect first name, last name
 -Update access and refresh tokens to include username (maybe first name instead?) and include in UI/UX
 -Fix date format for placement start date and end date
 -Get rid of email requirement for both registration & Login (This might turn into a security nightmare, but what if foster youth doesn't have email?)
 
 
 ADDITIONAL TODO
--Separate models for foster parents, foster siblings tied to placement model (one to many)
+
 -Image upload for foster parents (foster siblings?..... This is delicate from a safety perspective)
 -On home page without being logged in option to view journey of random user to help increase awareness of stories of foster youth
 -Statistics on home page pulled from app data
