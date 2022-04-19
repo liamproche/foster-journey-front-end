@@ -34,11 +34,8 @@ MODELS
 
 USER STORIES
 -When user accesses site they should see a message about the apps purpose and be directed to log-in or create an account
-
 -If the user has placements created they should see a list of all of their placements organized by placement number ascending ("Placement #X"). When the user clicks on a placement, they should be taken to the placement show page which includes all the details of the specific placement. There should be options at the bottom of the list to update the details which takes them to the edit placement page
-
 -If the user does not have any placements created there should be a reassuring message about starting their journey in the foster care system, and an option to create a placement
-
 -When a user clicks on edit a placement they should be taken to a form with current values in the form fields and allowing them to edit:
 	#-Placement number
 	#-Placement start date
@@ -57,8 +54,6 @@ USER STORIES
 	#-When a user deletes a placement they should be taken back to the user show page (all placemnts)
 
 
-STRETCH GOALS
-
 ADDITIONAL MODELS
 USERS --> TODO- Edit and delete user routes
 #-Username (must be unique) --> TODO- Handling message to user if they create an account with username already taken
@@ -66,7 +61,6 @@ USERS --> TODO- Edit and delete user routes
 -Last name
 #-Password --> TODO- Confirm password field on register page
 #-Timestamp for account created
-
 
 FOSTER PARENT
 -first name = varChar
@@ -85,7 +79,7 @@ NOTE- How to tie this to placement model?
 VERSION 2 GOALS:
 
 PRESSING TODO
--Add app description
+#-Add app description
 -Error handling
 -Portfolio-quality styling (NOTE: Complete UX Engineering Module before starting)
 -User placement filter currently happens in the front-end. This should be changed to the backend so the API only fetches placements for specific user

@@ -11,7 +11,6 @@ function NavBar(){
   }, []);
   return (
     <nav>
-      <h1>Foster Journey Nav</h1>
       {user? (
       <Link to="/">Placements</Link>
       ):(
