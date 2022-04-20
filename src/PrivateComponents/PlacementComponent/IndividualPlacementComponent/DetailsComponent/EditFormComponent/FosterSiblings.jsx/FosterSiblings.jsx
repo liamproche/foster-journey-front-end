@@ -3,7 +3,7 @@ import './FosterSiblings.css'
 function FosterSiblings(props) {
     return (
       <div className="FosterSiblings">
-          <p>{props.sibling}</p>
+          <p>{props.sibling.first_name}</p>
           <button onClick={(e)=>{
             e.preventDefault()
             props.deleteFosterSibling(props.sibling)

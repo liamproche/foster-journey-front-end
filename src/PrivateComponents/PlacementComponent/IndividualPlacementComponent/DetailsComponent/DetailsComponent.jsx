@@ -103,7 +103,7 @@ function DetailsComponent(props) {
             }}>Add Note</button>
           {!showEditForm?
           <button onClick={toggleEditForm}>Edit Placement</button>:
-          <EditFormComponent placement={props.placement} deletePlacement={props.deletePlacement} editPlacement={props.editPlacement} setPlacement={setPlacement}></EditFormComponent>
+          <EditFormComponent placement={props.placement} deletePlacement={props.deletePlacement} editPlacement={props.editPlacement} setPlacement={setPlacement} parents={props.parents} siblings={props.siblings}></EditFormComponent>
           }
       </div>
     );
