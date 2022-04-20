@@ -4,10 +4,11 @@ import FosterSiblings from './FosterSiblings.jsx/FosterSiblings'
 import NotesComponent from '../NotesComponent/NotesComponent';
 import './EditFormComponent.css'
 
-
 function EditFormComponent(props) {
-  const[editedPlacement, setEditedPlacement]=useState({...props.placement})
-  const[parents, setParents]=useState([...props.parents])
+  const[editedPlacement, setEditedPlacement] = useState({...props.placement})
+  const[parents, setParents] = useState([...props.parents])
+  const[siblings, setSiblings] = useState([...props.siblings])
+  console.log(siblings)
   const handleInputChange=(e)=>{
     setEditedPlacement({
       ...editedPlacement,
@@ -15,16 +16,16 @@ function EditFormComponent(props) {
     })
   }
   const deleteFosterParent= async (parentToDelete)=>{
-    const response = await fetch(`http://localhost:8000/api/parents/${parentToDelete}`,{
+      await fetch(`http://localhost:8000/api/parents/${parentToDelete}`,{
       method: "DELETE"
     })
     setParents(parents.filter((parent)=>{return parent.id !== parentToDelete}))
   }
-  const deleteFosterSibling=(siblingToDelete)=>{
-    setEditedPlacement({
-      ...editedPlacement,
-      foster_siblings: editedPlacement.foster_siblings.filter((sibling)=>{return sibling !== siblingToDelete})
+  const deleteFosterSibling=async(siblingToDelete)=>{
+    await fetch(`http://localhost:8000/api/siblings/${siblingToDelete}`, {
+      method: "DELETE"
     })
+    setSiblings(siblings.filter((sibling)=>{return sibling.id !== siblingToDelete}))
   }
   const deleteNote=(noteToDelete)=>{
     setEditedPlacement({
@@ -58,13 +59,13 @@ function EditFormComponent(props) {
                 <label htmlFor="parents">Foster parents:</label>
                 {props.parents.length !==0?
                 parents.map((parent)=>{
-                  return <FosterParents key={parent.id} parent={parent} deleteFosterParent={deleteFosterParent}></FosterParents>
+                  return <FosterParents key={parent.id} parent={parent} deleteFosterParent={deleteFosterParent}/>
                 }):<p>None Added</p>}
                 <br/>
                 <label htmlFor="siblings">Foster siblings:</label>
-                {props.siblings.length !==0?
-                props.siblings.map((sibling)=>{
-                  return <FosterSiblings key={sibling.id} sibling={sibling} deleteFosterSibling={deleteFosterSibling}></FosterSiblings>
+                {siblings.length !==0?
+                siblings.map((sibling)=>{
+                  return <FosterSiblings key={sibling.id} sibling={sibling} deleteFosterSibling={deleteFosterSibling}/>
                 }):<p>None Added</p>}
                 <br/>
                 <label htmlFor="notes">Notes:</label>

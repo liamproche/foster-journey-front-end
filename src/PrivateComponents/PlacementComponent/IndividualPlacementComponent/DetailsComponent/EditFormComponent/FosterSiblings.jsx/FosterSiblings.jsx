@@ -6,7 +6,7 @@ function FosterSiblings(props) {
           <p>{props.sibling.first_name}</p>
           <button onClick={(e)=>{
             e.preventDefault()
-            props.deleteFosterSibling(props.sibling)
+            props.deleteFosterSibling(props.sibling.id)
           }}>Delete Sibling</button>
       </div>
     );
