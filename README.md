@@ -83,10 +83,11 @@ THURSDAY
 -User model should collect first name, last name
 -Update access and refresh tokens to include username (maybe first name instead?) and include in UI/UX <--There's also a bug with refresh tokens somewhere (might just be a / problem when changing dbs)
 -Get rid of email requirement for both registration & login (This might turn into a security nightmare, but what if foster youth doesn't have email?)
--User routes
+-Begin User routes
 
 
 FRIDAY
+-Complete User routes
 -User placement filter currently happens in the front-end. This should be changed to the backend so the API only fetches placements for specific user
 -Same for foster parent and foster sibling models
 -Error handling <--NOTE: Check all api calls for try/catch blocks
