@@ -96,11 +96,11 @@ FRIDAY
 SATURDAY
 -Image upload for foster parent model
 -Delete console.logs
--Begin styling (if possible)
+-Home page statistics
 
 
 SUNDAY
--Portfolio-quality styling (NOTE: Complete UX Engineering Module before starting)
+-Styling
 
 MONDAY
 -Complete project --> Move on to portfolio updates
