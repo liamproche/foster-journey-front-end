@@ -65,36 +65,61 @@ USERS --> TODO- Edit and delete user routes
 FOSTER PARENT
 #-first name = varChar
 #-last name = varChar
--notes? = ArrayField? <--Not sure about adding this
 #-Photo url
+	-This needs work
 #-time_stamp for creation
 #-linked to placement
 
 FOSTER SIBLING
 #-first name = varChar
 #-last name = varChar
--Photo url? <--Not sure about adding this
 #-time_stamp for creation
 #-linked to placement
 
 
 VERSION 2 GOALS:
 
-Work on today
+THURSDAY
 -User model should collect first name, last name
--Separate models for foster parents, foster siblings tied to placement model (one to many)
--Complete user routes
+-Update access and refresh tokens to include username (maybe first name instead?) and include in UI/UX <--There's also a bug with refresh tokens somewhere (might just be a / problem when changing dbs)
+-Get rid of email requirement for both registration & login (This might turn into a security nightmare, but what if foster youth doesn't have email?)
+-User routes
 
 
-PRESSING TODO
-#-Add app description
--Error handling
--Portfolio-quality styling (NOTE: Complete UX Engineering Module before starting)
+FRIDAY
 -User placement filter currently happens in the front-end. This should be changed to the backend so the API only fetches placements for specific user
--Delete console.logs
--Update access and refresh tokens to include username (maybe first name instead?) and include in UI/UX
+-Same for foster parent and foster sibling models
+-Error handling <--NOTE: Check all api calls for try/catch blocks
 -Fix date format for placement start date and end date
--Get rid of email requirement for both registration & Login (This might turn into a security nightmare, but what if foster youth doesn't have email?)
+
+
+SATURDAY
+-Image upload for foster parent model
+-Delete console.logs
+-Begin styling (if possible)
+
+
+SUNDAY
+-Portfolio-quality styling (NOTE: Complete UX Engineering Module before starting)
+
+MONDAY
+-Complete project --> Move on to portfolio updates
+
+
+COMPLETED TODO
+#-Add app description
+#-Separate models for foster parents, foster siblings tied to placement model (one to many)
+
+
+
+
+
+
+
+
+
+
+
 
 
 ADDITIONAL TODO
