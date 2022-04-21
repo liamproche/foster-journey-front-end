@@ -16,6 +16,11 @@ function NavBar(){
       ):(
         <p></p>
       )}
+      <br/>
+      {user? (
+        <Link to="/account">Account</Link>):(
+        <p></p>
+      )}
       {user ? (
         <p className="link" onClick={logoutUser}>Logout</p>
       ):(
@@ -26,8 +31,6 @@ function NavBar(){
       ):(
         <p></p>
       )}
-      {/* TO-DO- UPDATE TOKEN TO INCLUDE USERNAME AND GREET USER BY USERNAME */}
-      {/* {user && <p>Hello, {user.user_id}</p>} */}
 
     </nav>
   );

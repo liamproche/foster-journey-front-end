@@ -80,7 +80,6 @@ FOSTER SIBLING
 VERSION 2 GOALS:
 
 THURSDAY
--Update access and refresh tokens to include username (maybe first name instead?) and include in UI/UX <--There's also a bug with refresh tokens somewhere (might just be a / problem when changing dbs)
 -Begin User routes
 
 
@@ -111,6 +110,7 @@ COMPLETED TODO
 #-User model should collect first name, last name
 #-Password confirmation when creating account
 #-Get rid of email requirement for both registration & login (This might turn into a security nightmare, but what if foster youth doesn't have email?)
+#-Update access and refresh tokens to include username (maybe first name instead?) and include in UI/UX
 
 
 ADDITIONAL TODO

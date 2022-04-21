@@ -10,7 +10,7 @@ import PlacementComponent from './PlacementComponent/PlacementComponent';
 function PrivateRoutes({children, ...rest}){
     let {user} = useContext(AuthContext)
     return user? (
-            <PlacementComponent/> ) : (
+            <PlacementComponent/>) : (
             <Navigate to="/login"/>
            )
 }

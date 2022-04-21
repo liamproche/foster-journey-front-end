@@ -4,6 +4,7 @@ import PrivateRoutes from './PrivateComponents/PrivateRoutes';
 import NavBar from './NavBarComponent/Nav';
 import Login from './LoginComponent/LoginComponent';
 import Register from './RegisterComponent/RegisterComponent';
+import Account from './PrivateComponents/Account/Account';
 import './App.css';
 
 
@@ -20,6 +21,7 @@ function App() {
           <Routes>
             <Route path="/login" element={<Login/>} exact/>
             <Route path="/register" element={<Register/>} exact/>
+            <Route path="/account" element={<Account/>} exact/>
             <Route path='*' element={<PrivateRoutes/>} exact/>
           </Routes>
         </AuthProvider>
