@@ -54,7 +54,7 @@ export const AuthProvider=({children})=>{
       const updateToken= async () =>{
         console.log('updating token')
         try{
-          const response = await fetch('http://localhost:8000/auth/refresh/', {
+          const response = await fetch('http://localhost:8000/api/auth/refresh/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

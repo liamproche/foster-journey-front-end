@@ -66,6 +66,7 @@ function PlacementComponent() {
   useEffect(()=>{getPlacements()}, [])
   return (
       <div className="PlacementComponent">
+        <h1>Hello, {user.first_name}</h1>
         {placements.map((placement)=>{
           return <IndividualPlacementComponent key={placement.id} placement={placement} deletePlacement={deletePlacement} editPlacement={editPlacement}></IndividualPlacementComponent>
         })}

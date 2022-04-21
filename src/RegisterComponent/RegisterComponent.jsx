@@ -8,6 +8,8 @@ function Register(){
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [confirmPass, setConfirmPass] = useState('')
+  const [passErr, setPassErr] = useState(false)
   const navigate = useNavigate() 
   useEffect(() => {
     if (localStorage.getItem('token') !== null) {
@@ -17,6 +19,15 @@ function Register(){
     }
   }, []);
 
+  const verifyPass = (e)=>{
+    e.preventDefault()
+    if(password !== confirmPass){
+      setPassErr(true)
+    }
+    else{
+      onSubmit(e);
+    }
+  }
   const onSubmit=async(e)=>{
     e.preventDefault()
     const user = {
@@ -54,7 +65,7 @@ function Register(){
     <div>
       {loading === false && <h1>Signup</h1>}
       {errors === true && <h2>Cannot signup with provided credentials</h2>}
-      <form onSubmit={onSubmit}>
+      <form onSubmit={verifyPass}>
         <label htmlFor='username'>Username:</label>
         <input type='text' name='username' required value={username} onChange={(e)=>setUsername(e.target.value)}/>{' '}        
         <br/>
@@ -63,12 +74,18 @@ function Register(){
         <br/>
         <label htmlFor='last_name'>Last Name:</label> 
         <input name='last_name' type='text' minLength={1} onChange={(e)=>setLastName(e.target.value)}/>{' '}
-        <label htmlFor='password'>Password:</label> 
         <br/>
+        <label htmlFor='password'>Password:</label> 
         <input name='password' type='password' value={password} onChange={(e)=>setPassword(e.target.value)} minLength="8" required/>{' '}
         <br/>
+        <label htmlFor='password-confirm'>Confirm Password:</label>
+        <input type='password' name='password-confirm' onChange={(e)=>setConfirmPass(e.target.value)}></input>
         <button type='submit'>Signup</button>
       </form>
+      {passErr?
+        <p>Passwords Must Match</p>:
+        <p></p>  
+    }
     </div>
   )
 }
