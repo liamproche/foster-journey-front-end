@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { Navigate } from 'react-router-dom'
+
 
 
 function Account(props) {
@@ -8,7 +8,13 @@ function Account(props) {
     const[updatesPass, setUpdatedPass] = useState('')
     return  <div className="Account">
                 <h1>Account Edit Form</h1>
-                <form>
+                <form onSubmit={async(e)=>{e.preventDefault(); 
+                    const response = await fetch("http://localhost:8000/api/user/")
+                    const parsedResponse = await response.json()
+                    console.log(parsedResponse)
+                
+                
+                }}>
                     <label htmlFor="first_name">First Name:</label>
                     <input type="text" name="first_name" onChange={(e)=>{setUpdatedFirstName(e.target.value)}}></input>
                     <label htmlFor="last_name">Last Name:</label>
