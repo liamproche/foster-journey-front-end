@@ -7,9 +7,10 @@ function LoginComponent(){
     <div>
       {!user?
       <form onSubmit={loginUser}> 
-        <input placeholder="enter username" type="text" name="username"></input>
-        <input placeholder="enter email" type="email" name="email"></input>
-        <input placeholder="enter password" type="password" name="password"></input>
+        <label htmlFor="username">Username:</label>
+        <input type="text" name="username"></input>
+        <label htmlFor="password">Password:</label>
+        <input type="password" name="password"></input>
         <button type="submit">Login</button>
       </form>
       :

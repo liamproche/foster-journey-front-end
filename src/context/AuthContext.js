@@ -25,7 +25,6 @@ export const AuthProvider=({children})=>{
             },
             body: JSON.stringify({
               'username': e.target.username.value,
-              'email': e.target.email.value,
               'password': e.target.password.value
             })
         })
