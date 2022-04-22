@@ -1,5 +1,6 @@
 //CONTEXT ALLOWS SHARING OF INFORMATION THROUGHOUT THE APP INSTEAD OF HAVING TO PASS ITEMS DOWN AS PROPS
 import {createContext, useState, useEffect} from 'react';
+import { Navigate } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 
 const AuthContext = createContext()

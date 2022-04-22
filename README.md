@@ -81,9 +81,6 @@ VERSION 2 GOALS:
 
 FRIDAY
 -Error handling <--NOTE: Check all api calls for try/catch blocks
--User placement filter currently happens in the front-end. This should be changed to the backend so the API only fetches placements for specific user
--Same for foster parent and foster sibling models
-
 -Fix date format for placement start date and end date
 
 SATURDAY
@@ -99,6 +96,8 @@ MONDAY
 
 THINGS I'M REALLY LOST ON
 -Password editing
+-User placement filter currently happens in the front-end. This should be changed to the backend so the API only fetches placements for specific user
+-Same for foster parent and foster sibling models
 
 
 COMPLETED TODO
@@ -110,18 +109,18 @@ COMPLETED TODO
 #-Update access and refresh tokens to include username (maybe first name instead?) and include in UI/UX
 
 
-ADDITIONAL TODO
 
--Image upload for foster parents (foster siblings?..... This is delicate from a safety perspective)
+ADDITIONAL TODO
 -On home page without being logged in option to view journey of random user to help increase awareness of stories of foster youth
 -Statistics on home page pulled from app data
 	-Average number of placements per user
 	-Average length of stay per placement
 	-Average number of foster parents/siblings a foster youth encounters on journey
--Include password confirmation field when registering and updating password
+
 	
 STRETCH GOAL
 -Length of placement calculated by start date/end date on placement details page
+-Include password confirmation field when registering and updating password
 
 
 

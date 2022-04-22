@@ -15,7 +15,7 @@ function PrivateRoutes({children, ...rest}){
             <Route path="/placements" element={<PlacementComponent/>} exact/>
             <Route path="/account" element={<Account/>} exact/>
         </Routes>: 
-        <Navigate to="/login"/>
+        <Navigate to="/"/>
 }
 
 export default PrivateRoutes
