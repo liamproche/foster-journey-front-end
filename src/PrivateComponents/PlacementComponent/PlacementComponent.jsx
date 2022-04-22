@@ -27,7 +27,6 @@ function PlacementComponent() {
       })
       //KEEPING THIS IN FOR NOW EVEN THOUGH IT THROWS A WARNING.... CAN BE CHANGED TO .then() FUNCTION EVENTUALLY
       const parsedResponse = await newPlacementResponse.json()
-      console.log(newPlacementResponse)
     }catch(err){
       console.log(err)
       //TODO-ERROR HANDLING
@@ -62,14 +61,15 @@ function PlacementComponent() {
     console.log(err)
     //TODO-ERROR HANDLING
   }}
-
   useEffect(()=>{getPlacements()}, [])
   return (
       <div className="PlacementComponent">
-        <h1>Hello, {user.first_name}</h1>
-        {placements.map((placement)=>{
-          return <IndividualPlacementComponent key={placement.id} placement={placement} deletePlacement={deletePlacement} editPlacement={editPlacement}></IndividualPlacementComponent>
-        })}
+        <h2 className="user-greeting">Hello, {user.first_name}</h2>
+        {placements.length > 0?[
+          <p key="placement-header">Your Placements:</p>,
+          placements.map((placement)=>{
+            return <IndividualPlacementComponent key={placement.id} placement={placement} deletePlacement={deletePlacement} editPlacement={editPlacement}></IndividualPlacementComponent>})]:
+            <p>You have not yet created any placements</p>}
         <CreatePlacementComponent createNewPlacement={createNewPlacement}></CreatePlacementComponent>
       </div>
     );

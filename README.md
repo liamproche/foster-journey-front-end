@@ -80,9 +80,10 @@ FOSTER SIBLING
 VERSION 2 GOALS:
 
 FRIDAY
+-Error handling <--NOTE: Check all api calls for try/catch blocks
 -User placement filter currently happens in the front-end. This should be changed to the backend so the API only fetches placements for specific user
 -Same for foster parent and foster sibling models
--Error handling <--NOTE: Check all api calls for try/catch blocks
+
 -Fix date format for placement start date and end date
 
 SATURDAY

@@ -30,6 +30,7 @@ function IndividualPlacementComponent(props) {
         }
       })
       const parsedResponse = await response.json()
+      console.log(parsedResponse)
     }catch(err){
       console.log(err)
     }
@@ -40,7 +41,6 @@ function IndividualPlacementComponent(props) {
       const response = await fetch('http://localhost:8000/api/siblings')
       const parsedResponse = await response.json()
       setSiblings(parsedResponse.filter((sibling)=>{return sibling.placement === props.placement.id}))
-      console.log(siblings)
     }catch(err){
       console.log(err)
     }
@@ -63,7 +63,7 @@ function IndividualPlacementComponent(props) {
       <div className="IndividualPlacementComponent">
           <p>Placement: {props.placement.num}</p>
           <p>{props.placement.name}</p>
-          <p className="link" onClick={()=>{toggleDetails(); getParents(); getSiblings()}}>Show Details</p>:
+          <p className="link" onClick={()=>{toggleDetails(); getParents(); getSiblings()}}>Show Details</p>
           {showDetails?
           <DetailsComponent placement={props.placement} deletePlacement={props.deletePlacement} editPlacement={props.editPlacement} createParent={createParent} parents={parents} createSibling={createSibling} siblings={siblings}></DetailsComponent>:
           <p></p>

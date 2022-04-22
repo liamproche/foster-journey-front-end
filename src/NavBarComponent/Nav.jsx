@@ -12,7 +12,7 @@ function NavBar(){
   return (
     <nav>
       {user? (
-      <Link to="/">Placements</Link>
+      <Link to="/placements">Placements</Link>
       ):(
         <p></p>
       )}
@@ -24,11 +24,12 @@ function NavBar(){
       {user ? (
         <p className="link" onClick={logoutUser}>Logout</p>
       ):(
-      <Link to="/login">Login</Link>
+        <p></p>
       )}
-      {!user? (
-      <Link to="/register">Create Account</Link>
-      ):(
+      {!user? [
+      <Link to="/register" key="create-account-link" className="nav-link">Create Account</Link>,
+      <Link to="/login" key="login-link" className="nav-link">Login</Link>]
+      :(
         <p></p>
       )}
 

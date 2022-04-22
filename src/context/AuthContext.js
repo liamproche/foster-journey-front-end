@@ -1,6 +1,5 @@
 //CONTEXT ALLOWS SHARING OF INFORMATION THROUGHOUT THE APP INSTEAD OF HAVING TO PASS ITEMS DOWN AS PROPS
 import {createContext, useState, useEffect} from 'react';
-import { useNavigate } from 'react-router-dom'
 import jwt_decode from 'jwt-decode';
 
 const AuthContext = createContext()
@@ -11,6 +10,7 @@ export default AuthContext
 //VALUE IS THE PROPERTY WE WANT AVAIALABLE THROUGHOUT THE APP
 export const AuthProvider=({children})=>{    
     const[user, setUser]=useState(()=>localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
+    const[incorrectCredentials, setIncorrectCredentials]=useState(false)
     //JSON.PARSE OPPOSITE OF STRINGIFY (RETURNS OBJECT) -- THIS LINE OF CODE WAS A NIGHTMARE!!!
     const[authTokens, setAuthTokens]=useState(()=>localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
     const[loading, setLoading]=useState(true)
@@ -33,10 +33,13 @@ export const AuthProvider=({children})=>{
           setAuthTokens(data)
           setUser(jwt_decode(data.access))
           localStorage.setItem('authTokens', JSON.stringify(data))
+          setIncorrectCredentials(false)
         }
+        else if(response.status === 401){
+          setIncorrectCredentials(true)
+        }   
         else{
-          alert('Something went wrong with the login api call')
-          //TODO: ERROR HANDLING
+          alert('Please try logging in again')
         }
       }catch(err){
         console.log(err)
@@ -49,7 +52,6 @@ export const AuthProvider=({children})=>{
         setUser(null)
         localStorage.removeItem('authTokens')
       }
-
       //BEGIN REFRESH
       const updateToken= async () =>{
         console.log('updating token')
@@ -90,7 +92,8 @@ export const AuthProvider=({children})=>{
     
     //THIS VARIABLE PASSES THE INFORMATION TO USE WITH USECONTEXT (VARIABLES ON TOP/FUNCTIONS ON THE BOTTOM)
     const contextData={
-        user:user,
+        incorrectCredentials: incorrectCredentials,
+        user: user,
         loginUser: loginUser,
         logoutUser: logoutUser
     }

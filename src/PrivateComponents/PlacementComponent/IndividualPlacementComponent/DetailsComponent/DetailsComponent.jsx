@@ -29,10 +29,12 @@ function DetailsComponent(props) {
     })
   }
   const submitNewParent=(e)=>{
+    e.preventDefault()
     props.createParent({
       ...newParent,
       placement:props.placement.id
     })
+    console.log(newParent)
   }
   const submitNewSibling=(e)=>{
     props.createSibling({

@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { Route, Navigate, Routes} from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 import PlacementComponent from './PlacementComponent/PlacementComponent';
+import Account from './Account/Account';
 
 
 //NOTE:THIS IS WHERE TO ENTER ARGUMENTS TO CHANGE ROUTES BASED ON USER PERMISSIONS
@@ -9,10 +10,12 @@ import PlacementComponent from './PlacementComponent/PlacementComponent';
 //NOTE: MAY BE POSSIBLE TO REMOVE ARGUMENTS
 function PrivateRoutes({children, ...rest}){
     let {user} = useContext(AuthContext)
-    return user? (
-            <PlacementComponent/>) : (
-            <Navigate to="/login"/>
-           )
+    return user? 
+        <Routes>
+            <Route path="/placements" element={<PlacementComponent/>} exact/>
+            <Route path="/account" element={<Account/>} exact/>
+        </Routes>: 
+        <Navigate to="/login"/>
 }
 
 export default PrivateRoutes
