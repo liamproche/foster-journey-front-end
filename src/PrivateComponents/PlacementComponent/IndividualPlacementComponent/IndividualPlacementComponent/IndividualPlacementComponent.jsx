@@ -9,8 +9,6 @@ function IndividualPlacementComponent(props) {
   const toggleDetails=()=>{
     setShowDetails(!showDetails)
   }  
-  
-  
   // BEGIN PARENT ROUTES
   const getParents = async ()=>{
     try{
@@ -36,7 +34,6 @@ function IndividualPlacementComponent(props) {
       console.log(err)
     }
   }
-
   // SIBLING API CALLS
   const getSiblings = async ()=>{
     try{
@@ -62,7 +59,6 @@ function IndividualPlacementComponent(props) {
       console.log(err)
     }
   }
-
   return (
       <div className="IndividualPlacementComponent">
           <p>Placement: {props.placement.num}</p>

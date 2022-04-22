@@ -79,13 +79,11 @@ FOSTER SIBLING
 
 VERSION 2 GOALS:
 
-
 FRIDAY
 -User placement filter currently happens in the front-end. This should be changed to the backend so the API only fetches placements for specific user
 -Same for foster parent and foster sibling models
 -Error handling <--NOTE: Check all api calls for try/catch blocks
 -Fix date format for placement start date and end date
-
 
 SATURDAY
 -Image upload for foster parent model
@@ -99,8 +97,7 @@ MONDAY
 -Complete project --> Move on to portfolio updates
 
 THINGS I'M REALLY LOST ON
--Begin User routes
--Complete User routes
+-Password editing
 
 
 COMPLETED TODO
