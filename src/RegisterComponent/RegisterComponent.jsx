@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
+import { Form, Button } from 'react-bootstrap'
 import './RegisterComponent.css'
 
 function Register(){
@@ -7,17 +8,12 @@ function Register(){
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [password, setPassword] = useState('')
-  const [errors, setErrors] = useState(false)
-  const [loading, setLoading] = useState(true)
   const [confirmPass, setConfirmPass] = useState('')
   const [passErr, setPassErr] = useState(false)
   const navigate = useNavigate() 
   useEffect(() => {
     if (localStorage.getItem('token') !== null) {
     } 
-    else {
-      setLoading(false)
-    }
   }, []);
 
   const verifyPass = (e)=>{
@@ -55,38 +51,47 @@ function Register(){
         setUsername('')
         setFirstName('')
         setPassword('')
-        setErrors(true)
       }
     }catch(err){
       console.log(err)
-      //TO-DO ERROR HANDLING
+      alert("Please try you request again")
     }
     }
   return(
     <div>
-      {loading === false && <h1>Signup</h1>}
-      {errors === true && <h2>Cannot signup with provided credentials</h2>}
-      <form onSubmit={verifyPass}>
-        <label htmlFor='username'>Username:</label>
-        <input type='text' name='username' required value={username} onChange={(e)=>setUsername(e.target.value)}/>{' '}        
-        <br/>
-        <label htmlFor='first_name'>First Name:</label> 
-        <input name='first_name' type='text' minLength={1} onChange={(e)=>setFirstName(e.target.value)} required/>{' '}
-        <br/>
-        <label htmlFor='last_name'>Last Name:</label> 
-        <input name='last_name' type='text' minLength={1} onChange={(e)=>setLastName(e.target.value)}/>{' '}
-        <br/>
-        <label htmlFor='password'>Password:</label> 
-        <input name='password' type='password' value={password} onChange={(e)=>setPassword(e.target.value)} minLength="8" required/>{' '}
-        <br/>
-        <label htmlFor='password-confirm'>Confirm Password:</label>
-        <input type='password' name='password-confirm' onChange={(e)=>setConfirmPass(e.target.value)}></input>
-        <button type='submit'>Signup</button>
-      </form>
-      {passErr?
+      <div id="register-form-container">
+        <Form id="register-form" className="rounded p-4 p-sm-3" onSubmit={verifyPass}>
+          <h2 className="form-header" key="register-header">Sign Up</h2>
+            <Form.Group className="mb-3">
+              <Form.Label className="login-form-label">Username</Form.Label>
+              <Form.Control className="user-input" type="username" placeholder='Select a Username' name="username" required value={username} onChange={(e)=>setUsername(e.target.value)}/>
+            </Form.Group>
+            <div className="name-input-container">
+              <Form.Group className="name-input">
+                <Form.Label className="user-input">First Name</Form.Label>
+                <Form.Control className="user-input name-input" type="text" placeholder="Enter first name" name="first-name" minLength={1} onChange={(e)=>setFirstName(e.target.value)} required/>
+              </Form.Group>
+              <Form.Group className="name-input">
+                <Form.Label className="user-input">Last Name</Form.Label>
+                <Form.Control className="user-input name-input" type="text" placeholder="Enter last name" name="last-name" minLength={1} onChange={(e)=>setLastName(e.target.value)}/>
+              </Form.Group>
+            </div>
+            <Form.Group className="mb-3">
+              <Form.Label className="form-label">Password</Form.Label>
+              <Form.Control className="user-input" type="password" placeholder='Enter Password' name="password" value={password} onChange={(e)=>setPassword(e.target.value)} minLength="8" required/>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label className="form-label">Confirm Password</Form.Label>
+              <Form.Control className="user-input" type="password" placeholder='Confirm Password' name="password-confirm" onChange={(e)=>setConfirmPass(e.target.value)} required/>
+            </Form.Group>
+            <Button className="form-button" varient="primary" type="submit">Create Account</Button>
+            <Link id="login-link" className="nav-link" to="/about" key="create-account-link">Login</Link>
+          </Form>
+        </div>
+        {passErr?
         <p>Passwords Must Match</p>:
         <p></p>  
-    }
+        }
     </div>
   )
 }

@@ -1,5 +1,4 @@
-import LoginComponent from "../LoginComponent/LoginComponent";
-import './About.css'
+import LoginComponent from "./LoginComponent/LoginComponent";
 
 function About() {
     return (

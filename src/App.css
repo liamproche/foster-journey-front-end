@@ -3,17 +3,24 @@
   margin: 0;
   padding: 0;
   font-size: 18px;
-  font-family: 'Klee One', cursive;
 }
-/* div{
+/* BEGIN FOR LAYOUT */
+
+div{
   border: 2px solid blue;
-} */
+}
+section{
+  border: 2px solid red;
+}
+
+/* END FOR LAYOUT */
 .App{
   min-height: 130vh;
   background: linear-gradient(75deg, #485563, #29323c);
   background: -webkit-linear-gradient(75deg, #485563, #29323c);
   background: -moz-linear-gradient(75deg, #485563, #29323c);
   color: white;
+  font-family: 'Klee One', cursive;
 }
 .app-header{
   text-align: center;
@@ -21,6 +28,7 @@
 #app-title{
   padding-top: 2%;
   font-size: 2.7rem;
+  font-family: 'Klee One', cursive;
 }
 #footprints-image{
   margin-top: 2%;
@@ -28,7 +36,7 @@
   max-height: 10%;
 }
 .about-container{
-  max-width: 90%;
+  max-width: 85%;
   text-align: center;
   margin: 0 auto;
   padding-top: 2%;
@@ -36,18 +44,16 @@
 }
 #login-form-container{
   background: rgba(0, 0, 0, .55);
-  color: white;
   margin: 0 auto;
   border-radius: 10px;
-  max-width: 85vw;
 }
 #login-form{
   width: 100%;
 }
-#login-header{
+.form-header{
   font-family: sans-serif;
 }
-.login-form-label{
+.form-label{
   font-family: sans-serif;
 }
 .user-input{
@@ -66,14 +72,27 @@
   font-family: sans-serif;
   text-align: center;
 }
-#login-button{
+.form-button{
   padding: 10px;
   padding-top: 5px;
+  font-family: sans-serif;
+}
+.name-input-container{
+  display: flex;
+  justify-content: space-between;
+}
+#register-form-container{
+  background: rgba(0, 0, 0, .55);
+  margin: 0 auto;
+  border-radius: 10px;
+  max-width: 65vw;
+}
+.name-input{
+  width: 50%;
 }
 @media only screen and (min-width: 480px) {
   #app-title{
     font-size: 3.5rem;
-    font-family: sans-serif;
   }
   #footprints-image{
     max-width: 35vw;
