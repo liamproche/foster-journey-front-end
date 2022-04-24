@@ -56,7 +56,7 @@ function Register(){
       console.log(err)
       alert("Please try you request again")
     }
-    }
+  }
   return(
     <div>
       <div id="register-form-container">
@@ -69,21 +69,23 @@ function Register(){
             <div className="name-input-container">
               <Form.Group className="name-input">
                 <Form.Label className="user-input">First Name</Form.Label>
-                <Form.Control className="user-input name-input" type="text" placeholder="Enter first name" name="first-name" minLength={1} onChange={(e)=>setFirstName(e.target.value)} required/>
+                <Form.Control className="user-input" type="text" placeholder="Enter first name" name="first-name" minLength={1} onChange={(e)=>setFirstName(e.target.value)} required/>
               </Form.Group>
               <Form.Group className="name-input">
                 <Form.Label className="user-input">Last Name</Form.Label>
-                <Form.Control className="user-input name-input" type="text" placeholder="Enter last name" name="last-name" minLength={1} onChange={(e)=>setLastName(e.target.value)}/>
+                <Form.Control className="user-input" type="text" placeholder="Enter last name" name="last-name" minLength={1} onChange={(e)=>setLastName(e.target.value)}/>
               </Form.Group>
             </div>
-            <Form.Group className="mb-3">
-              <Form.Label className="form-label">Password</Form.Label>
-              <Form.Control className="user-input" type="password" placeholder='Enter Password' name="password" value={password} onChange={(e)=>setPassword(e.target.value)} minLength="8" required/>
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label className="form-label">Confirm Password</Form.Label>
-              <Form.Control className="user-input" type="password" placeholder='Confirm Password' name="password-confirm" onChange={(e)=>setConfirmPass(e.target.value)} required/>
-            </Form.Group>
+            <div className="password-input-container">
+              <Form.Group className="mb-3 pass-input">
+                <Form.Label className="form-label">Password</Form.Label>
+                <Form.Control className="user-input" type="password" placeholder='Enter Password' name="password" value={password} onChange={(e)=>setPassword(e.target.value)} minLength="8" required/>
+              </Form.Group>
+              <Form.Group className="mb-3 pass-input">
+                <Form.Label className="form-label">Confirm Password</Form.Label>
+                <Form.Control className="user-input" type="password" placeholder='Confirm Password' name="password-confirm" onChange={(e)=>setConfirmPass(e.target.value)} required/>
+              </Form.Group>
+            </div>
             <Button className="form-button" varient="primary" type="submit">Create Account</Button>
             <Link id="login-link" className="nav-link" to="/about" key="create-account-link">Login</Link>
           </Form>

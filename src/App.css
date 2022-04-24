@@ -15,7 +15,7 @@ section{
 
 /* END FOR LAYOUT */
 .App{
-  min-height: 130vh;
+  min-height: 100vh;
   background: linear-gradient(75deg, #485563, #29323c);
   background: -webkit-linear-gradient(75deg, #485563, #29323c);
   background: -moz-linear-gradient(75deg, #485563, #29323c);
@@ -79,7 +79,6 @@ section{
 }
 .name-input-container{
   display: flex;
-  justify-content: space-between;
 }
 #register-form-container{
   background: rgba(0, 0, 0, .55);
@@ -88,6 +87,13 @@ section{
   max-width: 65vw;
 }
 .name-input{
+  width: 50%;
+}
+.password-input-container{
+  display: flex;
+  border: 2px solid green;
+}
+.pass-input{
   width: 50%;
 }
 @media only screen and (min-width: 480px) {
