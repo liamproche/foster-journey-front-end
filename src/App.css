@@ -1,38 +1,84 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Klee+One&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  font-family: 'Klee One', cursive;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* div{
+  border: 2px solid blue;
+} */
+.App{
+  min-height: 130vh;
+  background: linear-gradient(75deg, #485563, #29323c);
+  background: -webkit-linear-gradient(75deg, #485563, #29323c);
+  background: -moz-linear-gradient(75deg, #485563, #29323c);
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.app-header{
+  text-align: center;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+#app-title{
+  padding-top: 2%;
+  font-size: 2.7rem;
+}
+#footprints-image{
+  margin-top: 2%;
+  max-width: 50vw;
+  max-height: 10%;
+}
+.about-container{
+  max-width: 90%;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+#login-form-container{
+  background: rgba(0, 0, 0, .55);
+  color: white;
+  margin: 0 auto;
+  border-radius: 10px;
+  max-width: 85vw;
+}
+#login-form{
+  width: 100%;
+}
+#login-header{
+  font-family: sans-serif;
+}
+.login-form-label{
+  font-family: sans-serif;
+}
+.user-input{
+  font-family: sans-serif;
+}
+.nav-link{
+  font-family: sans-serif;
+}
+#create-account-link{
+  padding-left: 0;
+  padding-top: 10px;
+}
+.error-message{
+  color: red;
+  font-size: .9rem;
+  font-family: sans-serif;
+  text-align: center;
+}
+#login-button{
+  padding: 10px;
+  padding-top: 5px;
+}
+@media only screen and (min-width: 480px) {
+  #app-title{
+    font-size: 3.5rem;
+    font-family: sans-serif;
   }
-  to {
-    transform: rotate(360deg);
+  #footprints-image{
+    max-width: 35vw;
+  }
+  #login-form-container{
+    width: 35vw;
   }
 }

@@ -26,12 +26,12 @@ function NavBar(){
       ):(
         <p></p>
       )}
-      {!user? [
-      <Link to="/register" key="create-account-link" className="nav-link">Create Account</Link>,
-      <Link to="/login" key="login-link" className="nav-link">Login</Link>]
+      {/* {!user? [
+      // <Link to="/register" key="create-account-link" className="nav-link">Create Account</Link>,
+      <Link to="/about" key="login-link" className="nav-link">Login</Link>]
       :(
         <p></p>
-      )}
+      )} */}
 
     </nav>
   );

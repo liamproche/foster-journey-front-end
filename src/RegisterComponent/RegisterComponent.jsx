@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import './RegisterComponent.css'
 
 function Register(){
   const [username, setUsername]=useState('')
