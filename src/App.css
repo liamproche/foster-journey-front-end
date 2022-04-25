@@ -6,12 +6,12 @@
 }
 /* BEGIN FOR LAYOUT */
 
-/* div{
+div{
   border: 2px solid blue;
 }
 section{
   border: 2px solid red;
-} */
+}
 
 /* END FOR LAYOUT */
 .App{
@@ -99,6 +99,24 @@ section{
 .pass-input{
   width: 45%;
 
+}
+.PlacementComponent{
+  width: 80%;
+  margin: 0 auto;
+}
+.IndividualPlacementComponent{
+  text-align: center; 
+}
+.placement-title-container{
+  width: 50%;
+}
+.placement-dates-container{
+  width: 50%;
+}
+.accordion-header{
+  color: red;
+  height: 100%;
+  width: 100%;
 }
 @media only screen and (min-width: 480px) {
   #app-title{

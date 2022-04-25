@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
+
 import IndividualPlacementComponent from './IndividualPlacementComponent/IndividualPlacementComponent/IndividualPlacementComponent';
 import CreatePlacementComponent from './CreatePlacementComponent/CreatePlacementComponent';
-import './PlacementComponent.css'
 import AuthContext from "../../context/AuthContext";
+
+
 
 function PlacementComponent() {
   const {user}=useContext(AuthContext)
@@ -63,13 +65,16 @@ function PlacementComponent() {
   useEffect(()=>{getPlacements()}, [])
   return (
       <div className="PlacementComponent">
-        <h2 className="user-greeting">Hello, {user.first_name}</h2>
+        <h2 className="user-greeting">Welcome, {user.first_name}</h2>
         {placements.length > 0?[
-          <p key="placement-header">Your Placements:</p>,
+          <p key="placement-header">Your Current Placements:</p>,
           placements.map((placement)=>{
             return <IndividualPlacementComponent key={placement.id} placement={placement} deletePlacement={deletePlacement} editPlacement={editPlacement}></IndividualPlacementComponent>})]:
             <p>You have not yet created any placements</p>}
         <CreatePlacementComponent createNewPlacement={createNewPlacement}></CreatePlacementComponent>
+
+      
+      
       </div>
     );
 }
