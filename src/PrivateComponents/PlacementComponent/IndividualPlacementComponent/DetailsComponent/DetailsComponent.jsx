@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import EditFormComponent from './EditFormComponent/EditFormComponent'
 import './DetailsComponent.css'
 
@@ -6,11 +6,31 @@ function DetailsComponent(props) {
   const[placement, setPlacement] = useState(props.placement)
   const[note, setNote] = useState("")
   const[showEditForm, setShowEditForm] = useState(false)
+  const[image, setImage] = useState("");
   const[newParent, setNewParent] = useState({
     first_name: "",
     last_name: "",
-    placement: props.placement.id
+    placement: props.placement.id,
+    url: null
   })
+  const uploadImage = async ()=>{
+    try{
+        const data = new FormData();
+        data.append('file', image);
+        data.append('upload_preset', 'ym3qlxdj')
+        const imgUplaodResponse = await fetch(`https://api.cloudinary.com/v1_1/${process.env.REACT_APP_IMG_CLOUD}/image/upload/`, {
+            method: 'POST',
+            body: data
+        })
+        const parsedResponse = await imgUplaodResponse.json()
+        setNewParent({
+            ...newParent,
+            url: parsedResponse.url
+        })
+    }catch(err){
+        console.log(err)
+    }
+  }
   const[newSibling, setNewSibling] = useState({
     first_name: "",
     last_name: "",
@@ -28,13 +48,9 @@ function DetailsComponent(props) {
       [e.target.name]: e.target.value
     })
   }
-  const submitNewParent=(e)=>{
+  const submitNewParent= async (e)=>{
     e.preventDefault()
-    props.createParent({
-      ...newParent,
-      placement:props.placement.id
-    })
-    console.log(newParent)
+    props.createParent(newParent)
   }
   const submitNewSibling=(e)=>{
     props.createSibling({
@@ -60,23 +76,35 @@ function DetailsComponent(props) {
           {props.parents.map((parent)=>{
             return (
             <div className="foster-parent-container" key={parent.id}>
-              <p>Foster Parent Image</p>
-              <p >{parent.first_name} {parent.last_name}</p>
+              <img className="foster-parent-image" src={parent.url}/>
+              <p>{parent.first_name} {parent.last_name}</p>
             </div>
             )
             })}
           <button>Add Foster Parent</button>
         </div>
-        {/* <p>Foster Parent Create Form</p>
+        
+        
+        
+        
+        <p>Foster Parent Create Form</p>
         <form onSubmit={submitNewParent}>
           <label htmlFor="first_name">First Name</label>
           <input type="text" name="first_name" minLength={1} required onChange={handleParentInputChange}/>
           <label htmlFor="last_name">Last Name</label>
           <input type="text" name="last_name" onChange={handleParentInputChange}/>
-          <label htmlFor="url">Photo</label>
-          <input type="text" name="url" onChange={handleParentInputChange}/>
+          <br/>
+          <label htmlFor="image">Upload an image</label>
+          <input type="file" name="file" onChange={(e)=>setImage(e.target.files[0])}></input>
+          {/* I HATE THE NEED FOR THIS BUTTON, BUT THERE IS A NEED FOR THIS BUTTON */}
+          <button onClick={uploadImage}>Upload Image</button>
           <input type="submit"></input>
-        </form> */}
+        </form>
+
+
+
+
+
         <div className="foster-siblings-container">
           <p>Foster Siblings:</p>
           {props.siblings.map((sibling)=>{return<p key={sibling.id}>{sibling.first_name} {sibling.last_name}</p>})}

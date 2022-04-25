@@ -6,7 +6,7 @@ import './IndividualPlacementComponent.css'
 function IndividualPlacementComponent(props) {
   const[parents, setParents] = useState([])
   const[siblings, setSiblings] = useState([])
-
+  const [url, setUrl] = useState(null)
   // BEGIN PARENT ROUTES
   const getParents = async ()=>{
     try{
@@ -34,6 +34,7 @@ function IndividualPlacementComponent(props) {
       alert('Please try your request again')
     }
   }
+  
   // SIBLING API CALLS
   const getSiblings = async ()=>{
     try{
@@ -63,7 +64,6 @@ function IndividualPlacementComponent(props) {
   useEffect(()=>{getParents()}, [])
   return (
       <div className="IndividualPlacementComponent">
-
           <Accordion defaultActiveKey="0" flush>
             <Accordion.Item eventKey="0">
               <Accordion.Header className="accordion-header">
@@ -81,9 +81,6 @@ function IndividualPlacementComponent(props) {
               </Accordion.Body>
               </Accordion.Item>
           </Accordion>
-
-
-
         </div>
     );
 }

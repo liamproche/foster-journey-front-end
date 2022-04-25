@@ -127,6 +127,9 @@ section{
 .foster-parent-container{
   display: flex;
 }
+.foster-parent-image{
+  max-width: 20%;
+}
 @media only screen and (min-width: 480px) {
   #app-title{
     font-size: 3.5rem;
