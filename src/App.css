@@ -6,21 +6,23 @@
 }
 /* BEGIN FOR LAYOUT */
 
-div{
+/* div{
   border: 2px solid blue;
 }
 section{
   border: 2px solid red;
-}
+} */
 
 /* END FOR LAYOUT */
 .App{
-  min-height: 100vh;
+  /* min-height: 100%; */
+  background: rgba(#29323c);
   background: linear-gradient(75deg, #485563, #29323c);
   background: -webkit-linear-gradient(75deg, #485563, #29323c);
   background: -moz-linear-gradient(75deg, #485563, #29323c);
   color: white;
   font-family: 'Klee One', cursive;
+  padding-bottom: 5%;
 }
 .app-header{
   text-align: center;
@@ -79,6 +81,7 @@ section{
 }
 .name-input-container{
   display: flex;
+  justify-content: space-between;
 }
 #register-form-container{
   background: rgba(0, 0, 0, .55);
@@ -87,21 +90,22 @@ section{
   max-width: 65vw;
 }
 .name-input{
-  width: 50%;
+  width: 45%;
 }
 .password-input-container{
   display: flex;
-  border: 2px solid green;
+  justify-content: space-between;
 }
 .pass-input{
-  width: 50%;
+  width: 45%;
+
 }
 @media only screen and (min-width: 480px) {
   #app-title{
     font-size: 3.5rem;
   }
   #footprints-image{
-    max-width: 35vw;
+    max-width: 30vw;
   }
   #login-form-container{
     width: 35vw;

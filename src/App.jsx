@@ -24,7 +24,7 @@ function App() {
             <Route path="/account" element={<Account/>} exact/>
             <Route path='*' element={<PrivateRoutes/>} exact/>
           </Routes>
-          <NavBar/>
+          {/* <NavBar/> */}
         </AuthProvider>
       </Router>
     </div>
