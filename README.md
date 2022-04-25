@@ -55,10 +55,10 @@ USER STORIES
 
 
 ADDITIONAL MODELS
-USERS --> TODO- Edit and delete user routes
+#USERS --> TODO- Edit and delete user routes
 #-Username (must be unique) --> TODO- Handling message to user if they create an account with username already taken
--First name
--Last name
+#-First name
+#-Last name
 #-Password --> TODO- Confirm password field on register page
 #-Timestamp for account created
 
@@ -79,24 +79,33 @@ FOSTER SIBLING
 
 VERSION 2 GOALS:
 
-FRIDAY
--Fix date format for placement start date and end date
-
-SATURDAY
--Image upload for foster parent model
--Delete console.logs
--Home page statistics
-
 SUNDAY
--Styling
+#-Styling for landing page, registration page, login form, app component
+
 
 MONDAY
--Complete project --> Move on to portfolio updates
+-Fix date format for placement start date and end date
+-Style placement & details components
+-Image upload for foster parent model
 
-THINGS I'M REALLY LOST ON
+
+TUESDAY (THINGS I'M REALLY LOST ON)
 -Password editing
 -User placement filter currently happens in the front-end. This should be changed to the backend so the API only fetches placements for specific user
 -Same for foster parent and foster sibling models
+
+
+WEDNESDAY
+-Home page statistics
+-Delete console.logs
+
+
+THURSDAY
+-Re-deployment to Heroku
+-Complete project --> Move on to portfolio updates
+
+
+
 
 
 COMPLETED TODO
