@@ -80,7 +80,6 @@ FOSTER SIBLING
 VERSION 2 GOALS:
 
 FRIDAY
--Error handling <--NOTE: Check all api calls for try/catch blocks
 -Fix date format for placement start date and end date
 
 SATURDAY
@@ -107,6 +106,7 @@ COMPLETED TODO
 #-Password confirmation when creating account
 #-Get rid of email requirement for both registration & login (This might turn into a security nightmare, but what if foster youth doesn't have email?)
 #-Update access and refresh tokens to include username (maybe first name instead?) and include in UI/UX
+#-Error handling <--NOTE: Check all api calls for try/catch blocks
 
 
 

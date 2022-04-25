@@ -22,6 +22,7 @@ function Register(){
       })
     }catch(err){
       console.log(err)
+      alert('Registration is currently unavailable')
     }
   }
   const checkUsername = () =>{

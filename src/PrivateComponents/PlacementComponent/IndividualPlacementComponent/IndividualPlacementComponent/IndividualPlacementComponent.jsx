@@ -17,6 +17,7 @@ function IndividualPlacementComponent(props) {
       setParents(parsedResponse.filter((parent)=>{return parent.placement === props.placement.id}))
     }catch(err){
       console.log(err)
+      alert('Unable to retrieve foster parents')
     }
   }
   // PARENT API CALLS
@@ -30,9 +31,9 @@ function IndividualPlacementComponent(props) {
         }
       })
       const parsedResponse = await response.json()
-      console.log(parsedResponse)
     }catch(err){
       console.log(err)
+      alert('Please try your request again')
     }
   }
   // SIBLING API CALLS
@@ -43,6 +44,7 @@ function IndividualPlacementComponent(props) {
       setSiblings(parsedResponse.filter((sibling)=>{return sibling.placement === props.placement.id}))
     }catch(err){
       console.log(err)
+      alert('Unable to retrieve foster siblings')
     }
   }
   const createSibling = async (newSibling)=>{
@@ -57,6 +59,7 @@ function IndividualPlacementComponent(props) {
       const parsedResponse = await response.json()
     }catch(err){
       console.log(err)
+      alert('Please try your request again')
     }
   }
   return (

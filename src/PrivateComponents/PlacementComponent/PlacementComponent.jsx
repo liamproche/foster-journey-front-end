@@ -14,7 +14,6 @@ function PlacementComponent() {
       setPlacements(parsedResponse.filter((placement)=>{return placement.user === user.user_id}))
   }catch(err){
     console.log(err)
-    //TODO-ERROR HANDLING
   }}
   const createNewPlacement= async(newPlacement)=>{
     try{
@@ -29,7 +28,7 @@ function PlacementComponent() {
       const parsedResponse = await newPlacementResponse.json()
     }catch(err){
       console.log(err)
-      //TODO-ERROR HANDLING
+      alert('Please try your request again')
     }
   }
   const deletePlacement=async(id)=>{
@@ -44,7 +43,7 @@ function PlacementComponent() {
     )
    }catch(err){
      console.log(err)
-      //TODO-ERROR HANDLING
+      alert('Please try your request again')
    }}
   const editPlacement=async(placementToEdit)=>{
     try{
@@ -59,7 +58,7 @@ function PlacementComponent() {
     console.log(parsedResponse)
   }catch(err){
     console.log(err)
-    //TODO-ERROR HANDLING
+    alert('Unable to edit placement')
   }}
   useEffect(()=>{getPlacements()}, [])
   return (
