@@ -1,16 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Accordion } from 'react-bootstrap'
-import { renderMatches } from 'react-router-dom';
 import DetailsComponent from '../DetailsComponent/DetailsComponent';
 import './IndividualPlacementComponent.css'
 
 function IndividualPlacementComponent(props) {
-  const[showDetails, setShowDetails] = useState(false) 
   const[parents, setParents] = useState([])
   const[siblings, setSiblings] = useState([])
-  const toggleDetails=()=>{
-    setShowDetails(!showDetails)
-  }  
+
   // BEGIN PARENT ROUTES
   const getParents = async ()=>{
     try{
@@ -64,37 +60,24 @@ function IndividualPlacementComponent(props) {
       alert('Please try your request again')
     }
   }
+  useEffect(()=>{getParents()}, [])
   return (
       <div className="IndividualPlacementComponent">
-          <div className="placement-title-container">
-          <h2>Placement: {props.placement.num}</h2>
-          <h3>{props.placement.name}</h3>
-          </div>
-          <div className="placement-dates-container">
-          <h4>{props.placement.start_date} to {props.placement.end_date}</h4>
-          </div>
-          <p className="link" onClick={()=>{toggleDetails(); getParents(); getSiblings()}}>Show Details</p>
-          {showDetails?
-          <DetailsComponent placement={props.placement} deletePlacement={props.deletePlacement} editPlacement={props.editPlacement} createParent={createParent} parents={parents} createSibling={createSibling} siblings={siblings}></DetailsComponent>:
-          <p></p>
-          }
-          <Accordion defaultActiveKey="0">
+
+          <Accordion defaultActiveKey="0" flush>
             <Accordion.Item eventKey="0">
-              <Accordion.Header>
-                <div className="accordion-header">
-                  <h3>Placement: {props.placement.num}</h3>
-                  <br/>
-                  <h4>{props.placement.name}</h4>
+              <Accordion.Header className="accordion-header">
+                <div className="placement-title">
+                  <h5>Placement:{props.placement.num}</h5>
+                  <h5>{props.placement.name}</h5>
+                </div>
+                <div className="placement-dates">
+                  <h5>Start Date:{props.placement.start_date}</h5>
+                  <h5>End Date:{props.placement.end_date}</h5>
                 </div>
               </Accordion.Header>
-              <Accordion.Body>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                est laborum.
+              <Accordion.Body id="accordion-body">
+                <DetailsComponent placement={props.placement} deletePlacement={props.deletePlacement} editPlacement={props.editPlacement} createParent={createParent} parents={parents} createSibling={createSibling} siblings={siblings}></DetailsComponent>
               </Accordion.Body>
               </Accordion.Item>
           </Accordion>

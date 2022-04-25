@@ -50,12 +50,24 @@ function DetailsComponent(props) {
   }
   return (
       <div className="DetailsComponent">
-        <p>Start Date: {placement.start_date}</p>
-        <p>End Date: {placement.end_date}</p>
-        <p>Location: {placement.location}</p>
-        <p>Foster Parents:</p>
-        {props.parents.map((parent)=>{return<p key={parent.id}>{parent.first_name} {parent.last_name}</p>})}
-        <p>Foster Parent Create Form</p>
+        <div className="location-container">
+          <h5>Location: {placement.location}</h5>
+        </div>
+        <div className="foster-parents-container">
+          <div className="foster-parents-header-container">
+            <h6>Foster Parents:</h6>
+          </div>
+          {props.parents.map((parent)=>{
+            return (
+            <div className="foster-parent-container" key={parent.id}>
+              <p>Foster Parent Image</p>
+              <p >{parent.first_name} {parent.last_name}</p>
+            </div>
+            )
+            })}
+          <button>Add Foster Parent</button>
+        </div>
+        {/* <p>Foster Parent Create Form</p>
         <form onSubmit={submitNewParent}>
           <label htmlFor="first_name">First Name</label>
           <input type="text" name="first_name" minLength={1} required onChange={handleParentInputChange}/>
@@ -64,17 +76,27 @@ function DetailsComponent(props) {
           <label htmlFor="url">Photo</label>
           <input type="text" name="url" onChange={handleParentInputChange}/>
           <input type="submit"></input>
-        </form>
-        <p>Foster Siblings Go Here</p>
-        {props.siblings.map((sibling)=>{return<p key={sibling.id}>{sibling.first_name} {sibling.last_name}</p>})}
-        <p>Foster sibling create form</p>
+        </form> */}
+        <div className="foster-siblings-container">
+          <p>Foster Siblings:</p>
+          {props.siblings.map((sibling)=>{return<p key={sibling.id}>{sibling.first_name} {sibling.last_name}</p>})}
+          <button>Add Foster Sibling</button>
+        </div>
+        
+        
+        {/* <p>Foster sibling create form</p>
         <form onSubmit={submitNewSibling}>
           <label htmlFor="first_name">First Name</label>
           <input type="text" name="first_name" minLength={1} required onChange={handleSiblingInputChange}/>
           <label htmlFor="last_name">Last Name</label>
           <input type="text" name="last_name" onChange={handleSiblingInputChange}/>
           <input type="submit"></input>
-        </form>
+        </form> */}
+
+
+
+
+
         {/* <p>Foster Siblings:</p>
         {placement.foster_siblings.length !==0?
         placement.foster_siblings.map((sibling)=>{

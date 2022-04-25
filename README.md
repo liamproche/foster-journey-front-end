@@ -79,10 +79,6 @@ FOSTER SIBLING
 
 VERSION 2 GOALS:
 
-SUNDAY
-#-Styling for landing page, registration page, login form, app component
-
-
 MONDAY
 -Fix date format for placement start date and end date
 -Style placement & details components
@@ -116,6 +112,7 @@ COMPLETED TODO
 #-Get rid of email requirement for both registration & login (This might turn into a security nightmare, but what if foster youth doesn't have email?)
 #-Update access and refresh tokens to include username (maybe first name instead?) and include in UI/UX
 #-Error handling <--NOTE: Check all api calls for try/catch blocks
+#-Styling for landing page, registration page, login form, app component
 
 
 
