@@ -88,8 +88,8 @@ function DetailsComponent(props) {
             return (
             <div className="individual-foster-parent-container" key={parent.id}>
               {parent.url?
-              <img className="foster-parent-image" src={parent.url}/>:
-              <img className="foster-parent-image" src={process.env.PUBLIC_URL + 'img/no-profile-image.png'}/>
+              <img className="foster-parent-image" src={parent.url} alt="Foster Parent"/>:
+              <img className="foster-parent-image" src={process.env.PUBLIC_URL + 'img/no-profile-image.png'} alt="Foster Parent"/>
               }
               <p>{parent.first_name} {parent.last_name}</p>
             </div>
@@ -145,13 +145,16 @@ function DetailsComponent(props) {
         placement.notes.map((note)=>{
             return <p key={props.placement.notes.indexOf(note)}>{note}</p>
           }):<p>None Added</p>}
-            <input id="note-input-field" type="text" name="note" onChange={addNoteInputChange} required></input>
+            <input className="note-input-field" type="text" name="note" onChange={addNoteInputChange} required></input>
             <Button variant="secondary" onClick={()=>{
               const updatedPlacement = {...placement}
               updatedPlacement.notes.push(note)
               setPlacement(updatedPlacement)
               props.editPlacement(updatedPlacement)
-              document.getElementById('note-input-field').value=""
+              const elements = document.getElementsByClassName('note-input-field')
+              for(let i = 0; i < elements.length; i++){
+                elements[i].value = ""
+              }
               setNote('')
             }}>Add Note</Button>
           <br/>
