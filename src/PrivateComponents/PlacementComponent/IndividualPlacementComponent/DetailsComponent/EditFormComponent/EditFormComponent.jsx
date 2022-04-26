@@ -77,21 +77,15 @@ function EditFormComponent(props) {
                     }):<p>None Added</p>}
                 </div>
             </Form.Group>
-          </Form>
-                
-                
-                
-                
-                <label htmlFor="notes">Notes:</label>
+            <Form.Group> 
+                <Form.Label className="styled-input" htmlFor="notes">Notes:</Form.Label>
                 {editedPlacement.notes.length !==0?
                 editedPlacement.notes.map((note)=>{
                   return <NotesComponent key={editedPlacement.notes.indexOf(note)} note={note} deleteNote={deleteNote}></NotesComponent>
                 }):<p>None Added</p>}
-                
-    
-                
-                <button type="Submit">Submit Edits</button>
-            {/* </form> */}
+            </Form.Group>     
+            <button type="submit">Submit Edits</button>
+          </Form>
           <button onClick={()=>{
             props.deletePlacement(props.placement.id)
           }}>Delete placement</button>

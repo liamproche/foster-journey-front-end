@@ -223,7 +223,7 @@ input[type=file]::file-selector-button{
   display: flex;
   flex-wrap: wrap;
 }
-.foster-people-delete-button{
+.edit-delete-button{
   font-size: .7rem;
   border: 1px solid black;
   border-radius: 15px;
