@@ -66,7 +66,6 @@ FOSTER PARENT
 #-first name = varChar
 #-last name = varChar
 #-Photo url
-	-This needs work
 #-time_stamp for creation
 #-linked to placement
 
@@ -79,29 +78,30 @@ FOSTER SIBLING
 
 VERSION 2 GOALS:
 
-MONDAY
+TUESDAY
+-Finish modals for add foster parent 
 -Fix date format for placement start date and end date
 -Style placement & details components
--Image upload for foster parent model
-
-
-TUESDAY (THINGS I'M REALLY LOST ON)
--Password editing
--User placement filter currently happens in the front-end. This should be changed to the backend so the API only fetches placements for specific user
--Same for foster parent and foster sibling models
+	-Modal for create foster sibling
+	-Move Create Placement form to seperate route and style
+NOTE: If time and energy move on to user placement filter
 
 
 WEDNESDAY
--Home page statistics
--Delete console.logs
+-User placement filter currently happens in the front-end. This should be changed to the backend so the API only fetches placements for specific user
+-Same for foster parent and foster sibling models
+-Password editing <--NOTE: REALLY LOST ON THIS ONE
+-Home page statistics & Styling
 
 
 THURSDAY
+-Delete console.logs
 -Re-deployment to Heroku
--Complete project --> Move on to portfolio updates
+-Show completed project
 
 
-
+FRIDAY
+-Move on to portfolio updates
 
 
 COMPLETED TODO
@@ -113,6 +113,8 @@ COMPLETED TODO
 #-Update access and refresh tokens to include username (maybe first name instead?) and include in UI/UX
 #-Error handling <--NOTE: Check all api calls for try/catch blocks
 #-Styling for landing page, registration page, login form, app component
+#-Image upload for foster parent model
+#-Include password confirmation field when registering and updating password
 
 
 
@@ -126,7 +128,7 @@ ADDITIONAL TODO
 	
 STRETCH GOAL
 -Length of placement calculated by start date/end date on placement details page
--Include password confirmation field when registering and updating password
+
 
 
 

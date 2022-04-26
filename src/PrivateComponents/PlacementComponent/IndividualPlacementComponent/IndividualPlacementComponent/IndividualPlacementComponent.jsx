@@ -6,7 +6,7 @@ import './IndividualPlacementComponent.css'
 function IndividualPlacementComponent(props) {
   const[parents, setParents] = useState([])
   const[siblings, setSiblings] = useState([])
-  const [url, setUrl] = useState(null)
+
   // BEGIN PARENT ROUTES
   const getParents = async ()=>{
     try{
@@ -29,12 +29,11 @@ function IndividualPlacementComponent(props) {
         }
       })
       const parsedResponse = await response.json()
+      console.log(parsedResponse)
     }catch(err){
       console.log(err)
-      alert('Please try your request again')
     }
   }
-  
   // SIBLING API CALLS
   const getSiblings = async ()=>{
     try{
@@ -58,10 +57,9 @@ function IndividualPlacementComponent(props) {
       const parsedResponse = await response.json()
     }catch(err){
       console.log(err)
-      alert('Please try your request again')
     }
   }
-  useEffect(()=>{getParents()}, [])
+  useEffect(()=>{getParents(); getSiblings()}, [])
   return (
       <div className="IndividualPlacementComponent">
           <Accordion defaultActiveKey="0" flush>

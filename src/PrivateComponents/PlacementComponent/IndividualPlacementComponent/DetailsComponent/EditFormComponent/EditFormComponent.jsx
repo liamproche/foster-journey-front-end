@@ -8,7 +8,6 @@ function EditFormComponent(props) {
   const[editedPlacement, setEditedPlacement] = useState({...props.placement})
   const[parents, setParents] = useState([...props.parents])
   const[siblings, setSiblings] = useState([...props.siblings])
-  console.log(siblings)
   const handleInputChange=(e)=>{
     setEditedPlacement({
       ...editedPlacement,
@@ -21,7 +20,7 @@ function EditFormComponent(props) {
     })
     setParents(parents.filter((parent)=>{return parent.id !== parentToDelete}))
   }
-  const deleteFosterSibling=async(siblingToDelete)=>{
+  const deleteFosterSibling= async (siblingToDelete)=>{
     await fetch(`http://localhost:8000/api/siblings/${siblingToDelete}`, {
       method: "DELETE"
     })
@@ -39,7 +38,7 @@ function EditFormComponent(props) {
   }
   return (
       <div className="EditFormComponent">
-          <h1>Edit a placement:</h1>
+          <h1>Edit this placement:</h1>
           <form id="placement-form" onSubmit={submitEditPlacement}>
                 <label htmlFor="num">Placement Number:</label>
                 <input type="number" name="num" min="1" placeholder={props.placement.num} onChange={handleInputChange}></input>

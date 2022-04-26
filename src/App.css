@@ -5,14 +5,15 @@
   font-size: 18px;
 }
 /* BEGIN FOR LAYOUT */
-
 div{
   border: 2px solid blue;
 }
 section{
   border: 2px solid red;
 }
-
+nav{
+  border: 2px solid green;
+}
 /* END FOR LAYOUT */
 .App{
   /* min-height: 100%; */
@@ -23,6 +24,26 @@ section{
   color: white;
   font-family: 'Klee One', cursive;
   padding-bottom: 5%;
+}
+.link{
+  color: white;
+  text-decoration: none;
+}
+.link:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+nav{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+nav a{
+  color: white;
+  text-decoration: none;
+}
+nav a:hover{
+  color: white;
 }
 .app-header{
   text-align: center;
@@ -121,14 +142,20 @@ section{
 .location-container{
   text-align: left;
 }
-.foster-parents-header-container{
+.foster-parent-header-container{
   text-align: left;
 }
-.foster-parent-container{
+.parents-container{
   display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 0 auto
+}
+.individual-foster-parent-container{
+  width: 200px;
 }
 .foster-parent-image{
-  max-width: 20%;
+  max-width: 80%;
 }
 @media only screen and (min-width: 480px) {
   #app-title{

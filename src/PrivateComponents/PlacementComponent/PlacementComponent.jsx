@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-
+import NavBar from "../../NavBarComponent/Nav";
 import IndividualPlacementComponent from './IndividualPlacementComponent/IndividualPlacementComponent/IndividualPlacementComponent';
 import CreatePlacementComponent from './CreatePlacementComponent/CreatePlacementComponent';
 import AuthContext from "../../context/AuthContext";
-
 
 
 function PlacementComponent() {
@@ -49,7 +48,7 @@ function PlacementComponent() {
    }}
   const editPlacement=async(placementToEdit)=>{
     try{
-    const editedPlacementResponse = await fetch(`localhost:8000/api/placements/${placementToEdit.id}`,{
+    const editedPlacementResponse = await fetch(`http://localhost:8000/api/placements/${placementToEdit.id}`,{
       method: "PUT",
       body: JSON.stringify(placementToEdit),
       headers:{
@@ -60,21 +59,18 @@ function PlacementComponent() {
     console.log(parsedResponse)
   }catch(err){
     console.log(err)
-    alert('Unable to edit placement')
   }}
   useEffect(()=>{getPlacements()}, [])
   return (
       <div className="PlacementComponent">
+        <NavBar/>
         <h2 className="user-greeting">Welcome, {user.first_name}</h2>
         {placements.length > 0?[
           <p key="placement-header">Your Current Placements:</p>,
           placements.map((placement)=>{
             return <IndividualPlacementComponent key={placement.id} placement={placement} deletePlacement={deletePlacement} editPlacement={editPlacement}></IndividualPlacementComponent>})]:
             <p>You have not yet created any placements</p>}
-        <CreatePlacementComponent createNewPlacement={createNewPlacement}></CreatePlacementComponent>
-
-      
-      
+        <CreatePlacementComponent createNewPlacement={createNewPlacement}></CreatePlacementComponent>     
       </div>
     );
 }

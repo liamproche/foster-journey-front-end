@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { Modal, Button } from 'react-bootstrap'
 import EditFormComponent from './EditFormComponent/EditFormComponent'
 import './DetailsComponent.css'
 
@@ -7,12 +8,20 @@ function DetailsComponent(props) {
   const[note, setNote] = useState("")
   const[showEditForm, setShowEditForm] = useState(false)
   const[image, setImage] = useState("");
+  const[parentModalOpen, setParentModalOpen] = useState(false)
+  const[siblingModalOpen, setSiblingOpenModal] = useState(false)
   const[newParent, setNewParent] = useState({
     first_name: "",
     last_name: "",
     placement: props.placement.id,
     url: null
   })
+  const showParentModal=()=>{
+    setParentModalOpen(!parentModalOpen)
+  }
+  const showSiblingModal=()=>{
+    setSiblingOpenModal(!siblingModalOpen)
+  }
   const uploadImage = async ()=>{
     try{
         const data = new FormData();
@@ -27,6 +36,7 @@ function DetailsComponent(props) {
             ...newParent,
             url: parsedResponse.url
         })
+        console.log("image uploaded")
     }catch(err){
         console.log(err)
     }
@@ -49,7 +59,7 @@ function DetailsComponent(props) {
     })
   }
   const submitNewParent= async (e)=>{
-    e.preventDefault()
+    // e.preventDefault()
     props.createParent(newParent)
   }
   const submitNewSibling=(e)=>{
@@ -66,41 +76,46 @@ function DetailsComponent(props) {
   }
   return (
       <div className="DetailsComponent">
-        <div className="location-container">
+        <section className="location-container">
           <h5>Location: {placement.location}</h5>
-        </div>
-        <div className="foster-parents-container">
-          <div className="foster-parents-header-container">
+        </section>
+        <section className="foster-parents-container">
+          <div className="foster-parent-header-container">
             <h6>Foster Parents:</h6>
           </div>
+        <div className="parents-container">
           {props.parents.map((parent)=>{
             return (
-            <div className="foster-parent-container" key={parent.id}>
+            <div className="individual-foster-parent-container" key={parent.id}>
               <img className="foster-parent-image" src={parent.url}/>
               <p>{parent.first_name} {parent.last_name}</p>
             </div>
             )
             })}
-          <button>Add Foster Parent</button>
-        </div>
-        
-        
-        
-        
-        <p>Foster Parent Create Form</p>
-        <form onSubmit={submitNewParent}>
-          <label htmlFor="first_name">First Name</label>
-          <input type="text" name="first_name" minLength={1} required onChange={handleParentInputChange}/>
-          <label htmlFor="last_name">Last Name</label>
-          <input type="text" name="last_name" onChange={handleParentInputChange}/>
-          <br/>
-          <label htmlFor="image">Upload an image</label>
-          <input type="file" name="file" onChange={(e)=>setImage(e.target.files[0])}></input>
-          {/* I HATE THE NEED FOR THIS BUTTON, BUT THERE IS A NEED FOR THIS BUTTON */}
-          <button onClick={uploadImage}>Upload Image</button>
-          <input type="submit"></input>
-        </form>
-
+          </div>
+        </section>
+        <Button variant ="secondary" id="add-parent-button" className="button" onClick={showParentModal}>Add Foster Parent</Button>
+        <Modal className="m" show={parentModalOpen}>
+                <Modal.Header id="modal-header-text">Add Foster Parent</Modal.Header>
+                <Modal.Body>
+                    <label className="styled-input">First Name</label>
+                    <input htmlFor="first_name" type="text" name="first_name" minLength={1} required onChange={handleParentInputChange}/>
+                    <br/>
+                    <label htmlFor="last_name">Last Name </label>
+                    <input type="text" name="last_name" onChange={handleParentInputChange}/>
+                    <br/>
+                    <label htmlFor="image">Upload an image</label>
+                    <input type="file" name="file" onChange={(e)=>setImage(e.target.files[0])}></input>
+                    <br/>
+                    {/* I HATE THE NEED FOR THIS BUTTON, BUT THERE IS A NEED FOR THIS BUTTON */}
+                    <Button variant="secondary" onClick={uploadImage}>Upload Image</Button>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={showParentModal}>Close</Button>
+                    {/* THIS IS WERE I STOPPED */}
+                    <Button variant="primary" onClick={()=>{submitNewParent(); window.location.reload(false)}}>Submit</Button>
+                </Modal.Footer>
+            </Modal>
 
 
 
@@ -108,8 +123,25 @@ function DetailsComponent(props) {
         <div className="foster-siblings-container">
           <p>Foster Siblings:</p>
           {props.siblings.map((sibling)=>{return<p key={sibling.id}>{sibling.first_name} {sibling.last_name}</p>})}
-          <button>Add Foster Sibling</button>
+          <Button variant="secondary" onClick={showSiblingModal}>Add Sibling</Button>
         </div>
+        <Modal className="m" show={siblingModalOpen}>
+                <Modal.Header id="modal-header-text">Add Foster Sibling</Modal.Header>
+                <Modal.Body>
+                    <label className="styled-input">First Name</label>
+                    <input htmlFor="first_name" type="text" name="first_name" minLength={1} required onChange={handleSiblingInputChange}/>
+                    <br/>
+                    <label htmlFor="last_name">Last Name</label>
+                    <input type="text" name="last_name" onChange={handleSiblingInputChange}/>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={showSiblingModal}>Close</Button>
+                    <Button variant="primary" onClick={()=>{submitNewSibling(); window.location.reload(false)}}>Submit</Button>
+                </Modal.Footer>
+            </Modal>
+
+
+
         
         
         {/* <p>Foster sibling create form</p>
