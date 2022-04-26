@@ -77,56 +77,56 @@ function DetailsComponent(props) {
   return (
       <div className="DetailsComponent">
         <section className="location-container">
-          <h5>Location: {placement.location}</h5>
+          <h5 className="header-text">Location: {placement.location}</h5>
         </section>
-        <section className="foster-parents-container">
           <div className="foster-parent-header-container">
-            <h6>Foster Parents:</h6>
+            <h5>Foster Parents:</h5>
           </div>
-        <div className="parents-container">
-          {props.parents.map((parent)=>{
-            return (
-            <div className="individual-foster-parent-container" key={parent.id}>
-              {parent.url?
-              <img className="foster-parent-image" src={parent.url} alt="Foster Parent"/>:
-              <img className="foster-parent-image" src={process.env.PUBLIC_URL + 'img/no-profile-image.png'} alt="Foster Parent"/>
-              }
-              <p>{parent.first_name} {parent.last_name}</p>
+        <section className="foster-parents-container">
+          <div className="parents-container">
+            {props.parents.map((parent)=>{
+              return (
+              <div className="individual-foster-parent-container" key={parent.id}>
+                {parent.url?
+                <img className="foster-parent-image" src={parent.url} alt="Foster Parent"/>:
+                <img className="foster-parent-image" src={process.env.PUBLIC_URL + 'img/no-profile-image.png'} alt="Foster Parent"/>
+                }
+                <p>{parent.first_name} {parent.last_name}</p>
+              </div>
+              )})}
             </div>
-            )})}
-          </div>
+          <Button variant ="secondary" className="button" onClick={showParentModal}>Add Foster Parent</Button>
         </section>
-        <Button variant ="secondary" id="add-parent-button" className="button" onClick={showParentModal}>Add Foster Parent</Button>
         <Modal className="m" show={parentModalOpen}>
                 <Modal.Header id="modal-header-text">Add Foster Parent</Modal.Header>
                 <Modal.Body>
                     <label className="styled-input">First Name</label>
-                    <input htmlFor="first_name" type="text" name="first_name" minLength={1} required onChange={handleParentInputChange}/>
+                    <input htmlFor="first_name" type="text" name="first_name" minLength={1} className="name-input-field" required onChange={handleParentInputChange} placeholder="Enter first name"/>
                     <br/>
                     <label htmlFor="last_name">Last Name </label>
-                    <input type="text" name="last_name" onChange={handleParentInputChange}/>
+                    <input type="text" name="last_name" className="name-input-field" onChange={handleParentInputChange} placeholder="Enter last name"/>
                     <br/>
-                    <label htmlFor="image">Upload an image</label>
+                    <label htmlFor="image">Upload an image:</label>
                     <input type="file" name="file" onChange={(e)=>setImage(e.target.files[0])}></input>
                     <br/>
                     {/* I HATE THE NEED FOR THIS BUTTON, BUT THERE IS A NEED FOR THIS BUTTON */}
-                    <Button variant="secondary" onClick={uploadImage}>Upload Image</Button>
+                    <button className="upload-image-button"  onClick={uploadImage}>Upload File</button>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={showParentModal}>Close</Button>
                     <Button variant="primary" onClick={()=>{submitNewParent(); window.location.reload(false)}}>Submit</Button>
                 </Modal.Footer>
             </Modal>
-        <section className="foster-siblings-container">
           <div className="foster-sibling-header-container">
-            <p>Foster Siblings:</p>
+            <h5>Foster Siblings:</h5>
           </div>
-          <div className="siblings-container">
-            {props.siblings.map((sibling)=>{return<p key={sibling.id} className="sibling-name">{sibling.first_name} {sibling.last_name} </p>})}
-          </div>
-          <Button variant="secondary" onClick={showSiblingModal}>Add Foster Sibling</Button>
-        </section>
-        <Modal className="m" show={siblingModalOpen}>
+          <section className="foster-siblings-container">
+            <div className="siblings-container">
+              {props.siblings.map((sibling)=>{return<p key={sibling.id} className="sibling-name">{sibling.first_name} {sibling.last_name} </p>})}
+            </div>
+            <Button variant="secondary" onClick={showSiblingModal}>Add Foster Sibling</Button>
+          </section>
+          <Modal className="m" show={siblingModalOpen}>
                 <Modal.Header id="modal-header-text">Add Foster Sibling</Modal.Header>
                 <Modal.Body>
                     <label className="styled-input">First Name</label>
@@ -140,24 +140,25 @@ function DetailsComponent(props) {
                     <Button variant="primary" onClick={()=>{submitNewSibling(); window.location.reload(false)}}>Submit</Button>
                 </Modal.Footer>
             </Modal>
-        <p>Notes:</p>
-        {placement.notes.length !==0?
-        placement.notes.map((note)=>{
-            return <p key={props.placement.notes.indexOf(note)}>{note}</p>
-          }):<p>None Added</p>}
-            <input className="note-input-field" type="text" name="note" onChange={addNoteInputChange} required></input>
-            <Button variant="secondary" onClick={()=>{
-              const updatedPlacement = {...placement}
-              updatedPlacement.notes.push(note)
-              setPlacement(updatedPlacement)
-              props.editPlacement(updatedPlacement)
-              const elements = document.getElementsByClassName('note-input-field')
-              for(let i = 0; i < elements.length; i++){
-                elements[i].value = ""
-              }
-              setNote('')
-            }}>Add Note</Button>
-          <br/>
+        <section className="notes-container">
+          <h5>Notes:</h5>
+            {placement.notes.length !==0?
+              placement.notes.map((note)=>{
+              return <p key={props.placement.notes.indexOf(note)}>{note}</p>
+            }):<p>None Added</p>}
+              <input className="note-input-field" type="text" name="note" onChange={addNoteInputChange} placeholder="Enter a note" required></input>
+              <Button className="add-note-button" variant="secondary" onClick={()=>{
+                const updatedPlacement = {...placement}
+                updatedPlacement.notes.push(note)
+                setPlacement(updatedPlacement)
+                props.editPlacement(updatedPlacement)
+                const elements = document.getElementsByClassName('note-input-field')
+                for(let i = 0; i < elements.length; i++){
+                  elements[i].value = ""
+                }
+                setNote('')
+              }}>Add Note</Button>
+          </section>
           {!showEditForm?
           <Button variant="secondary" onClick={toggleEditForm}>Edit Placement</Button>:
           <EditFormComponent placement={props.placement} deletePlacement={props.deletePlacement} editPlacement={props.editPlacement} setPlacement={setPlacement} parents={props.parents} siblings={props.siblings}></EditFormComponent>

@@ -67,7 +67,7 @@ function PlacementComponent() {
         <div className="placement-container">
           <h2 className="user-greeting">Welcome, {user.first_name}</h2>
           {placements.length > 0?[
-            <p key="placement-header">Your Current Placements:</p>,
+            <h5 key="placement-header">Your Current Placements:</h5>,
             placements.map((placement)=>{
               return <IndividualPlacementComponent key={placement.id} placement={placement} deletePlacement={deletePlacement} editPlacement={editPlacement}></IndividualPlacementComponent>})]:
             <p>You have not yet created any placements</p>}
