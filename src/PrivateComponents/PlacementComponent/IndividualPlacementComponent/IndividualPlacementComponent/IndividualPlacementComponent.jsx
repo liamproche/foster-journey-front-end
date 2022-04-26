@@ -72,8 +72,8 @@ function IndividualPlacementComponent(props) {
   useEffect(()=>{getParents(); getSiblings();}, [])
   return (
       <div className="IndividualPlacementComponent">
-          <Accordion flush>
-            <Accordion.Item eventKey="0">
+          <Accordion flush className="accordion-container">
+            <Accordion.Item eventKey="0" id="accordian-item">
               <Accordion.Header className="accordion-header">
                 <div className="placement-title">
                   <h5>Placement:{props.placement.num}</h5>

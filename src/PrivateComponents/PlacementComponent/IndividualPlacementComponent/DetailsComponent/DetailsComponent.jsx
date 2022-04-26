@@ -87,7 +87,10 @@ function DetailsComponent(props) {
           {props.parents.map((parent)=>{
             return (
             <div className="individual-foster-parent-container" key={parent.id}>
-              <img className="foster-parent-image" src={parent.url}/>
+              {parent.url?
+              <img className="foster-parent-image" src={parent.url}/>:
+              <img className="foster-parent-image" src={process.env.PUBLIC_URL + 'img/no-profile-image.png'}/>
+              }
               <p>{parent.first_name} {parent.last_name}</p>
             </div>
             )})}
@@ -118,10 +121,10 @@ function DetailsComponent(props) {
           <div className="foster-sibling-header-container">
             <p>Foster Siblings:</p>
           </div>
-          <div className="foster-siblings-name-container">
+          <div className="siblings-container">
             {props.siblings.map((sibling)=>{return<p key={sibling.id} className="sibling-name">{sibling.first_name} {sibling.last_name} </p>})}
           </div>
-          <Button variant="secondary" onClick={showSiblingModal}>Add Sibling</Button>
+          <Button variant="secondary" onClick={showSiblingModal}>Add Foster Sibling</Button>
         </section>
         <Modal className="m" show={siblingModalOpen}>
                 <Modal.Header id="modal-header-text">Add Foster Sibling</Modal.Header>

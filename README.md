@@ -79,9 +79,8 @@ FOSTER SIBLING
 VERSION 2 GOALS:
 
 TUESDAY
--Fix date format for placement start date and end date
 -Style placement & details components
-	-Modal for create foster sibling
+	#-Modal for create foster sibling
 	-Move Create Placement form to seperate route and style
 NOTE: If time and energy move on to user placement filter
 
@@ -114,7 +113,8 @@ COMPLETED TODO
 #-Styling for landing page, registration page, login form, app component
 #-Image upload for foster parent model
 #-Include password confirmation field when registering and updating password
-#-Finish modals for add foster parent 
+#-Finish modals for add foster parent
+#-Fix date format for placement start date and end date
 
 
 

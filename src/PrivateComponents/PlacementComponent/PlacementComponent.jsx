@@ -34,7 +34,7 @@ function PlacementComponent() {
   }
   const deletePlacement=async(id)=>{
    try{
-     await fetch(`https://localhost:8000/api/placements/${id}`,{
+     await fetch(`http://localhost:8000/api/placements/${id}`,{
       method: "DELETE"
     })
     setPlacements(
@@ -64,13 +64,15 @@ function PlacementComponent() {
   return (
       <div className="PlacementComponent">
         <NavBar/>
-        <h2 className="user-greeting">Welcome, {user.first_name}</h2>
-        {placements.length > 0?[
-          <p key="placement-header">Your Current Placements:</p>,
-          placements.map((placement)=>{
-            return <IndividualPlacementComponent key={placement.id} placement={placement} deletePlacement={deletePlacement} editPlacement={editPlacement}></IndividualPlacementComponent>})]:
+        <div className="placement-container">
+          <h2 className="user-greeting">Welcome, {user.first_name}</h2>
+          {placements.length > 0?[
+            <p key="placement-header">Your Current Placements:</p>,
+            placements.map((placement)=>{
+              return <IndividualPlacementComponent key={placement.id} placement={placement} deletePlacement={deletePlacement} editPlacement={editPlacement}></IndividualPlacementComponent>})]:
             <p>You have not yet created any placements</p>}
         <CreatePlacementComponent createNewPlacement={createNewPlacement}></CreatePlacementComponent>     
+        </div>
       </div>
     );
 }
