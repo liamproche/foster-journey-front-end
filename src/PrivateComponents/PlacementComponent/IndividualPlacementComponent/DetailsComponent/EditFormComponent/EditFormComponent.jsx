@@ -62,30 +62,34 @@ function EditFormComponent(props) {
               <Form.Control type="text" name="location" placeholder={props.placement.location} onChange={handleInputChange}></Form.Control>
             </Form.Group>
               <Form.Label className="styled-input" htmlFor="parents">Foster parents:</Form.Label>
-                <div className="edit-foster-parents-container">
+                <div className="edit-foster-people-container">
                   {props.parents.length !==0?
                   parents.map((parent)=>{
                     return <FosterParents key={parent.id} parent={parent} deleteFosterParent={deleteFosterParent}/>
                   }):<p>None Added</p>}
+                </div>  
+            <Form.Group>
+                <Form.Label className="styled-input" htmlFor="siblings">Foster siblings:</Form.Label>
+                  <div className="edit-foster-people-container">
+                    {siblings.length !==0?
+                    siblings.map((sibling)=>{
+                      return <FosterSiblings key={sibling.id} sibling={sibling} deleteFosterSibling={deleteFosterSibling}/>
+                    }):<p>None Added</p>}
                 </div>
-            </Form>
-
-
-
-
-                <label htmlFor="siblings">Foster siblings:</label>
-                {siblings.length !==0?
-                siblings.map((sibling)=>{
-                  return <FosterSiblings key={sibling.id} sibling={sibling} deleteFosterSibling={deleteFosterSibling}/>
-                }):<p>None Added</p>}
-                <br/>
+            </Form.Group>
+          </Form>
+                
+                
+                
+                
                 <label htmlFor="notes">Notes:</label>
                 {editedPlacement.notes.length !==0?
                 editedPlacement.notes.map((note)=>{
                   return <NotesComponent key={editedPlacement.notes.indexOf(note)} note={note} deleteNote={deleteNote}></NotesComponent>
                 }):<p>None Added</p>}
-                <br/>
-                <br/>
+                
+    
+                
                 <button type="Submit">Submit Edits</button>
             {/* </form> */}
           <button onClick={()=>{

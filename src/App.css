@@ -219,11 +219,11 @@ input[type=file]::file-selector-button{
 .add-note-button{
   margin-left: 2%;
 }
-.edit-foster-parents-container{
+.edit-foster-people-container{
   display: flex;
   flex-wrap: wrap;
 }
-.foster-parent-delete-button{
+.foster-people-delete-button{
   font-size: .7rem;
   border: 1px solid black;
   border-radius: 15px;

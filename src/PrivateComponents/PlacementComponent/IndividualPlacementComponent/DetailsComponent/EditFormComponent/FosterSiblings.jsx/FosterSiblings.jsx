@@ -3,11 +3,10 @@ import './FosterSiblings.css'
 function FosterSiblings(props) {
     return (
       <div className="FosterSiblings">
-          <p>{props.sibling.first_name}</p>
-          <button onClick={(e)=>{
-            e.preventDefault()
+          <button className="foster-people-delete-button" onClick={(e)=>{
+            // e.preventDefault()
             props.deleteFosterSibling(props.sibling.id)
-          }}>Delete Sibling</button>
+          }}><img className="delete-icon" src={process.env.PUBLIC_URL + 'img/delete_icon.png' }/> {props.sibling.first_name} {props.sibling.last_name}</button>
       </div>
     );
 }
