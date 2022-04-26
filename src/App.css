@@ -157,6 +157,17 @@ nav a:hover{
 .foster-parent-image{
   max-width: 80%;
 }
+.foster-sibling-header-container p{
+  text-align: left;
+  margin: 0;
+}
+.foster-siblings-name-container{
+  text-align: left;
+}
+.sibling-name{
+  display: inline;
+}
+
 @media only screen and (min-width: 480px) {
   #app-title{
     font-size: 3.5rem;

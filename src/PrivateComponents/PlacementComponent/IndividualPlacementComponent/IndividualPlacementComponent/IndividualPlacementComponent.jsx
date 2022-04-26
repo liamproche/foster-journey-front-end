@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Accordion } from 'react-bootstrap'
+import { Accordion } from 'react-bootstrap';
 import DetailsComponent from '../DetailsComponent/DetailsComponent';
-import './IndividualPlacementComponent.css'
+import './IndividualPlacementComponent.css';
 
 function IndividualPlacementComponent(props) {
   const[parents, setParents] = useState([])
@@ -59,10 +59,20 @@ function IndividualPlacementComponent(props) {
       console.log(err)
     }
   }
-  useEffect(()=>{getParents(); getSiblings()}, [])
+
+  const formatDate = (dateString) =>{
+    let tempDate = [...dateString]
+    let day = tempDate.slice(8)
+    let month = tempDate.slice(5, 7)
+    let year = tempDate.slice(0, 4)
+    let newDate = `${month}/${day}/${year}`
+    return newDate.split(',').join('')
+  }
+
+  useEffect(()=>{getParents(); getSiblings();}, [])
   return (
       <div className="IndividualPlacementComponent">
-          <Accordion defaultActiveKey="0" flush>
+          <Accordion flush>
             <Accordion.Item eventKey="0">
               <Accordion.Header className="accordion-header">
                 <div className="placement-title">
@@ -70,8 +80,8 @@ function IndividualPlacementComponent(props) {
                   <h5>{props.placement.name}</h5>
                 </div>
                 <div className="placement-dates">
-                  <h5>Start Date:{props.placement.start_date}</h5>
-                  <h5>End Date:{props.placement.end_date}</h5>
+                  <h5>Start Date:{formatDate(props.placement.start_date)}</h5>
+                  <h5>End Date:{formatDate(props.placement.end_date)}</h5>
                 </div>
               </Accordion.Header>
               <Accordion.Body id="accordion-body">

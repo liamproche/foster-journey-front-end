@@ -90,8 +90,7 @@ function DetailsComponent(props) {
               <img className="foster-parent-image" src={parent.url}/>
               <p>{parent.first_name} {parent.last_name}</p>
             </div>
-            )
-            })}
+            )})}
           </div>
         </section>
         <Button variant ="secondary" id="add-parent-button" className="button" onClick={showParentModal}>Add Foster Parent</Button>
@@ -112,19 +111,18 @@ function DetailsComponent(props) {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={showParentModal}>Close</Button>
-                    {/* THIS IS WERE I STOPPED */}
                     <Button variant="primary" onClick={()=>{submitNewParent(); window.location.reload(false)}}>Submit</Button>
                 </Modal.Footer>
             </Modal>
-
-
-
-
-        <div className="foster-siblings-container">
-          <p>Foster Siblings:</p>
-          {props.siblings.map((sibling)=>{return<p key={sibling.id}>{sibling.first_name} {sibling.last_name}</p>})}
+        <section className="foster-siblings-container">
+          <div className="foster-sibling-header-container">
+            <p>Foster Siblings:</p>
+          </div>
+          <div className="foster-siblings-name-container">
+            {props.siblings.map((sibling)=>{return<p key={sibling.id} className="sibling-name">{sibling.first_name} {sibling.last_name} </p>})}
+          </div>
           <Button variant="secondary" onClick={showSiblingModal}>Add Sibling</Button>
-        </div>
+        </section>
         <Modal className="m" show={siblingModalOpen}>
                 <Modal.Header id="modal-header-text">Add Foster Sibling</Modal.Header>
                 <Modal.Body>
@@ -139,54 +137,23 @@ function DetailsComponent(props) {
                     <Button variant="primary" onClick={()=>{submitNewSibling(); window.location.reload(false)}}>Submit</Button>
                 </Modal.Footer>
             </Modal>
-
-
-
-        
-        
-        {/* <p>Foster sibling create form</p>
-        <form onSubmit={submitNewSibling}>
-          <label htmlFor="first_name">First Name</label>
-          <input type="text" name="first_name" minLength={1} required onChange={handleSiblingInputChange}/>
-          <label htmlFor="last_name">Last Name</label>
-          <input type="text" name="last_name" onChange={handleSiblingInputChange}/>
-          <input type="submit"></input>
-        </form> */}
-
-
-
-
-
-        {/* <p>Foster Siblings:</p>
-        {placement.foster_siblings.length !==0?
-        placement.foster_siblings.map((sibling)=>{
-            return <p key={props.placement.foster_siblings.indexOf(sibling)}>{sibling}</p>
-          }):<p>None Added</p>}
-            <input id="sibling-input-field" type="text" name="sibling" onChange={addSiblingInputChange} required></input>
-            <button onClick={()=>{
-              const updatedPlacement = {...placement}
-              updatedPlacement.foster_siblings.push(sibling)
-              setPlacement(updatedPlacement)
-              props.editPlacement(updatedPlacement)
-              document.getElementById('sibling-input-field').value=""
-              setSibling('')
-            }}>Add Sibling</button> */}
         <p>Notes:</p>
         {placement.notes.length !==0?
         placement.notes.map((note)=>{
             return <p key={props.placement.notes.indexOf(note)}>{note}</p>
           }):<p>None Added</p>}
             <input id="note-input-field" type="text" name="note" onChange={addNoteInputChange} required></input>
-            <button onClick={()=>{
+            <Button variant="secondary" onClick={()=>{
               const updatedPlacement = {...placement}
               updatedPlacement.notes.push(note)
               setPlacement(updatedPlacement)
               props.editPlacement(updatedPlacement)
               document.getElementById('note-input-field').value=""
               setNote('')
-            }}>Add Note</button>
+            }}>Add Note</Button>
+          <br/>
           {!showEditForm?
-          <button onClick={toggleEditForm}>Edit Placement</button>:
+          <Button variant="secondary" onClick={toggleEditForm}>Edit Placement</Button>:
           <EditFormComponent placement={props.placement} deletePlacement={props.deletePlacement} editPlacement={props.editPlacement} setPlacement={setPlacement} parents={props.parents} siblings={props.siblings}></EditFormComponent>
           }
       </div>

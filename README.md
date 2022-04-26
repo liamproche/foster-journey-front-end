@@ -79,7 +79,6 @@ FOSTER SIBLING
 VERSION 2 GOALS:
 
 TUESDAY
--Finish modals for add foster parent 
 -Fix date format for placement start date and end date
 -Style placement & details components
 	-Modal for create foster sibling
@@ -115,6 +114,7 @@ COMPLETED TODO
 #-Styling for landing page, registration page, login form, app component
 #-Image upload for foster parent model
 #-Include password confirmation field when registering and updating password
+#-Finish modals for add foster parent 
 
 
 
