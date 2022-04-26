@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Form, Forms } from 'react-bootstrap'
+import { Form, Modal, Button } from 'react-bootstrap'
 import FosterParents from './FosterParents/FosterParents'
 import FosterSiblings from './FosterSiblings.jsx/FosterSiblings'
 import NotesComponent from '../NotesComponent/NotesComponent';
@@ -40,7 +40,7 @@ function EditFormComponent(props) {
   return (
       <div className="EditFormComponent">
           {/* <form id="edit-placement-form" onSubmit={submitEditPlacement}> */}
-          <Form>
+          <Form onSubmit={submitEditPlacement}>
             <Form.Group>
               <Form.Label htmlFor="num">Placement Number:</Form.Label> 
               <Form.Control type="number" name="num" min="1" placeholder={props.placement.num} onChange={handleInputChange}></Form.Control>
@@ -85,6 +85,10 @@ function EditFormComponent(props) {
                 }):<p>None Added</p>}
             </Form.Group>     
             <button type="submit">Submit Edits</button>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={props.toggleEditForm}>Close</Button>
+                <Button type="submit" variant="primary">Submit</Button>
+              </Modal.Footer>
           </Form>
           <button onClick={()=>{
             props.deletePlacement(props.placement.id)

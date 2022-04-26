@@ -4,13 +4,14 @@ import EditFormComponent from './EditFormComponent/EditFormComponent'
 import './DetailsComponent.css'
 
 function DetailsComponent(props) {
-  const[placement, setPlacement] = useState(props.placement)
-  const[note, setNote] = useState("")
-  const[showEditForm, setShowEditForm] = useState(false)
-  const[image, setImage] = useState("");
-  const[parentModalOpen, setParentModalOpen] = useState(false)
-  const[siblingModalOpen, setSiblingOpenModal] = useState(false)
-  const[newParent, setNewParent] = useState({
+  const [placement, setPlacement] = useState(props.placement)
+  const [note, setNote] = useState("")
+  const [showEditForm, setShowEditForm] = useState(false)
+  const [image, setImage] = useState("");
+  const [parentModalOpen, setParentModalOpen] = useState(false)
+  const [siblingModalOpen, setSiblingOpenModal] = useState(false)
+  const [noteErr, setNoteErr] = useState(false)
+  const [newParent, setNewParent] = useState({
     first_name: "",
     last_name: "",
     placement: props.placement.id,
@@ -70,6 +71,14 @@ function DetailsComponent(props) {
   }
   const addNoteInputChange=(e)=>{
     setNote(e.target.value)
+  }
+  const checkNote=()=>{
+    if(note.length <= 0){
+      setNoteErr(true)
+    }
+    else{
+      setNoteErr(false)
+    }
   }
   const toggleEditForm=()=>{
     setShowEditForm(!showEditForm)
@@ -146,8 +155,13 @@ function DetailsComponent(props) {
               placement.notes.map((note)=>{
               return <p key={props.placement.notes.indexOf(note)}>{note}</p>
             }):<p>None Added</p>}
-              <input className="note-input-field" type="text" name="note" onChange={addNoteInputChange} placeholder="Enter a note" required></input>
+              <input className="note-input-field" type="text" name="note" onChange={addNoteInputChange} placeholder="Enter a note" required/>
+              {noteErr ?
+                <p className="error-message">Note cannot be blank</p>:
+                <p></p>
+              }   
               <Button className="add-note-button" variant="secondary" onClick={()=>{
+                checkNote()
                 const updatedPlacement = {...placement}
                 updatedPlacement.notes.push(note)
                 setPlacement(updatedPlacement)
@@ -155,26 +169,16 @@ function DetailsComponent(props) {
                 const elements = document.getElementsByClassName('note-input-field')
                 for(let i = 0; i < elements.length; i++){
                   elements[i].value = ""
-                }
                 setNote('')
+              }
               }}>Add Note</Button>
           </section>
-          {/* {!showEditForm?
-          <Button variant="secondary" onClick={toggleEditForm}>Edit Placement</Button>:
-          <EditFormComponent placement={props.placement} deletePlacement={props.deletePlacement} editPlacement={props.editPlacement} setPlacement={setPlacement} parents={props.parents} siblings={props.siblings}></EditFormComponent>
-          } */}
-
-
           <Button variant ="secondary" className="button" onClick={toggleEditForm}>Edit Placement</Button>          
           <Modal className="m" show={showEditForm}>
             <Modal.Header id="modal-header-text">Edit {props.placement.name}</Modal.Header>
               <Modal.Body>
-                <EditFormComponent placement={props.placement} deletePlacement={props.deletePlacement} editPlacement={props.editPlacement} setPlacement={setPlacement} parents={props.parents} siblings={props.siblings}></EditFormComponent>
+                <EditFormComponent placement={props.placement} deletePlacement={props.deletePlacement} editPlacement={props.editPlacement} setPlacement={setPlacement} parents={props.parents} siblings={props.siblings} toggleEditForm={toggleEditForm}></EditFormComponent>
               </Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={toggleEditForm}>Close</Button>
-                <Button variant="primary">Submit</Button>
-              </Modal.Footer>
             </Modal>
       
       
