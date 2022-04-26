@@ -80,8 +80,8 @@ function IndividualPlacementComponent(props) {
                   <h5>{props.placement.name}</h5>
                 </div>
                 <div className="placement-dates">
-                  <h5>Start Date:{formatDate(props.placement.start_date)}</h5>
-                  <h5>End Date:{formatDate(props.placement.end_date)}</h5>
+                  <h5>Start Date: {formatDate(props.placement.start_date)}</h5>
+                  <h5>End Date: {formatDate(props.placement.end_date)}</h5>
                 </div>
               </Accordion.Header>
               <Accordion.Body id="accordion-body">

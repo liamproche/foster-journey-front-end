@@ -159,10 +159,33 @@ function DetailsComponent(props) {
                 setNote('')
               }}>Add Note</Button>
           </section>
-          {!showEditForm?
+          {/* {!showEditForm?
           <Button variant="secondary" onClick={toggleEditForm}>Edit Placement</Button>:
           <EditFormComponent placement={props.placement} deletePlacement={props.deletePlacement} editPlacement={props.editPlacement} setPlacement={setPlacement} parents={props.parents} siblings={props.siblings}></EditFormComponent>
-          }
+          } */}
+
+
+          <Button variant ="secondary" className="button" onClick={toggleEditForm}>Edit Placement</Button>          
+          <Modal className="m" show={showEditForm}>
+            <Modal.Header id="modal-header-text">Edit {props.placement.name}</Modal.Header>
+              <Modal.Body>
+                <EditFormComponent placement={props.placement} deletePlacement={props.deletePlacement} editPlacement={props.editPlacement} setPlacement={setPlacement} parents={props.parents} siblings={props.siblings}></EditFormComponent>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={toggleEditForm}>Close</Button>
+                <Button variant="primary">Submit</Button>
+              </Modal.Footer>
+            </Modal>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       </div>
     );
 }

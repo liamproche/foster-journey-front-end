@@ -216,10 +216,22 @@ input[type=file]::file-selector-button{
   padding-bottom: 5%;
   margin-bottom: 3.5%;
 }
-.note-input-field{  
-}
 .add-note-button{
   margin-left: 2%;
+}
+.edit-foster-parents-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+.foster-parent-delete-button{
+  font-size: .7rem;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin: 7px;
+  padding: 5px;
+}
+.delete-icon{
+  max-width: 12px;
 }
 @media only screen and (min-width: 480px) {
   #app-title{

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Form, Forms } from 'react-bootstrap'
 import FosterParents from './FosterParents/FosterParents'
 import FosterSiblings from './FosterSiblings.jsx/FosterSiblings'
 import NotesComponent from '../NotesComponent/NotesComponent';
@@ -38,29 +39,40 @@ function EditFormComponent(props) {
   }
   return (
       <div className="EditFormComponent">
-          <h1>Edit this placement:</h1>
-          <form id="placement-form" onSubmit={submitEditPlacement}>
-                <label htmlFor="num">Placement Number:</label>
-                <input type="number" name="num" min="1" placeholder={props.placement.num} onChange={handleInputChange}></input>
-                <br/>
-                <label htmlFor="name">Placement Name:</label>
-                <input type="text" name="name" placeholder={props.placement.name} onChange={handleInputChange}></input>
-                <br/>
-                <label htmlFor="start_date">Start Date</label>
-                <input type="date" name="start_date" onChange={handleInputChange}></input>
-                <br/>
-                <label htmlFor="end_date">End Date</label>
-                <input type="date" name="end_date" onChange={handleInputChange}></input>
-                <br/>
-                <label htmlFor="location">Location</label>
-                <input type="text" name="location" placeholder={props.placement.location} onChange={handleInputChange}></input>
-                <br/>
-                <label htmlFor="parents">Foster parents:</label>
-                {props.parents.length !==0?
-                parents.map((parent)=>{
-                  return <FosterParents key={parent.id} parent={parent} deleteFosterParent={deleteFosterParent}/>
-                }):<p>None Added</p>}
-                <br/>
+          {/* <form id="edit-placement-form" onSubmit={submitEditPlacement}> */}
+          <Form>
+            <Form.Group>
+              <Form.Label htmlFor="num">Placement Number:</Form.Label> 
+              <Form.Control type="number" name="num" min="1" placeholder={props.placement.num} onChange={handleInputChange}></Form.Control>
+            </Form.Group>    
+            <Form.Group>
+              <Form.Label className="styled-input" htmlFor="name">Placement Name:</Form.Label>
+              <Form.Control type="text" name="name" placeholder={props.placement.name} onChange={handleInputChange}></Form.Control>
+            </Form.Group> 
+            <Form.Group>
+              <Form.Label className="styled-input" htmlFor="start_date">Start Date</Form.Label>
+              <Form.Control type="date" name="start_date" onChange={handleInputChange}></Form.Control>
+            </Form.Group>
+            <Form.Group> 
+              <Form.Label className="styled-input" htmlFor="end_date">End Date</Form.Label>
+              <Form.Control type="date" name="end_date" onChange={handleInputChange}></Form.Control>
+            </Form.Group> 
+            <Form.Group>
+              <Form.Label className="styled-input" htmlFor="location">Location</Form.Label>
+              <Form.Control type="text" name="location" placeholder={props.placement.location} onChange={handleInputChange}></Form.Control>
+            </Form.Group>
+              <Form.Label className="styled-input" htmlFor="parents">Foster parents:</Form.Label>
+                <div className="edit-foster-parents-container">
+                  {props.parents.length !==0?
+                  parents.map((parent)=>{
+                    return <FosterParents key={parent.id} parent={parent} deleteFosterParent={deleteFosterParent}/>
+                  }):<p>None Added</p>}
+                </div>
+            </Form>
+
+
+
+
                 <label htmlFor="siblings">Foster siblings:</label>
                 {siblings.length !==0?
                 siblings.map((sibling)=>{
@@ -75,7 +87,7 @@ function EditFormComponent(props) {
                 <br/>
                 <br/>
                 <button type="Submit">Submit Edits</button>
-            </form>
+            {/* </form> */}
           <button onClick={()=>{
             props.deletePlacement(props.placement.id)
           }}>Delete placement</button>
