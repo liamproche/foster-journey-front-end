@@ -62,7 +62,7 @@ function EditFormComponent(props) {
               <Form.Control type="text" name="location" placeholder={props.placement.location} onChange={handleInputChange}></Form.Control>
             </Form.Group>
               <Form.Label className="styled-input" htmlFor="parents">Foster parents:</Form.Label>
-                <div className="edit-foster-people-container">
+                <div className="edit-delete-container">
                   {props.parents.length !==0?
                   parents.map((parent)=>{
                     return <FosterParents key={parent.id} parent={parent} deleteFosterParent={deleteFosterParent}/>
@@ -70,7 +70,7 @@ function EditFormComponent(props) {
                 </div>  
             <Form.Group>
                 <Form.Label className="styled-input" htmlFor="siblings">Foster siblings:</Form.Label>
-                  <div className="edit-foster-people-container">
+                  <div className="edit-delete-container">
                     {siblings.length !==0?
                     siblings.map((sibling)=>{
                       return <FosterSiblings key={sibling.id} sibling={sibling} deleteFosterSibling={deleteFosterSibling}/>
@@ -79,20 +79,23 @@ function EditFormComponent(props) {
             </Form.Group>
             <Form.Group> 
                 <Form.Label className="styled-input" htmlFor="notes">Notes:</Form.Label>
-                {editedPlacement.notes.length !==0?
-                editedPlacement.notes.map((note)=>{
-                  return <NotesComponent key={editedPlacement.notes.indexOf(note)} note={note} deleteNote={deleteNote}></NotesComponent>
+                <div className="edit-delete-container">
+                  {editedPlacement.notes.length !==0?
+                  editedPlacement.notes.map((note)=>{
+                    return <NotesComponent key={editedPlacement.notes.indexOf(note)} note={note} deleteNote={deleteNote}></NotesComponent>
                 }):<p>None Added</p>}
+                </div>
             </Form.Group>     
-            <button type="submit">Submit Edits</button>
             <Modal.Footer>
                 <Button variant="secondary" onClick={props.toggleEditForm}>Close</Button>
                 <Button type="submit" variant="primary">Submit</Button>
               </Modal.Footer>
           </Form>
-          <button onClick={()=>{
-            props.deletePlacement(props.placement.id)
-          }}>Delete placement</button>
+          <div className="delete-placement-button-container">
+            <Button id="delete-placement-button" variant="primary" onClick={()=>{
+              props.deletePlacement(props.placement.id)
+            }}>Delete placement</Button>
+          </div>
       </div>
     );
 }

@@ -219,7 +219,7 @@ input[type=file]::file-selector-button{
 .add-note-button{
   margin-left: 2%;
 }
-.edit-foster-people-container{
+.edit-delete-container{
   display: flex;
   flex-wrap: wrap;
 }
@@ -232,6 +232,15 @@ input[type=file]::file-selector-button{
 }
 .delete-icon{
   max-width: 12px;
+}
+#delete-placement-button{
+  background: red;
+  border: none;
+}
+.delete-placement-button-container{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 3%;
 }
 @media only screen and (min-width: 480px) {
   #app-title{
