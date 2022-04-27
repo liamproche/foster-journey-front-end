@@ -1,5 +1,3 @@
-import './NotesComponent.css'
-
 function NotesComponent(props) {
     return (
       <div className="NotesComponent">

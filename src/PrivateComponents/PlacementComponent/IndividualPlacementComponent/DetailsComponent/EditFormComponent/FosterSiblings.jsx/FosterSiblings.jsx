@@ -1,5 +1,3 @@
-import './FosterSiblings.css'
-
 function FosterSiblings(props) {
     return (
       <div className="FosterSiblings">

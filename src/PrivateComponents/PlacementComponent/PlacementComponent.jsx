@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Button, Modal } from 'react-bootstrap';
 import NavBar from "../../NavBarComponent/Nav";
 import IndividualPlacementComponent from './IndividualPlacementComponent/IndividualPlacementComponent/IndividualPlacementComponent';
 import CreatePlacementComponent from './CreatePlacementComponent/CreatePlacementComponent';
 import AuthContext from "../../context/AuthContext";
 
-
 function PlacementComponent() {
-  const {user}=useContext(AuthContext)
-  const[placements, setPlacements] = useState([])
+  const { user } = useContext(AuthContext)
+  const [placements, setPlacements] = useState([])
+  const [showCreateForm, setShowCreateForm] = useState(false)
   const getPlacements = async () => {
     try{
       const placements = await fetch('http://localhost:8000/api/placements')
@@ -16,7 +17,10 @@ function PlacementComponent() {
   }catch(err){
     console.log(err)
   }}
-  const createNewPlacement= async(newPlacement)=>{
+  const toggleCreateForm = () => {
+    setShowCreateForm(!showCreateForm)
+  }
+  const createNewPlacement= async (newPlacement)=>{
     try{
       const newPlacementResponse = await fetch('http://localhost:8000/api/placements',{
         method: "POST",
@@ -71,8 +75,25 @@ function PlacementComponent() {
             placements.map((placement)=>{
               return <IndividualPlacementComponent key={placement.id} placement={placement} deletePlacement={deletePlacement} editPlacement={editPlacement}></IndividualPlacementComponent>})]:
             <p>You have not yet created any placements</p>}
-        <CreatePlacementComponent createNewPlacement={createNewPlacement}></CreatePlacementComponent>     
         </div>
+        <div className="create-placement-button-container">
+          <Button variant="primary" className="button" onClick={toggleCreateForm}>Create New Placement</Button>
+        </div>
+        <Modal className="m" show={showCreateForm}>
+          <Modal.Header id="modal-header-text">Create New Placement</Modal.Header>
+          <Modal.Body>
+            <CreatePlacementComponent createNewPlacement={createNewPlacement} toggleCreateForm={toggleCreateForm}></CreatePlacementComponent>   
+          </Modal.Body>
+        </Modal>
+
+
+
+
+
+        
+        
+   
+
       </div>
     );
 }

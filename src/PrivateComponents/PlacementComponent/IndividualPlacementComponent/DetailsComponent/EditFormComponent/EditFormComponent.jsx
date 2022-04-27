@@ -3,7 +3,6 @@ import { Form, Modal, Button } from 'react-bootstrap'
 import FosterParents from './FosterParents/FosterParents'
 import FosterSiblings from './FosterSiblings.jsx/FosterSiblings'
 import NotesComponent from '../NotesComponent/NotesComponent';
-import './EditFormComponent.css'
 
 function EditFormComponent(props) {
   const[editedPlacement, setEditedPlacement] = useState({...props.placement})

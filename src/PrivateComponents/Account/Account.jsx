@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
 import AuthContext from '../../context/AuthContext';
+import NavBar from "../../NavBarComponent/Nav";
 
 function Account() {
     const{user, logoutUser}=useContext(AuthContext)
@@ -46,6 +47,7 @@ function Account() {
     useEffect(()=>{getUserToEdit()}, [])
     return  <div className="Account">
                 <h1>Account Edit Form</h1>
+                <NavBar/>
                 <form onSubmit={submitEditedUser}>
                     <label htmlFor="first_name">First Name:</label>
                     <input type="text" name="first_name" onChange={handleInputChange}></input>

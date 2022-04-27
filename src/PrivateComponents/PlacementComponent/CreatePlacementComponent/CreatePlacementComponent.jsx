@@ -1,10 +1,10 @@
-import { useContext, useState } from 'react'
-import AuthContext from '../../../context/AuthContext'
-import './CreatePlacementComponent.css'
+import { useContext, useState } from 'react';
+import { Form, Modal, Button } from 'react-bootstrap';
+import AuthContext from '../../../context/AuthContext';
 
 function CreatePlacementComponent(props) {
-  const {user}=useContext(AuthContext)
-  const[newPlacement, setNewPlacement] = useState({
+  const { user } = useContext(AuthContext)
+  const [newPlacement, setNewPlacement] = useState({
     num: "",
     name: "",
     start_date: "",
@@ -17,36 +17,40 @@ function CreatePlacementComponent(props) {
       user: user.user_id
     })
   }
-    
   const handleInputChange=(e)=>{
     setNewPlacement({
       ...newPlacement,
       [e.target.name]: e.target.value
     })
   }
-  
   return (
       <div className="CreatePlacementComponent">
-          <h1>Create a Placement</h1>
-          <form id="placement-form" onSubmit={submitNewPlacement}>
-                <label htmlFor="num">Placement Number:</label>
-                <input type="number" name="num" min="1" required onChange={handleInputChange}></input>
-                <br/>
-                <label htmlFor="name">Create a name for this placement</label>
-                <input type="text" name="name" placeholder="Optional" onChange={handleInputChange}></input>
-                <br/>
-                <label htmlFor="start_date">Start Date</label>
-                <input type="date" name="start_date" onChange={handleInputChange}></input>
-                <br/>
-                <label htmlFor="end_date">End Date</label>
-                <input type="date" name="end_date" onChange={handleInputChange}></input>
-                <br/>
-                <label htmlFor="location">Location</label>
-                <input type="text" name="location" onChange={handleInputChange}></input>
-                <br/>
-                <br/>
-                <button type="Submit">Submit Placement</button>
-            </form>
+          <Form onSubmit={submitNewPlacement}>
+            <Form.Group>
+              <Form.Label htmlFor="num">Placement Number: </Form.Label>
+              <Form.Control type="number" name="num" min="1" required onChange={handleInputChange}></Form.Control>
+            </Form.Group>
+              <Form.Group>
+                <Form.Label htmlFor="name">Placement Name: </Form.Label>
+                <Form.Control type="text" name="name" min="1" onChange={handleInputChange}></Form.Control>
+              </Form.Group>
+            <Form.Group>
+              <Form.Label htmlFor="start_date">Start Date</Form.Label>
+              <Form.Control type="date" name="start_date" onChange={handleInputChange}></Form.Control>
+            </Form.Group>
+            <Form.Group>
+              <Form.Label htmlFor="end_date">End Date</Form.Label>
+              <Form.Control type="date" name="end_date" onChange={handleInputChange}></Form.Control>
+            </Form.Group>
+            <Form.Group>
+            <Form.Label htmlFor="location">Location</Form.Label>
+                <Form.Control type="text" name="location" onChange={handleInputChange}></Form.Control>
+            </Form.Group>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={props.toggleCreateForm}>Close</Button>
+                <Button type="submit" variant="primary">Submit</Button>
+            </Modal.Footer>
+          </Form>
       </div>
     );
 }

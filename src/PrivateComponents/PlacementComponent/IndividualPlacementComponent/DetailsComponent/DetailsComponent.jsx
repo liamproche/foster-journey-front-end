@@ -180,16 +180,6 @@ function DetailsComponent(props) {
                 <EditFormComponent placement={props.placement} deletePlacement={props.deletePlacement} editPlacement={props.editPlacement} setPlacement={setPlacement} parents={props.parents} siblings={props.siblings} toggleEditForm={toggleEditForm}></EditFormComponent>
               </Modal.Body>
             </Modal>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
       </div>
     );
 }

@@ -79,8 +79,7 @@ FOSTER SIBLING
 VERSION 2 GOALS:
 
 TUESDAY
--Style placement & details components
-	#-Modal for create foster sibling
+
 	-Move Create Placement form to seperate route and style
 NOTE: If time and energy move on to user placement filter
 
@@ -115,6 +114,9 @@ COMPLETED TODO
 #-Include password confirmation field when registering and updating password
 #-Finish modals for add foster parent
 #-Fix date format for placement start date and end date
+#-Style placement & details components
+	#-Modal for create foster sibling
+	#-Modal for Edit Placement
 
 
 
