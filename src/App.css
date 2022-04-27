@@ -66,6 +66,15 @@ nav a:hover{
   padding-top: 2%;
   padding-bottom: 2%;
 }
+.login-stats-container{
+  display: flex;
+  justify-content: space-around;
+  width: 85%;
+  margin: 0 auto;
+}
+.stats-container{
+  width: 50%;
+}
 #login-form-container{
   background: rgba(0, 0, 0, .55);
   margin: 0 auto;
@@ -191,7 +200,6 @@ input[type=file]::file-selector-button{
   grid-template-columns: 1fr 1fr 1fr;
   margin-top: 3.5%;
   justify-items: center;
-  
 }
 .individual-foster-parent-container{
   width: 200px;

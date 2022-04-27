@@ -132,3 +132,14 @@ STRETCH GOAL
 
 LINK TO HEROKU DEPLOYMENT
 https://foster-journey-frontend.herokuapp.com/
+
+
+PSEUDO CODE FOR AVG NUMBER OF PLACEMENTS PER USER
+-Create placement field in user model
+-Every time user creates a placement increment placement field by one
+-Every time user edits a placement decrement placement field by one
+-Write a function that looks through all users and creates a list of placement field values
+-Average the list
+-Create api endpoint that sends the number as a response
+-Call the endpoint from the frontend and display the number 
+

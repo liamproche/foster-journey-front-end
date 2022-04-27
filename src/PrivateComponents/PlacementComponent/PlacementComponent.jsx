@@ -135,15 +135,6 @@ function PlacementComponent() {
             <CreatePlacementComponent createNewPlacement={createNewPlacement} toggleCreateForm={toggleCreateForm}></CreatePlacementComponent>   
           </Modal.Body>
         </Modal>
-
-
-
-
-
-        
-        
-   
-
       </div>
     );
 }
