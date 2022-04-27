@@ -37,7 +37,6 @@ function DetailsComponent(props) {
             ...newParent,
             url: parsedResponse.url
         })
-        console.log("image uploaded")
     }catch(err){
         console.log(err)
     }
@@ -45,7 +44,6 @@ function DetailsComponent(props) {
   const[newSibling, setNewSibling] = useState({
     first_name: "",
     last_name: "",
-    placement: props.placement.id
   })
   const handleParentInputChange=(e)=>{
     setNewParent({
@@ -67,7 +65,6 @@ function DetailsComponent(props) {
     e.preventDefault()
     props.createSibling({
       ...newSibling,
-      placement:props.placement.id
     })
   }
   const addNoteInputChange=(e)=>{

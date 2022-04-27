@@ -83,7 +83,7 @@ WEDNESDAY
 -Same for foster parent and foster sibling models
 -Password editing <--NOTE: REALLY LOST ON THIS ONE
 -Style Account Edit Page
--Home page statistics & Styling
+
 
 
 THURSDAY
@@ -113,6 +113,7 @@ COMPLETED TODO
 	#-Modal for create foster sibling
 	#-Modal for Edit Placement
 #-Style Create placement component
+#-Home page statistics & Styling
 
 
 

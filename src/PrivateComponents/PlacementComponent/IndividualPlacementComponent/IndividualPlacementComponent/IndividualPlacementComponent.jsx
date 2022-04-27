@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { Accordion } from 'react-bootstrap';
 import DetailsComponent from '../DetailsComponent/DetailsComponent';
-import './IndividualPlacementComponent.css';
 import AuthContext from '../../../../context/AuthContext';
 
 function IndividualPlacementComponent(props) {
@@ -118,7 +117,7 @@ function IndividualPlacementComponent(props) {
     let newDate = `${month}/${day}/${year}`
     return newDate.split(',').join('')
   }
-  useEffect(()=>{getParents(); getSiblings(); getUserToIncriment()})
+  useEffect(()=>{getParents(); getSiblings(); getUserToIncriment()}, [])
   return (
       <div className="IndividualPlacementComponent">
           <Accordion flush className="accordion-container">

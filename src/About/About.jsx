@@ -40,9 +40,9 @@ function About(props) {
         <section className="login-stats-container">
           <div className="stats-container">
             <h5>Average Stats Per User</h5>
-            <h6>Number of Placements: {findAveragePlacements()}</h6>
-            <h6>Number of Caregivers: {findAverageParents()}</h6>
-            <h6>Number of Siblings: {findAverageSiblings()}</h6>
+            <h6>Number of Placements: {Math.round(findAveragePlacements())}</h6>
+            <h6>Number of Caregivers: {Math.round(findAverageParents())}</h6>
+            <h6>Number of Siblings: {Math.round(findAverageSiblings())}</h6>
           </div>
           <LoginComponent></LoginComponent>
         </section>

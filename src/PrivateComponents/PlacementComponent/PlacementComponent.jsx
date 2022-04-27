@@ -14,7 +14,9 @@ function PlacementComponent() {
     try{
       const placements = await fetch('http://localhost:8000/api/placements')
       const parsedResponse = await placements.json()
-      setPlacements(parsedResponse.filter((placement)=>{return placement.user === user.user_id}))
+      console.log(parsedResponse)
+      setPlacements(parsedResponse)
+      // setPlacements(parsedResponse.filter((placement)=>{return placement.user === user.user_id}))
   }catch(err){
     console.log(err)
   }}
@@ -114,7 +116,7 @@ function PlacementComponent() {
   }catch(err){
     console.log(err)
   }}
-  useEffect(()=>{getPlacements(); getUserToIncriment()})
+  useEffect(()=>{getPlacements(); getUserToIncriment()}, [])
   return (
       <div className="PlacementComponent">
         <NavBar/>
