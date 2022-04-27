@@ -190,6 +190,8 @@ input[type=file]::file-selector-button{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   margin-top: 3.5%;
+  justify-items: center;
+  
 }
 .individual-foster-parent-container{
   width: 200px;

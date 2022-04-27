@@ -75,25 +75,20 @@ FOSTER SIBLING
 #-time_stamp for creation
 #-linked to placement
 
-
 VERSION 2 GOALS:
-
-TUESDAY
-
-	-Move Create Placement form to seperate route and style
-NOTE: If time and energy move on to user placement filter
 
 
 WEDNESDAY
 -User placement filter currently happens in the front-end. This should be changed to the backend so the API only fetches placements for specific user
 -Same for foster parent and foster sibling models
 -Password editing <--NOTE: REALLY LOST ON THIS ONE
+-Style Account Edit Page
 -Home page statistics & Styling
 
 
 THURSDAY
 -Delete console.logs
--Re-deployment to Heroku
+-Re-deployment to Heroku/Azure?
 -Show completed project
 
 
@@ -117,6 +112,7 @@ COMPLETED TODO
 #-Style placement & details components
 	#-Modal for create foster sibling
 	#-Modal for Edit Placement
+#-Style Create placement component
 
 
 
