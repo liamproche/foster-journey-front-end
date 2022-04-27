@@ -23,16 +23,20 @@ function Account() {
     const submitEditedUser = async (e) =>{
         e.preventDefault();
         console.log(editedUser)
-        //DELETE THIS VARIABLE 
-        const response = await fetch (`http://localhost:8000/api/user/${user.user_id}/`,{
-            method: "PUT",
-            body: JSON.stringify(editedUser),
-            headers:{
-                "Content-Type":"application/json"
-            }
-        })
-        const parsedResponse = response.json()
-        console.log(parsedResponse)
+        try{
+            //DELETE THIS VARIABLE 
+            const response = await fetch (`http://localhost:8000/api/user/${user.user_id}/`,{
+                method: "PUT",
+                body: JSON.stringify(editedUser),
+                headers:{
+                    "Content-Type":"application/json"
+                }
+            })
+            const parsedResponse = response.json()
+            console.log(parsedResponse)
+        }catch(err){
+            console.log(err)
+        }
     }
     const deleteAccount = async () =>{
         try{

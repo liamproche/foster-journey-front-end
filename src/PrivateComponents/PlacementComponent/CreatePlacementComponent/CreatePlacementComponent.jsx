@@ -11,7 +11,8 @@ function CreatePlacementComponent(props) {
     end_date: "",
     location: "",
   })
-  const submitNewPlacement=()=>{
+  const submitNewPlacement=(e)=>{
+    e.preventDefault()
     props.createNewPlacement({
       ...newPlacement,
       user: user.user_id
