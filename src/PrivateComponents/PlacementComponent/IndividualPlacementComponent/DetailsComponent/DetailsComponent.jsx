@@ -1,7 +1,7 @@
-import { useState } from 'react'
-import { Modal, Button } from 'react-bootstrap'
-import EditFormComponent from './EditFormComponent/EditFormComponent'
-import './DetailsComponent.css'
+import { useState } from 'react';
+import { Modal, Button } from 'react-bootstrap';
+import EditFormComponent from './EditFormComponent/EditFormComponent';
+import './DetailsComponent.css';
 
 function DetailsComponent(props) {
   const [placement, setPlacement] = useState(props.placement)
@@ -59,11 +59,12 @@ function DetailsComponent(props) {
       [e.target.name]: e.target.value
     })
   }
-  const submitNewParent= async (e)=>{
-    // e.preventDefault()
+  const submitNewParent=(e)=>{
+    e.preventDefault()
     props.createParent(newParent)
   }
   const submitNewSibling=(e)=>{
+    e.preventDefault()
     props.createSibling({
       ...newSibling,
       placement:props.placement.id
@@ -123,7 +124,7 @@ function DetailsComponent(props) {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={showParentModal}>Close</Button>
-                    <Button variant="primary" onClick={()=>{submitNewParent(); window.location.reload(false)}}>Submit</Button>
+                    <Button variant="primary" onClick={submitNewParent}>Submit</Button>
                 </Modal.Footer>
             </Modal>
           <div className="foster-sibling-header-container">
@@ -146,7 +147,7 @@ function DetailsComponent(props) {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={showSiblingModal}>Close</Button>
-                    <Button variant="primary" onClick={()=>{submitNewSibling(); window.location.reload(false)}}>Submit</Button>
+                    <Button variant="primary" onClick={submitNewSibling}>Submit</Button>
                 </Modal.Footer>
             </Modal>
         <section className="notes-container">

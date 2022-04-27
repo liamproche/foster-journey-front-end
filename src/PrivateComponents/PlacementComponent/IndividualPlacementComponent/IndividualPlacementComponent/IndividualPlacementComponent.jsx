@@ -1,11 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Accordion } from 'react-bootstrap';
 import DetailsComponent from '../DetailsComponent/DetailsComponent';
 import './IndividualPlacementComponent.css';
+import AuthContext from '../../../../context/AuthContext';
 
 function IndividualPlacementComponent(props) {
-  const[parents, setParents] = useState([])
-  const[siblings, setSiblings] = useState([])
+  const { user } = useContext(AuthContext)
+  const [parents, setParents] = useState([])
+  const [siblings, setSiblings] = useState([])
+  const [userToIncriment, setUserToIncriment] = useState({})
 
   // BEGIN PARENT ROUTES
   const getParents = async ()=>{
@@ -28,8 +31,36 @@ function IndividualPlacementComponent(props) {
           "Content-Type": "application/json"
         }
       })
+      await response.json()
+      incrementUserParents()
+      .then(window.location.reload(false))
+    }catch(err){
+      console.log(err)
+    }
+  }
+  const getUserToIncriment = async () =>{
+    try{
+      const response = await fetch (`http://localhost:8000/api/user/${user.user_id}/`)
       const parsedResponse = await response.json()
-      console.log(parsedResponse)
+      setUserToIncriment(parsedResponse)
+    }catch(err){
+      console.log(err)
+    }
+  }
+  const incrementUserParents = async () =>{
+    setUserToIncriment({
+      ...userToIncriment,
+      foster_parents: userToIncriment.foster_parents += 1
+    })
+    try{
+      const response = await fetch (`http://localhost:8000/api/user/${user.user_id}/`,{
+        method: "PUT",
+        body: JSON.stringify(userToIncriment),
+        headers:{
+          "Content-Type":"application/json"
+      }
+    })
+     await response.json()
     }catch(err){
       console.log(err)
     }
@@ -54,12 +85,31 @@ function IndividualPlacementComponent(props) {
           "Content-Type": "application/json"
         }
       })
-      const parsedResponse = await response.json()
+      await response.json()
+      incrementUserSiblings()
+      .then(window.location.reload(false))
     }catch(err){
       console.log(err)
     }
   }
-
+  const incrementUserSiblings = async () =>{
+    setUserToIncriment({
+      ...userToIncriment,
+      foster_siblings: userToIncriment.foster_siblings += 1
+    })
+    try{
+      const response = await fetch (`http://localhost:8000/api/user/${user.user_id}/`,{
+        method: "PUT",
+        body: JSON.stringify(userToIncriment),
+        headers:{
+          "Content-Type":"application/json"
+      }
+    })
+    await response.json()
+    }catch(err){
+      console.log(err)
+    }
+  }
   const formatDate = (dateString) =>{
     let tempDate = [...dateString]
     let day = tempDate.slice(8)
@@ -68,8 +118,7 @@ function IndividualPlacementComponent(props) {
     let newDate = `${month}/${day}/${year}`
     return newDate.split(',').join('')
   }
-
-  useEffect(()=>{getParents(); getSiblings();}, [])
+  useEffect(()=>{getParents(); getSiblings(); getUserToIncriment()})
   return (
       <div className="IndividualPlacementComponent">
           <Accordion flush className="accordion-container">

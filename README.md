@@ -117,9 +117,8 @@ COMPLETED TODO
 
 
 ADDITIONAL TODO
--On home page without being logged in option to view journey of random user to help increase awareness of stories of foster youth
 -Statistics on home page pulled from app data
-	-Average number of placements per user
+	#-Average number of placements per user
 	-Average length of stay per placement
 	-Average number of foster parents/siblings a foster youth encounters on journey
 

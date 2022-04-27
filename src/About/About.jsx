@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import LoginComponent from "./LoginComponent/LoginComponent";
 
 function About(props) {
@@ -8,6 +7,26 @@ function About(props) {
     })
     let sum = 0
     for(let num of placementArr){
+      sum += num
+    }
+    return sum / props.users.length
+  }
+  const findAverageParents = () =>{ 
+    let parentsArr = props.users.map((user)=>{
+      return user.foster_parents
+    })
+    let sum = 0
+    for(let num of parentsArr){
+      sum += num
+    }
+    return sum / props.users.length
+  }
+  const findAverageSiblings = () =>{ 
+    let siblingsArr = props.users.map((user)=>{
+      return user.foster_siblings
+    })
+    let sum = 0
+    for(let num of siblingsArr){
       sum += num
     }
     return sum / props.users.length
@@ -22,8 +41,8 @@ function About(props) {
           <div className="stats-container">
             <h5>Average Stats Per User</h5>
             <h6>Number of Placements: {findAveragePlacements()}</h6>
-            <h6>Number of Caregivers:</h6>
-            <h6>Number of Siblings:</h6>
+            <h6>Number of Caregivers: {findAverageParents()}</h6>
+            <h6>Number of Siblings: {findAverageSiblings()}</h6>
           </div>
           <LoginComponent></LoginComponent>
         </section>

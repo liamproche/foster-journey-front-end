@@ -1,13 +1,16 @@
-import { useState } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Form, Modal, Button } from 'react-bootstrap'
 import FosterParents from './FosterParents/FosterParents'
 import FosterSiblings from './FosterSiblings.jsx/FosterSiblings'
 import NotesComponent from '../NotesComponent/NotesComponent';
+import AuthContext from '../../../../../context/AuthContext';
 
 function EditFormComponent(props) {
-  const[editedPlacement, setEditedPlacement] = useState({...props.placement})
-  const[parents, setParents] = useState([...props.parents])
-  const[siblings, setSiblings] = useState([...props.siblings])
+  const { user } = useContext(AuthContext)
+  const [userToDecrement, setUserToDecrement] = useState({})
+  const [editedPlacement, setEditedPlacement] = useState({...props.placement})
+  const [parents, setParents] = useState([...props.parents])
+  const [siblings, setSiblings] = useState([...props.siblings])
   const handleInputChange=(e)=>{
     setEditedPlacement({
       ...editedPlacement,
@@ -19,12 +22,59 @@ function EditFormComponent(props) {
       method: "DELETE"
     })
     setParents(parents.filter((parent)=>{return parent.id !== parentToDelete}))
+    decrementUserParents()
+  }
+  const getUserToDecrement = async () =>{
+    try{
+      const response = await fetch (`http://localhost:8000/api/user/${user.user_id}/`)
+      const parsedResponse = await response.json()
+      setUserToDecrement(parsedResponse)
+    }catch(err){
+      console.log(err)
+    }
+  }
+  const decrementUserParents = async ()=>{
+    setUserToDecrement({
+      ...userToDecrement,
+      foster_parents: userToDecrement.foster_parents -= 1
+    })
+    try{
+      const response = await fetch (`http://localhost:8000/api/user/${user.user_id}/`,{
+        method: "PUT",
+        body: JSON.stringify(userToDecrement),
+        headers:{
+          "Content-Type":"application/json"
+      }
+    })
+    await response.json()
+    }catch(err){
+      console.log(err)
+    }
   }
   const deleteFosterSibling= async (siblingToDelete)=>{
     await fetch(`http://localhost:8000/api/siblings/${siblingToDelete}`, {
       method: "DELETE"
     })
     setSiblings(siblings.filter((sibling)=>{return sibling.id !== siblingToDelete}))
+    decrementUserSiblings()
+  }
+  const decrementUserSiblings = async ()=>{
+    setUserToDecrement({
+      ...userToDecrement,
+      foster_siblings: userToDecrement.foster_siblings -= 1
+    })
+    try{
+      const response = await fetch (`http://localhost:8000/api/user/${user.user_id}/`,{
+        method: "PUT",
+        body: JSON.stringify(userToDecrement),
+        headers:{
+          "Content-Type":"application/json"
+      }
+    })
+    await response.json()
+    }catch(err){
+      console.log(err)
+    }
   }
   const deleteNote=(noteToDelete)=>{
     setEditedPlacement({
@@ -36,6 +86,9 @@ function EditFormComponent(props) {
     props.setPlacement(editedPlacement)
     props.editPlacement(editedPlacement)
   }
+
+  useEffect(()=>{getUserToDecrement()})
+
   return (
       <div className="EditFormComponent">
           {/* <form id="edit-placement-form" onSubmit={submitEditPlacement}> */}

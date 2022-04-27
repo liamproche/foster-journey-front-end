@@ -30,8 +30,8 @@ function PlacementComponent() {
           "Content-Type": "application/json"
         }
       })
-      //KEEPING THIS IN FOR NOW EVEN THOUGH IT THROWS A WARNING.... CAN BE CHANGED TO .then() FUNCTION EVENTUALLY
-      const parsedResponse = await newPlacementResponse.json()
+      //KEEPING THIS IN FOR NOW EVEN THOUGH IT THROWS A WARNING.... CAN BE CHANGED TO JUST AWAIT EVENTUALLY
+      await newPlacementResponse.json()
       incrementUserPlacements()
       .then(window.location.reload(false))
     }catch(err){
@@ -110,11 +110,11 @@ function PlacementComponent() {
         "Content-Type":"application/json"
     }
     })
-    const parsedResponse = await editedPlacementResponse.json()
+    await editedPlacementResponse.json()
   }catch(err){
     console.log(err)
   }}
-  useEffect(()=>{getPlacements(); getUserToIncriment()}, [])
+  useEffect(()=>{getPlacements(); getUserToIncriment()})
   return (
       <div className="PlacementComponent">
         <NavBar/>
@@ -138,5 +138,6 @@ function PlacementComponent() {
       </div>
     );
 }
+
 
 export default PlacementComponent;
