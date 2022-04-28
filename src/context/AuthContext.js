@@ -1,6 +1,5 @@
 //CONTEXT ALLOWS SHARING OF INFORMATION THROUGHOUT THE APP INSTEAD OF HAVING TO PASS ITEMS DOWN AS PROPS
 import {createContext, useState, useEffect} from 'react';
-import { Navigate } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 
 const AuthContext = createContext()
@@ -10,11 +9,11 @@ export default AuthContext
 //THIS IS THE PROVIDER FUNCTION (PROVIDES INFORMATION TO THE CHILD COMPONENTS)
 //VALUE IS THE PROPERTY WE WANT AVAIALABLE THROUGHOUT THE APP
 export const AuthProvider=({children})=>{    
-    const[user, setUser]=useState(()=>localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
-    const[incorrectCredentials, setIncorrectCredentials]=useState(false)
+    const [user, setUser]=useState(()=>localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
+    const [incorrectCredentials, setIncorrectCredentials]=useState(false)
     //JSON.PARSE OPPOSITE OF STRINGIFY (RETURNS OBJECT) -- THIS LINE OF CODE WAS A NIGHTMARE!!!
-    const[authTokens, setAuthTokens]=useState(()=>localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
-    const[loading, setLoading]=useState(true)
+    const [authTokens, setAuthTokens]=useState(()=>localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
+    const [loading, setLoading]=useState(true)
     //BEGIN USER LOGIN
     const loginUser= async(e)=>{
         e.preventDefault()
@@ -97,9 +96,5 @@ export const AuthProvider=({children})=>{
         loginUser: loginUser,
         logoutUser: logoutUser
     }
-    return(
-        <AuthContext.Provider value={contextData}>
-            {children}
-        </AuthContext.Provider>
-        )
+    return <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>
 }

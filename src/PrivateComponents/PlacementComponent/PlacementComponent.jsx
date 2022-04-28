@@ -5,6 +5,7 @@ import IndividualPlacementComponent from './IndividualPlacementComponent/Individ
 import CreatePlacementComponent from './CreatePlacementComponent/CreatePlacementComponent';
 import AuthContext from "../../context/AuthContext";
 
+
 function PlacementComponent() {
   const { user } = useContext(AuthContext)
   const [placements, setPlacements] = useState([])
@@ -12,11 +13,11 @@ function PlacementComponent() {
   const [userToIncriment, setUserToIncriment] = useState({})
   const getPlacements = async () => {
     try{
-      const placements = await fetch('http://localhost:8000/api/placements')
+      const placements = await fetch(`http://localhost:8000/api/placements?user=${user.user_id}`, {
+        credentials: 'include'
+      })
       const parsedResponse = await placements.json()
-      console.log(parsedResponse)
       setPlacements(parsedResponse)
-      // setPlacements(parsedResponse.filter((placement)=>{return placement.user === user.user_id}))
   }catch(err){
     console.log(err)
   }}
@@ -25,6 +26,7 @@ function PlacementComponent() {
   }
   const createNewPlacement= async (newPlacement)=>{
     try{
+      console.log(newPlacement)
       const newPlacementResponse = await fetch('http://localhost:8000/api/placements',{
         method: "POST",
         body: JSON.stringify(newPlacement),
@@ -33,7 +35,7 @@ function PlacementComponent() {
         }
       })
       //KEEPING THIS IN FOR NOW EVEN THOUGH IT THROWS A WARNING.... CAN BE CHANGED TO JUST AWAIT EVENTUALLY
-      await newPlacementResponse.json()
+      const parsedResponse = await newPlacementResponse.json()
       incrementUserPlacements()
       .then(window.location.reload(false))
     }catch(err){
@@ -64,7 +66,6 @@ function PlacementComponent() {
       }
     })
     const parsedResponse = await response.json()
-    console.log(parsedResponse)
     }catch(err){
       console.log(err)
     }

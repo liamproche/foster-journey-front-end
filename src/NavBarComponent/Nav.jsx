@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState, useEffect, } from 'react';
+import { Link, Navigate } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 import './Nav.css'
 
 function NavBar(){
-  let {user, logoutUser}=useContext(AuthContext)
+  let { logoutUser } = useContext(AuthContext)
+  const [navigate, setNavigate] = useState(false)
   useEffect(() => {
     if (localStorage.getItem('token') !== null) {
     }
@@ -12,7 +13,8 @@ function NavBar(){
   return <nav>
           <Link to="/placements">Home</Link>
           <Link to="/account">Account</Link>
-          <a href="" onClick={logoutUser}>Logout</a>
+          <a href="" onClick={()=>{logoutUser(); setNavigate(true)}}>Logout</a>
+          {navigate?<Navigate to="/"/>:<br className='nothing'/>}
     </nav>
 }
 

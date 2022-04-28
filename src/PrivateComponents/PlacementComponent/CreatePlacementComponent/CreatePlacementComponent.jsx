@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Form, Modal, Button } from 'react-bootstrap';
+import AuthContext from '../../../context/AuthContext';
 
 function CreatePlacementComponent(props) {
+  const { user } = useContext(AuthContext)
   const [newPlacement, setNewPlacement] = useState({
     num: "",
     name: "",
@@ -13,6 +15,7 @@ function CreatePlacementComponent(props) {
     e.preventDefault()
     props.createNewPlacement({
       ...newPlacement,
+      user: user.user_id
     })
   }
   const handleInputChange=(e)=>{
