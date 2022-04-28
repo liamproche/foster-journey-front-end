@@ -26,8 +26,7 @@ function PlacementComponent() {
   }
   const createNewPlacement= async (newPlacement)=>{
     try{
-      console.log(newPlacement)
-      const newPlacementResponse = await fetch('http://localhost:8000/api/placements',{
+      const newPlacementResponse = await fetch('http://localhost:8000/api/placements/',{
         method: "POST",
         body: JSON.stringify(newPlacement),
         headers: {
@@ -99,7 +98,6 @@ function PlacementComponent() {
       }
     })
     const parsedResponse = await response.json()
-    console.log(parsedResponse)
     }catch(err){
       console.log(err)
     }
@@ -130,7 +128,7 @@ function PlacementComponent() {
             <p>You have not yet created any placements</p>}
         </div>
         <div className="create-placement-button-container">
-          <Button variant="primary" className="button" onClick={toggleCreateForm}>Create New Placement</Button>
+          <Button variant="primary" id="create-placement-button" className="button" onClick={toggleCreateForm}>Create New Placement</Button>
         </div>
         <Modal className="m" show={showCreateForm}>
           <Modal.Header id="modal-header-text">Create New Placement</Modal.Header>

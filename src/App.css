@@ -259,6 +259,22 @@ input[type=file]::file-selector-button{
 .create-placement-button-container{
   text-align: center;
 }
+#create-placement-button{
+  background: #666564;
+  border: 1px solid white;
+}
+#edit-form-container{
+  background: rgba(0, 0, 0, .55);
+  margin: 0 auto;
+  border-radius: 10px;
+  max-width: 65vw;
+  margin-top: 5%;
+}
+#delete-account-button{
+  background: red;
+  border: none;
+  margin-left: 5%;
+}
 @media only screen and (min-width: 480px) {
   #app-title{
     font-size: 3.5rem;

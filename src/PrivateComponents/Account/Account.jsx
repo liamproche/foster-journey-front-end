@@ -1,9 +1,10 @@
 import { useState, useContext, useEffect } from 'react';
+import { Button, Form } from 'react-bootstrap'
 import AuthContext from '../../context/AuthContext';
 import NavBar from "../../NavBarComponent/Nav";
 
 function Account() {
-    const{user, logoutUser}=useContext(AuthContext)
+    const{ user, logoutUser, updateToken } = useContext(AuthContext)
     const[editedUser, setEditedUser]=useState({})
     const handleInputChange = (e) =>{
         setEditedUser({
@@ -22,6 +23,7 @@ function Account() {
     }
     const submitEditedUser = async (e) =>{
         e.preventDefault();
+        updateToken();
         console.log(editedUser)
         try{
             //DELETE THIS VARIABLE 
@@ -50,18 +52,30 @@ function Account() {
     }
     useEffect(()=>{getUserToEdit()}, [])
     return  <div className="Account">
-                <h1>Account Edit Form</h1>
                 <NavBar/>
-                <form onSubmit={submitEditedUser}>
-                    <label htmlFor="first_name">First Name:</label>
-                    <input type="text" name="first_name" onChange={handleInputChange}></input>
-                    <label htmlFor="last_name">Last Name:</label>
-                    <input type="text" name="last_name" onChange={handleInputChange}></input>
-                    <label html="password">Password:</label>
-                    <input type="password" name="password" onChange={handleInputChange}></input>
-                    <input type="submit"></input>
-                </form>
-                <button onClick={deleteAccount}>Delete Account</button>
+                <div id="edit-form-container">
+                    <Form id="edit-form" className="rounded p-4 p-sm-3" onSubmit={submitEditedUser}>
+                        <h2 className="form-header" key="register-header">Edit Account</h2>
+                        <div className="name-input-container">
+                            <Form.Group className="name-input">
+                                <Form.Label className="user-input" name="first-name">First Name</Form.Label>
+                                <Form.Control className="user-input" type="text" placeholder="Enter first name" name="first_name" minLength={1} onChange={handleInputChange}/>
+                            </Form.Group>
+                            <Form.Group className="name-input">
+                                <Form.Label className="user-input">Last Name</Form.Label>
+                                <Form.Control className="user-input" type="text" placeholder="Enter last name" name="last_name" minLength={1} onChange={handleInputChange}/>
+                            </Form.Group>
+                        </div>
+                        <div className="password-input-container">
+                            <Form.Group className="mb-3 pass-input">
+                            {/* <Form.Label className="form-label">Password</Form.Label>
+                                <Form.Control className="user-input" type="password" placeholder='Enter Password' name="password"onChange={handleInputChange} minLength="8" required/> */}
+                            </Form.Group>
+                        </div>
+                        <Button className="form-button" type="submit">Submit Edits</Button>
+                        <Button id="delete-account-button" className="form-button">Delete Account</Button>
+                    </Form>
+                </div> 
             </div>
 }
 

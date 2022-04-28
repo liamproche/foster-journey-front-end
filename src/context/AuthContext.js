@@ -67,6 +67,7 @@ export const AuthProvider=({children})=>{
             setAuthTokens(data)
             setUser(jwt_decode(data.access))
             localStorage.setItem('authTokens', JSON.stringify(data))
+            console.log('updated Token')
           }
           else{
             logoutUser();
@@ -94,7 +95,8 @@ export const AuthProvider=({children})=>{
         incorrectCredentials: incorrectCredentials,
         user: user,
         loginUser: loginUser,
-        logoutUser: logoutUser
+        logoutUser: logoutUser,
+        updateToken: updateToken,
     }
     return <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>
 }
