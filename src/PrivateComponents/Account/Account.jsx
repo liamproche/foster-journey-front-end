@@ -1,11 +1,14 @@
 import { useState, useContext, useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap'
 import AuthContext from '../../context/AuthContext';
 import NavBar from "../../NavBarComponent/Nav";
 
 function Account() {
-    const{ user, logoutUser, updateToken } = useContext(AuthContext)
-    const[editedUser, setEditedUser]=useState({})
+    const { user, logoutUser, updateToken } = useContext(AuthContext)
+    const [editedUser, setEditedUser] = useState({})
+    const [navToPlacements, setNavTPlacements] = useState(false)
+    const [NavToLogin, setNavToLogin] = useState(false)
     const handleInputChange = (e) =>{
         setEditedUser({
             ...editedUser,
@@ -24,8 +27,6 @@ function Account() {
     const submitEditedUser = async (e) =>{
         e.preventDefault();
         updateToken();
-        console.log(user)
-        console.log(editedUser)
         try{
             const response = await fetch (`http://localhost:8000/api/user/${user.user_id}/`,{
                 method: "PUT",
@@ -35,6 +36,7 @@ function Account() {
                 }
             })
             const parsedResponse = response.json()
+            setNavTPlacements(true)
         }catch(err){
             console.log(err)
         }
@@ -44,6 +46,7 @@ function Account() {
             const response = await fetch (`http://localhost:8000/api/user/${user.user_id}/`, {
                 method: "DELETE"
         })
+        setNavToLogin(true)
         }catch(err){
             console.log(err)
         }
@@ -52,6 +55,11 @@ function Account() {
     useEffect(()=>{getUserToEdit()}, [])
     return  <div className="Account">
                 <NavBar/>
+                {!NavToLogin?
+                <p></p>:
+                <Navigate to="/"/>    
+                }
+                {!navToPlacements?
                 <div id="edit-form-container">
                     <Form id="edit-form" className="rounded p-4 p-sm-3" onSubmit={submitEditedUser}>
                         <h2 className="form-header" key="register-header">Edit Account</h2>
@@ -72,9 +80,11 @@ function Account() {
                             </Form.Group>
                         </div>
                         <Button className="form-button" type="submit">Submit Edits</Button>
-                        <Button id="delete-account-button" className="form-button">Delete Account</Button>
+                        <Button id="delete-account-button" className="form-button" onClick={deleteAccount}>Delete Account</Button>
                     </Form>
-                </div> 
+                </div>:
+                <Navigate to="/placements"/>
+                    }
             </div>
 }
 

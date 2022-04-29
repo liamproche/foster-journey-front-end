@@ -67,9 +67,7 @@ function Register(){
         body: JSON.stringify(user)
       })
       const parsedResponse = await response.json()
-      console.log(parsedResponse)
       if(parsedResponse.user){
-        console.log('the user has been created')
         return navigate('/login')
       }
       else{
@@ -130,7 +128,6 @@ function Register(){
             <Link id="login-link" className="nav-link" to="/about" key="create-account-link">Login</Link>
           </Form>
         </div>
-
     </div>
   )
 }

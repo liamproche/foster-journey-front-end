@@ -65,6 +65,7 @@ function DetailsComponent(props) {
     e.preventDefault()
     props.createSibling({
       ...newSibling,
+      placement: props.placement.id
     })
   }
   const addNoteInputChange=(e)=>{

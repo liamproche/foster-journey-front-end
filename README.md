@@ -82,11 +82,11 @@ WEDNESDAY
 -Style Account Edit Page
 
 THURSDAY
--Delete console.logs
--Re-deployment to Heroku/Azure?
--Show completed project
+
 
 FRIDAY
+-Show completed project
+-Re-deployment to Heroku/Azure?
 -Move on to portfolio updates
 
 
@@ -109,6 +109,7 @@ COMPLETED TODO
 #-Style Create placement component
 #-Home page statistics & Styling
 #-User placement filter currently happens in the front-end. This should be changed to the backend so the API only fetches placements for specific user
+#-Delete console.logs
 
 
 
