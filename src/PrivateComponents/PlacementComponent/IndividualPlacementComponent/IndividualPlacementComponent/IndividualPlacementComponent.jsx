@@ -124,12 +124,12 @@ function IndividualPlacementComponent(props) {
             <Accordion.Item eventKey="0" id="accordian-item">
               <Accordion.Header className="accordion-header">
                 <div className="placement-title">
-                  <h5>Placement:{props.placement.num}</h5>
-                  <h5>{props.placement.name}</h5>
+                  <h5 className="accordion-header-text">Placement: {props.placement.num}</h5>
+                  <h5 className="accordion-header-text">{props.placement.name}</h5>
                 </div>
                 <div className="placement-dates">
-                  <h5>Start Date: {formatDate(props.placement.start_date)}</h5>
-                  <h5>End Date: {formatDate(props.placement.end_date)}</h5>
+                  <h5 className="accordion-header-text">Start Date: {formatDate(props.placement.start_date)}</h5>
+                  <h5 className="accordion-header-text">End Date: {formatDate(props.placement.end_date)}</h5>
                 </div>
               </Accordion.Header>
               <Accordion.Body id="accordion-body">

@@ -102,7 +102,7 @@ function DetailsComponent(props) {
               </div>
               )})}
             </div>
-          <Button variant ="secondary" className="button" onClick={showParentModal}>Add Foster Parent</Button>
+          <Button variant ="secondary" className="add-button" onClick={showParentModal}>Add Foster Parent</Button>
         </section>
         <Modal className="m" show={parentModalOpen}>
                 <Modal.Header id="modal-header-text">Add Foster Parent</Modal.Header>
@@ -120,7 +120,7 @@ function DetailsComponent(props) {
                     <button className="upload-image-button"  onClick={uploadImage}>Upload File</button>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={showParentModal}>Close</Button>
+                    <Button variant="secondary" className="add-button" onClick={showParentModal}>Close</Button>
                     <Button variant="primary" onClick={submitNewParent}>Submit</Button>
                 </Modal.Footer>
             </Modal>
@@ -131,7 +131,7 @@ function DetailsComponent(props) {
             <div className="siblings-container">
               {props.siblings.map((sibling)=>{return<p key={sibling.id} className="sibling-name">{sibling.first_name} {sibling.last_name} </p>})}
             </div>
-            <Button variant="secondary" onClick={showSiblingModal}>Add Foster Sibling</Button>
+            <Button variant="secondary" className="add-button" onClick={showSiblingModal}>Add Foster Sibling</Button>
           </section>
           <Modal className="m" show={siblingModalOpen}>
                 <Modal.Header id="modal-header-text">Add Foster Sibling</Modal.Header>
@@ -153,12 +153,12 @@ function DetailsComponent(props) {
               placement.notes.map((note)=>{
               return <p key={props.placement.notes.indexOf(note)}>{note}</p>
             }):<p>None Added</p>}
-              <input className="note-input-field" type="text" name="note" onChange={addNoteInputChange} placeholder="Enter a note" required/>
+              <input className="user-input styled-input" type="text" name="note" onChange={addNoteInputChange} placeholder="Enter a note" required/>
               {noteErr ?
                 <p className="error-message">Note cannot be blank</p>:
                 <p></p>
               }   
-              <Button className="add-note-button" variant="secondary" onClick={()=>{
+              <Button className="add-button" variant="secondary" onClick={()=>{
                 checkNote()
                 const updatedPlacement = {...placement}
                 updatedPlacement.notes.push(note)
@@ -171,7 +171,7 @@ function DetailsComponent(props) {
               }
               }}>Add Note</Button>
           </section>
-          <Button variant ="secondary" className="button" onClick={toggleEditForm}>Edit Placement</Button>          
+          <Button variant ="secondary" className="add-button" onClick={toggleEditForm}>Edit Placement</Button>          
           <Modal className="m" show={showEditForm}>
             <Modal.Header id="modal-header-text">Edit {props.placement.name}</Modal.Header>
               <Modal.Body>

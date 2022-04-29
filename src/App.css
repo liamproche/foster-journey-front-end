@@ -168,6 +168,9 @@ input[type=file]::file-selector-button{
 .placement-container{
   margin-top: 5%;
 }
+.placement-header{
+  margin-bottom: 3%;
+}
 .IndividualPlacementComponent{
   text-align: center; 
 }
@@ -183,14 +186,13 @@ input[type=file]::file-selector-button{
 .accordion-container{
   margin-bottom: 5%;
 }
-.accordian-header{
-  border-radius: 20px;
+.accordion-container button{
+  background: rgba(0, 0, 0, .2);
+  color: white;
+  border-radius: 50px;
 }
 #accordian-item{
   background: rgba(0, 0, 0, .6);
-}
-.accordion-item{
-  background: red;
 }
 .header-text{
   border-bottom: 1px solid white;
@@ -218,7 +220,7 @@ input[type=file]::file-selector-button{
   width: 200px;
 }
 .foster-parent-image{
-  max-width: 80%;
+  max-width: 20vw;
 }
 .foster-siblings-container{
   border: 1px solid white;
@@ -240,9 +242,7 @@ input[type=file]::file-selector-button{
   padding-bottom: 5%;
   margin-bottom: 3.5%;
 }
-.add-note-button{
-  margin-left: 2%;
-}
+
 .edit-delete-container{
   display: flex;
   flex-wrap: wrap;
@@ -256,6 +256,9 @@ input[type=file]::file-selector-button{
 }
 .delete-icon{
   max-width: 12px;
+}
+.add-button{
+  font-family: sans-serif
 }
 #delete-placement-button{
   background: red;
@@ -271,7 +274,7 @@ input[type=file]::file-selector-button{
 }
 #create-placement-button{
   background: #666564;
-  border: 1px solid white;
+  border: none;
 }
 #edit-form-container{
   background: rgba(0, 0, 0, .55);
@@ -285,6 +288,7 @@ input[type=file]::file-selector-button{
   border: none;
   margin-left: 5%;
 }
+
 @media only screen and (min-width: 480px) {
   #app-title{
     font-size: 3.5rem;
@@ -314,5 +318,23 @@ input[type=file]::file-selector-button{
   }
   .stat{
     font-size: .7rem;
+  }
+}
+@media only screen and (max-width: 806px){
+  .parents-container{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media only screen and (max-width: 706px){
+  .accordion-header-text{
+    font-size: 1rem
+  }
+}
+@media only screen and (max-width: 664px){
+  .accordion-header-text{
+    font-size: .8rem
+  }
+  .parents-container{
+    grid-template-columns: 1fr;
   }
 }
