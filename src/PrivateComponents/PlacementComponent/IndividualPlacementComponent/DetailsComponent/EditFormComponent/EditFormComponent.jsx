@@ -144,7 +144,7 @@ function EditFormComponent(props) {
               </Modal.Footer>
           </Form>
           <div className="delete-placement-button-container">
-            <Button id="delete-placement-button" variant="primary" onClick={()=>{
+            <Button className="red-button" variant="primary" onClick={()=>{
               props.deletePlacement(props.placement.id)
             }}>Delete placement</Button>
           </div>

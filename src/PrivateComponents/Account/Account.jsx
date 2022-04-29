@@ -24,6 +24,7 @@ function Account() {
     const submitEditedUser = async (e) =>{
         e.preventDefault();
         updateToken();
+        console.log(user)
         console.log(editedUser)
         try{
             //DELETE THIS VARIABLE 
@@ -31,11 +32,10 @@ function Account() {
                 method: "PUT",
                 body: JSON.stringify(editedUser),
                 headers:{
-                    "Content-Type":"application/json"
+                    "Content-Type":"application/json" 
                 }
             })
             const parsedResponse = response.json()
-            console.log(parsedResponse)
         }catch(err){
             console.log(err)
         }
