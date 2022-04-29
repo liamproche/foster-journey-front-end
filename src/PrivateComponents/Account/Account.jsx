@@ -27,7 +27,6 @@ function Account() {
         console.log(user)
         console.log(editedUser)
         try{
-            //DELETE THIS VARIABLE 
             const response = await fetch (`http://localhost:8000/api/user/${user.user_id}/`,{
                 method: "PUT",
                 body: JSON.stringify(editedUser),

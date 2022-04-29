@@ -66,14 +66,24 @@ nav a:hover{
   padding-top: 2%;
   padding-bottom: 2%;
 }
-.login-stats-container{
+.login-container{
   display: flex;
   justify-content: space-around;
   width: 85%;
   margin: 0 auto;
+  font-family: sans-serif;
 }
 .stats-container{
-  width: 50%;
+  width: 35vw;
+  background: rgba(0, 0, 0, .55);
+  margin: 0 auto;
+  border-radius: 50px;
+}
+#stats-header{
+  margin-bottom: 15%;
+}
+.stat{
+  margin: 7%;
 }
 #login-form-container{
   background: rgba(0, 0, 0, .55);
@@ -284,5 +294,25 @@ input[type=file]::file-selector-button{
   }
   #login-form-container{
     width: 35vw;
+  }
+}
+@media only screen and (max-width: 778px){
+  .login-container{
+    flex-direction: column;
+  }
+  .stats-container{
+    width: 50vw;
+    margin-bottom: 5%;
+  }
+  #login-form-container{
+    width: 50vw;
+  }
+}
+@media only screen and (max-width: 576px){
+  #stats-header{
+    font-size: 1.4rem;
+  }
+  .stat{
+    font-size: .7rem;
   }
 }

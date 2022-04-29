@@ -9,8 +9,8 @@ export default AuthContext
 //THIS IS THE PROVIDER FUNCTION (PROVIDES INFORMATION TO THE CHILD COMPONENTS)
 //VALUE IS THE PROPERTY WE WANT AVAIALABLE THROUGHOUT THE APP
 export const AuthProvider=({children})=>{    
-    const [user, setUser]=useState(()=>localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
-    const [incorrectCredentials, setIncorrectCredentials]=useState(false)
+    const [user, setUser] = useState(()=>localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
+    const [incorrectCredentials, setIncorrectCredentials] = useState(false)
     //JSON.PARSE OPPOSITE OF STRINGIFY (RETURNS OBJECT) -- THIS LINE OF CODE WAS A NIGHTMARE!!!
     const [authTokens, setAuthTokens]=useState(()=>localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
     const [loading, setLoading]=useState(true)
@@ -67,7 +67,6 @@ export const AuthProvider=({children})=>{
             setAuthTokens(data)
             setUser(jwt_decode(data.access))
             localStorage.setItem('authTokens', JSON.stringify(data))
-            console.log('updated Token')
           }
           else{
             logoutUser();
