@@ -13,7 +13,7 @@ function PlacementComponent() {
   const [userToIncriment, setUserToIncriment] = useState({})
   const getPlacements = async () => {
     try{
-      const placements = await fetch(`http://localhost:8000/api/placements?user=${user.user_id}`, {
+      const placements = await fetch(`https://foster-journey-backend.herokuapp.com/api/placements?user=${user.user_id}`, {
         credentials: 'include'
       })
       const parsedResponse = await placements.json()
@@ -26,7 +26,7 @@ function PlacementComponent() {
   }
   const createNewPlacement= async (newPlacement)=>{
     try{
-      const newPlacementResponse = await fetch('http://localhost:8000/api/placements/',{
+      const newPlacementResponse = await fetch('https://foster-journey-backend.herokuapp.com/api/placements/',{
         method: "POST",
         body: JSON.stringify(newPlacement),
         headers: {
@@ -44,7 +44,7 @@ function PlacementComponent() {
   }
   const getUserToIncriment = async () =>{
     try{
-      const response = await fetch (`http://localhost:8000/api/user/${user.user_id}/`)
+      const response = await fetch (`https://foster-journey-backend.herokuapp.com/api/user/${user.user_id}/`)
       const parsedResponse = await response.json()
       setUserToIncriment(parsedResponse)
     }catch(err){
@@ -57,7 +57,7 @@ function PlacementComponent() {
       placements: userToIncriment.placements += 1
     })
     try{
-      const response = await fetch (`http://localhost:8000/api/user/${user.user_id}/`,{
+      const response = await fetch (`https://foster-journey-backend.herokuapp.com/api/user/${user.user_id}/`,{
         method: "PUT",
         body: JSON.stringify(userToIncriment),
         headers:{
@@ -71,7 +71,7 @@ function PlacementComponent() {
   }
   const deletePlacement = async (id)=>{
     try{
-      await fetch(`http://localhost:8000/api/placements/${id}`,{
+      await fetch(`https://foster-journey-backend.herokuapp.com/api/placements/${id}`,{
         method: "DELETE"
     })
     setPlacements(
@@ -90,7 +90,7 @@ function PlacementComponent() {
       placements: userToIncriment.placements -= 1
     })
     try{
-      const response = await fetch (`http://localhost:8000/api/user/${user.user_id}/`,{
+      const response = await fetch (`https://foster-journey-backend.herokuapp.com/api/user/${user.user_id}/`,{
         method: "PUT",
         body: JSON.stringify(userToIncriment),
         headers:{
@@ -104,7 +104,7 @@ function PlacementComponent() {
   }
   const editPlacement=async(placementToEdit)=>{
     try{
-    const editedPlacementResponse = await fetch(`http://localhost:8000/api/placements/${placementToEdit.id}`,{
+    const editedPlacementResponse = await fetch(`https://foster-journey-backend.herokuapp.com/api/placements/${placementToEdit.id}`,{
       method: "PUT",
       body: JSON.stringify(placementToEdit),
       headers:{

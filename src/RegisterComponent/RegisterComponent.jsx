@@ -15,7 +15,7 @@ function Register(){
   const navigate = useNavigate() 
   const getUsernames = async () =>{
     try{
-      const response = await fetch('http://localhost:8000/api/user/')
+      const response = await fetch('https://foster-journey-backend.herokuapp.com/api/user/')
       const parsedResponse = await response.json()
       parsedResponse.map((user)=>{
         return usernames.push(user.username)
@@ -33,7 +33,7 @@ function Register(){
       setUsernameAvailable(true)
     }
   }
-  const checkSubmit = async (e) =>{
+  const checkSubmit = (e) =>{
     e.preventDefault()
     checkUsername()
     if(password === confirmPass && !usernames.includes(username)){
@@ -54,7 +54,7 @@ function Register(){
       password: password,
     }
     try{
-      const response = await fetch('http://localhost:8000/api/auth/register/', {
+      const response = await fetch('https://foster-journey-backend.herokuapp.com/api/auth/register/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

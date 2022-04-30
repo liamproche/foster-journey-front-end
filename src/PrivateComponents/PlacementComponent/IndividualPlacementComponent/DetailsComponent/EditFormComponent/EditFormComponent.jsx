@@ -18,7 +18,7 @@ function EditFormComponent(props) {
     })
   }
   const deleteFosterParent= async (parentToDelete)=>{
-      await fetch(`http://localhost:8000/api/parents/${parentToDelete}`,{
+      await fetch(`https://foster-journey-backend.herokuapp.com/api/parents/${parentToDelete}`,{
       method: "DELETE"
     })
     setParents(parents.filter((parent)=>{return parent.id !== parentToDelete}))
@@ -26,7 +26,7 @@ function EditFormComponent(props) {
   }
   const getUserToDecrement = async () =>{
     try{
-      const response = await fetch (`http://localhost:8000/api/user/${user.user_id}/`)
+      const response = await fetch (`https://foster-journey-backend.herokuapp.com/api/user/${user.user_id}/`)
       const parsedResponse = await response.json()
       setUserToDecrement(parsedResponse)
     }catch(err){
@@ -39,7 +39,7 @@ function EditFormComponent(props) {
       foster_parents: userToDecrement.foster_parents -= 1
     })
     try{
-      const response = await fetch (`http://localhost:8000/api/user/${user.user_id}/`,{
+      const response = await fetch (`https://foster-journey-backend.herokuapp.com/api/user/${user.user_id}/`,{
         method: "PUT",
         body: JSON.stringify(userToDecrement),
         headers:{
@@ -52,7 +52,7 @@ function EditFormComponent(props) {
     }
   }
   const deleteFosterSibling= async (siblingToDelete)=>{
-    await fetch(`http://localhost:8000/api/siblings/${siblingToDelete}`, {
+    await fetch(`https://foster-journey-backend.herokuapp.com/api/siblings/${siblingToDelete}`, {
       method: "DELETE"
     })
     setSiblings(siblings.filter((sibling)=>{return sibling.id !== siblingToDelete}))
@@ -64,7 +64,7 @@ function EditFormComponent(props) {
       foster_siblings: userToDecrement.foster_siblings -= 1
     })
     try{
-      const response = await fetch (`http://localhost:8000/api/user/${user.user_id}/`,{
+      const response = await fetch (`https://foster-journey-backend.herokuapp.com/api/user/${user.user_id}/`,{
         method: "PUT",
         body: JSON.stringify(userToDecrement),
         headers:{

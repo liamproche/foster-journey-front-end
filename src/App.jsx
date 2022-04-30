@@ -11,7 +11,7 @@ function App() {
   const [users, setUsers] = useState([])
   const getUsers = async () =>{
     try{
-      const response = await fetch (`http://localhost:8000/api/user/`)
+      const response = await fetch (`https://foster-journey-backend.herokuapp.com/api/user/`)
       const parsedResponse = await response.json()
       setUsers(parsedResponse)
     }catch(err){

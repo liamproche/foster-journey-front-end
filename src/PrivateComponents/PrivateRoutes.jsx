@@ -5,8 +5,6 @@ import PlacementComponent from './PlacementComponent/PlacementComponent';
 import Account from './Account/Account';
 
 
-//NOTE:THIS IS WHERE TO ENTER ARGUMENTS TO CHANGE ROUTES BASED ON USER PERMISSIONS
-
 //NOTE: MAY BE POSSIBLE TO REMOVE ARGUMENTS
 function PrivateRoutes({children, ...rest}){
     let {user} = useContext(AuthContext)

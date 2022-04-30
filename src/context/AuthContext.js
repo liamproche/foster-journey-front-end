@@ -18,7 +18,7 @@ export const AuthProvider=({children})=>{
     const loginUser= async(e)=>{
         e.preventDefault()
         try{
-          const response = await fetch('http://localhost:8000/api/auth/login/', {
+          const response = await fetch('https://foster-journey-backend.herokuapp.com/api/auth/login/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -55,7 +55,7 @@ export const AuthProvider=({children})=>{
       //BEGIN REFRESH
       const updateToken= async () =>{
         try{
-          const response = await fetch('http://localhost:8000/api/auth/refresh/', {
+          const response = await fetch('https://foster-journey-backend.herokuapp.com/api/auth/refresh/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
