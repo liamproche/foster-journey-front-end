@@ -118,6 +118,9 @@ nav a:hover{
   font-family: sans-serif;
   text-align: center;
 }
+#username-error-message{
+  text-align: left;
+}
 .form-button{
   padding: 10px;
   padding-top: 5px;

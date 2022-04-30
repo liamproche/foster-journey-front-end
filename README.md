@@ -77,12 +77,6 @@ FOSTER SIBLING
 
 VERSION 2 GOALS:
 
-WEDNESDAY
--Password editing <--NOTE: REALLY LOST ON THIS ONE
--Style Account Edit Page
-
-THURSDAY
-
 
 FRIDAY
 -Show completed project
@@ -110,32 +104,20 @@ COMPLETED TODO
 #-Home page statistics & Styling
 #-User placement filter currently happens in the front-end. This should be changed to the backend so the API only fetches placements for specific user
 #-Delete console.logs
+#-Style Account Edit Page
 
 
 
 ADDITIONAL TODO
 -Statistics on home page pulled from app data
 	#-Average number of placements per user
-	-Average length of stay per placement
-	-Average number of foster parents/siblings a foster youth encounters on journey
+	#-Average number of foster parents/siblings a foster youth encounters on journey
 
 	
-STRETCH GOAL
+SUPER STRETCH GOAL
 -Length of placement calculated by start date/end date on placement details page
 
 
 
 
 LINK TO HEROKU DEPLOYMENT
-https://foster-journey-frontend.herokuapp.com/
-
-
-PSEUDO CODE FOR AVG NUMBER OF PLACEMENTS PER USER
--Create placement field in user model
--Every time user creates a placement increment placement field by one
--Every time user edits a placement decrement placement field by one
--Write a function that looks through all users and creates a list of placement field values
--Average the list
--Create api endpoint that sends the number as a response
--Call the endpoint from the frontend and display the number 
-

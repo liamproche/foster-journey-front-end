@@ -33,24 +33,19 @@ function Register(){
       setUsernameAvailable(true)
     }
   }
-  const verifyPass = ()=>{
-    if(password !== confirmPass){
-      setPassErr(true)
-      console.log(passErr)
-    }
-    else{
-      setPassErr(false)
-    }
-  }
-  const checkSubmit = (e) =>{
+  const checkSubmit = async (e) =>{
     e.preventDefault()
-    verifyPass()
     checkUsername()
-    if(passErr === false){
+    if(password === confirmPass && !usernames.includes(username)){
       submitNewUser()
     }
+    else if(password !== confirmPass){
+      setPassErr(true)
+    }
+    else if(!usernames.includes(username)){
+      setUsernameAvailable(false)
+    }
   }
-  
   const submitNewUser = async () => { 
     const user = {
       username: username,
@@ -82,7 +77,7 @@ function Register(){
   }
   useEffect(() => {
     if (localStorage.getItem('token') !== null) {
-    } 
+    }
     getUsernames();
   });
   return(
@@ -96,7 +91,7 @@ function Register(){
             <div className="error-message-container">
               {usernameAvailable?
                 <p></p>:
-                <p>Username unavailable</p>
+                <p id="username-error-message" className="error-message">Username unavailable</p>
               }
             </div>
             </Form.Group>
@@ -121,7 +116,7 @@ function Register(){
               </Form.Group>
             </div>
             {passErr?
-                <p>Passwords Must Match</p>:
+                <p className="error-message">Passwords Must Match</p>:
                 <p></p>  
               }
             <Button className="form-button" varient="primary" type="submit">Create Account</Button>
