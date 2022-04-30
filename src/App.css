@@ -1,38 +1,346 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Klee+One&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* BEGIN FOR LAYOUT */
+/* div{
+  border: 2px solid blue;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+section{
+  border: 2px solid red;
 }
-
-.App-header {
-  background-color: #282c34;
+nav{
+  border: 2px solid green;
+} */
+/* END FOR LAYOUT */
+.App{
   min-height: 100vh;
+  background: rgba(#29323c);
+  background: linear-gradient(75deg, #485563, #29323c);
+  background: -webkit-linear-gradient(75deg, #485563, #29323c);
+  background: -moz-linear-gradient(75deg, #485563, #29323c);
+  color: white;
+  font-family: 'Klee One', cursive;
+  padding-bottom: 5%;
+}
+.link{
+  color: white;
+  text-decoration: none;
+}
+.link:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+nav{
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+nav a{
+  color: white;
+  text-decoration: none;
+  font-size: 1.4rem;
+}
+nav a:hover{
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.app-header{
+  text-align: center;
+}
+#app-title{
+  padding-top: 2%;
+  font-size: 2.7rem;
+  font-family: 'Klee One', cursive;
+}
+#footprints-image{
+  margin-top: 2%;
+  max-width: 50vw;
+  max-height: 10%;
+}
+.about-container{
+  max-width: 85%;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+.login-container{
+  display: flex;
+  justify-content: space-around;
+  width: 85%;
+  margin: 0 auto;
+  font-family: sans-serif;
+}
+.stats-container{
+  width: 35vw;
+  background: rgba(0, 0, 0, .55);
+  margin: 0 auto;
+  border-radius: 50px;
+}
+#stats-header{
+  margin-bottom: 15%;
+}
+.stat{
+  margin: 7%;
+}
+#login-form-container{
+  background: rgba(0, 0, 0, .55);
+  margin: 0 auto;
+  border-radius: 10px;
+}
+#login-form{
+  width: 100%;
+}
+.form-header{
+  font-family: sans-serif;
+}
+.form-label{
+  font-family: sans-serif;
+}
+.user-input{
+  font-family: sans-serif;
+}
+.nav-link{
+  font-family: sans-serif;
+}
+.nothing{
+  display: none;
+}
+#create-account-link{
+  padding-left: 0;
+  padding-top: 10px;
+}
+.error-message{
+  color: red;
+  font-size: .9rem;
+  font-family: sans-serif;
+  text-align: center;
+}
+.uploaded-message-container{
+  text-align: center;
+}
+#username-error-message{
+  text-align: left;
+}
+.form-button{
+  padding: 10px;
+  padding-top: 5px;
+  font-family: sans-serif;
+}
+.name-input-container{
+  display: flex;
+  justify-content: space-between;
+}
+#register-form-container{
+  background: rgba(0, 0, 0, .55);
+  margin: 0 auto;
+  border-radius: 10px;
+  max-width: 65vw;
+}
+.name-input{
+  width: 45%;
+}
+.name-input-field{
+  margin-left: 2%;
+}
+input[type=file]::file-selector-button{
+  background: black;
+  color: white;
+  border-radius: 20px;
+  border: none;
+  padding: 4px;
+}
+.upload-image-button{
+  background: #0b9e03;
+  color: white;
+  border-radius: 20px;
+  border: none;
+  padding: 5px;
+  margin-top: 8px;
+}
+.password-input-container{
+  display: flex;
+  justify-content: space-between;
+}
+.pass-input{
+  width: 45%;
+}
+.PlacementComponent{
+  width: 80%;
+  margin: 0 auto;
+}
+.placement-container{
+  margin-top: 5%;
+}
+.placement-header{
+  margin-bottom: 3%;
+}
+.IndividualPlacementComponent{
+  text-align: center; 
+}
+.placement-title{
+  align-self: flex-start;
+  width: 50%;
+}
+.placement-dates{
+  align-self: flex-end;
+  width: 50%;
+  text-align: right;
+}
+.accordion-container{
+  margin-bottom: 5%;
+}
+.accordion-container button{
+  background: rgba(0, 0, 0, .2);
+  color: white;
+  border-radius: 50px;
+}
+#accordian-item{
+  background: rgba(0, 0, 0, .6);
+}
+.header-text{
+  border-bottom: 1px solid white;
+  display: inline;
+}
+.location-container{
+  text-align: left;
+  margin-bottom: 3.5%;
+}
+.foster-parents-container{
+  border: 1px solid white;
+  padding-bottom: 5%;
+  margin-bottom: 3.5%;
+}
+.foster-parent-header-container{
+  text-align: left;
+}
+.parents-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 3.5%;
+  justify-items: center;
+}
+.individual-foster-parent-container{
+  width: 200px;
+}
+.foster-parent-image{
+  max-width: 20vw;
+}
+.foster-siblings-container{
+  border: 1px solid white;
+  padding-top: 2%;
+  padding-bottom: 5%;
+  margin-bottom: 7%;
+}
+.foster-sibling-header-container{
+  text-align: left;
+  margin: 0;
+}
+.siblings-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.notes-container{
+  border: 1px solid white;
+  padding-top: 3%;
+  padding-bottom: 5%;
+  margin-bottom: 3.5%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.edit-delete-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+.edit-delete-button{
+  font-size: .7rem;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin: 7px;
+  padding: 5px;
+}
+.delete-icon{
+  max-width: 12px;
+}
+.add-button{
+  font-family: sans-serif
+}
+#delete-placement-button{
+  background: red;
+  border: none;
+}
+.delete-placement-button-container{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 3%;
+}
+.create-placement-button-container{
+  text-align: center;
+}
+#create-placement-button{
+  background: #666564;
+  border: none;
+}
+#edit-form-container{
+  background: rgba(0, 0, 0, .55);
+  margin: 0 auto;
+  border-radius: 10px;
+  max-width: 65vw;
+  margin-top: 5%;
+}
+#delete-account-button{
+  background: red;
+  border: none;
+  margin-left: 5%;
+}
+
+@media only screen and (min-width: 480px) {
+  #app-title{
+    font-size: 3.5rem;
   }
-  to {
-    transform: rotate(360deg);
+  #footprints-image{
+    max-width: 30vw;
+  }
+  #login-form-container{
+    width: 35vw;
+  }
+}
+@media only screen and (max-width: 778px){
+  .login-container{
+    flex-direction: column;
+  }
+  .stats-container{
+    width: 50vw;
+    margin-bottom: 5%;
+  }
+  #login-form-container{
+    width: 50vw;
+  }
+}
+@media only screen and (max-width: 576px){
+  #stats-header{
+    font-size: 1.4rem;
+  }
+  .stat{
+    font-size: .7rem;
+  }
+}
+@media only screen and (max-width: 806px){
+  .parents-container{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media only screen and (max-width: 706px){
+  .accordion-header-text{
+    font-size: 1rem
+  }
+}
+@media only screen and (max-width: 664px){
+  .accordion-header-text{
+    font-size: .8rem
+  }
+  .parents-container{
+    grid-template-columns: 1fr;
   }
 }

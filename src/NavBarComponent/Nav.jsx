@@ -1,36 +1,21 @@
-import React, { useContext, useEffect, } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState, useEffect, } from 'react';
+import { Link, Navigate } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 import './Nav.css'
 
 function NavBar(){
-  let {user, logoutUser}=useContext(AuthContext)
+  let { logoutUser } = useContext(AuthContext)
+  const [navigate, setNavigate] = useState(false)
   useEffect(() => {
     if (localStorage.getItem('token') !== null) {
     }
   }, []);
-  return (
-    <nav>
-      {user? (
-      <Link to="/">Placements</Link>
-      ):(
-        <p></p>
-      )}
-      {user ? (
-        <p className="link" onClick={logoutUser}>Logout</p>
-      ):(
-      <Link to="/login">Login</Link>
-      )}
-      {!user? (
-      <Link to="/register">Create Account</Link>
-      ):(
-        <p></p>
-      )}
-      {/* TO-DO- UPDATE TOKEN TO INCLUDE USERNAME AND GREET USER BY USERNAME */}
-      {/* {user && <p>Hello, {user.user_id}</p>} */}
-
+  return <nav>
+          <Link to="/placements">Home</Link>
+          <Link to="/account">Account</Link>
+          <a href="" onClick={()=>{logoutUser(); setNavigate(true)}}>Logout</a>
+          {navigate?<Navigate to="/"/>:<br className='nothing'/>}
     </nav>
-  );
-};
+}
 
 export default NavBar;

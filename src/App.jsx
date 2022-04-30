@@ -1,32 +1,42 @@
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoutes from './PrivateComponents/PrivateRoutes';
-import NavBar from './NavBarComponent/Nav';
-import Login from './LoginComponent/LoginComponent';
+import About from './About/About';
 import Register from './RegisterComponent/RegisterComponent';
+import Account from './PrivateComponents/Account/Account';
 import './App.css';
 
-
 function App() {
+  const [users, setUsers] = useState([])
+  const getUsers = async () =>{
+    try{
+      const response = await fetch (`http://localhost:8000/api/user/`)
+      const parsedResponse = await response.json()
+      setUsers(parsedResponse)
+    }catch(err){
+      console.log(err)
+    }
+  }
+  useEffect(()=>{getUsers()}, [])
   return (
     <div className="App">
       <Router>
         {/* WRAP ALL COMPONENTS YOU WANT TO USE AUTHPROVIDER VALUE IN AUTHPROVIDER TAGS */}
         <AuthProvider>
-          <h1>Foster Journey</h1>
-          <NavBar/>
-          <h2>About:</h2>
-          <p>Foster journey is an online journal designed to help foster youth keep track of the placements they have visited throughout their individual journeys. Users can create entries for each placement they can later refer back to while trying to track their own personal history through the care system which can often be a difficult task given the vast number of locations, caregivers and short-duration stays they may encounter.</p>
+          <header className="app-header">
+            <h1 id="app-title">Foster Journey</h1>
+            <img id="footprints-image" src={process.env.PUBLIC_URL + 'img/footprints.png' } alt="Footprints"/>
+          </header>
           <Routes>
-            <Route path="/login" element={<Login/>} exact/>
+            <Route path="/" element={<About users={users}/>} exact/>
             <Route path="/register" element={<Register/>} exact/>
+            <Route path="/account" element={<Account/>} exact/>
             <Route path='*' element={<PrivateRoutes/>} exact/>
           </Routes>
+          {/* <NavBar/> */}
         </AuthProvider>
       </Router>
-
-      
-
     </div>
   );
 }
