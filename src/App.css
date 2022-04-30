@@ -118,6 +118,9 @@ nav a:hover{
   font-family: sans-serif;
   text-align: center;
 }
+.uploaded-message-container{
+  text-align: center;
+}
 #username-error-message{
   text-align: left;
 }

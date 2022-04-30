@@ -11,6 +11,7 @@ function DetailsComponent(props) {
   const [parentModalOpen, setParentModalOpen] = useState(false)
   const [siblingModalOpen, setSiblingOpenModal] = useState(false)
   const [noteErr, setNoteErr] = useState(false)
+  const [imgUploaded, setImgUploaded] = useState(false)
   const [newParent, setNewParent] = useState({
     first_name: "",
     last_name: "",
@@ -41,7 +42,7 @@ function DetailsComponent(props) {
         console.log(err)
     }
   }
-  const[newSibling, setNewSibling] = useState({
+  const [newSibling, setNewSibling] = useState({
     first_name: "",
     last_name: "",
   })
@@ -103,7 +104,7 @@ function DetailsComponent(props) {
               </div>
               )})}
             </div>
-          <Button variant ="secondary" className="add-button" onClick={showParentModal}>Add Foster Parent</Button>
+          <Button variant ="secondary" className="add-button" onClick={()=>{showParentModal(); setImgUploaded(false)}}>Add Foster Parent</Button>
         </section>
         <Modal className="m" show={parentModalOpen}>
                 <Modal.Header id="modal-header-text">Add Foster Parent</Modal.Header>
@@ -118,7 +119,13 @@ function DetailsComponent(props) {
                     <input type="file" name="file" onChange={(e)=>setImage(e.target.files[0])}></input>
                     <br/>
                     {/* I HATE THE NEED FOR THIS BUTTON, BUT THERE IS A NEED FOR THIS BUTTON */}
-                    <button className="upload-image-button"  onClick={uploadImage}>Upload File</button>
+                    <button className="upload-image-button"  onClick={()=>{uploadImage(); setImgUploaded(true)}}>Upload File</button>
+                    {imgUploaded?
+                    <div className="uploaded-message-container">
+                      <p>Image Uploaded</p>
+                    </div>:
+                    <p className="none"></p>
+                    }
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" className="add-button" onClick={showParentModal}>Close</Button>
