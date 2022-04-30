@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import EditFormComponent from './EditFormComponent/EditFormComponent';
-import './DetailsComponent.css';
 
 function DetailsComponent(props) {
   const [placement, setPlacement] = useState(props.placement)
@@ -161,7 +160,7 @@ function DetailsComponent(props) {
               placement.notes.map((note)=>{
               return <p key={props.placement.notes.indexOf(note)}>{note}</p>
             }):<p>None Added</p>}
-              <input className="user-input styled-input" type="text" name="note" onChange={addNoteInputChange} placeholder="Enter a note" required/>
+              <input className="user-input styled-input note-input-field" type="text" name="note" onChange={addNoteInputChange} placeholder="Enter a note" required/>
               {noteErr ?
                 <p className="error-message">Note cannot be blank</p>:
                 <p></p>
@@ -174,9 +173,10 @@ function DetailsComponent(props) {
                 props.editPlacement(updatedPlacement)
                 const elements = document.getElementsByClassName('note-input-field')
                 for(let i = 0; i < elements.length; i++){
+                  console.log('about to set value')
                   elements[i].value = ""
-                setNote('')
               }
+              setNote('')
               }}>Add Note</Button>
           </section>
           <Button variant ="secondary" className="add-button" onClick={toggleEditForm}>Edit Placement</Button>          

@@ -17,7 +17,7 @@ function Account() {
     }
     const getUserToEdit = async () =>{
         try{
-            const response = await fetch (`http://localhost:8000/api/user/${user.user_id}`)
+            const response = await fetch (`https://foster-journey-backend.herokuapp.com/api/user/${user.user_id}`)
             const parsedResponse = await response.json()
             setEditedUser({...parsedResponse})
         }catch(err){
@@ -28,7 +28,7 @@ function Account() {
         e.preventDefault();
         updateToken();
         try{
-            const response = await fetch (`http://localhost:8000/api/user/${user.user_id}/`,{
+            const response = await fetch (`https://foster-journey-backend.herokuapp.com/api/user/${user.user_id}/`,{
                 method: "PUT",
                 body: JSON.stringify(editedUser),
                 headers:{
@@ -43,7 +43,7 @@ function Account() {
     }
     const deleteAccount = async () =>{
         try{
-            const response = await fetch (`http://localhost:8000/api/user/${user.user_id}/`, {
+            const response = await fetch (`https://foster-journey-backend.herokuapp.com/api/user/${user.user_id}/`, {
                 method: "DELETE"
         })
         setNavToLogin(true)

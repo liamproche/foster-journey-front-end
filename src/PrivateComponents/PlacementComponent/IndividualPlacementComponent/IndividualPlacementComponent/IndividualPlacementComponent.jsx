@@ -12,7 +12,7 @@ function IndividualPlacementComponent(props) {
   // BEGIN PARENT ROUTES
   const getParents = async ()=>{
     try{
-      const response = await fetch('http://localhost:8000/api/parents')
+      const response = await fetch('https://foster-journey-backend.herokuapp.com/api/parents')
       const parsedResponse = await response.json()
       setParents(parsedResponse.filter((parent)=>{return parent.placement === props.placement.id}))
     }catch(err){
@@ -23,7 +23,7 @@ function IndividualPlacementComponent(props) {
   // PARENT API CALLS
   const createParent = async (newParent)=>{
     try{
-      const response = await fetch ('http://localhost:8000/api/parents',{
+      const response = await fetch ('https://foster-journey-backend.herokuapp.com/api/parents',{
         method: "POST",
         body: JSON.stringify(newParent),
         headers: {
@@ -39,7 +39,7 @@ function IndividualPlacementComponent(props) {
   }
   const getUserToIncriment = async () =>{
     try{
-      const response = await fetch (`http://localhost:8000/api/user/${user.user_id}/`)
+      const response = await fetch (`https://foster-journey-backend.herokuapp.com/api/user/${user.user_id}/`)
       const parsedResponse = await response.json()
       setUserToIncriment(parsedResponse)
     }catch(err){
@@ -52,7 +52,7 @@ function IndividualPlacementComponent(props) {
       foster_parents: userToIncriment.foster_parents += 1
     })
     try{
-      const response = await fetch (`http://localhost:8000/api/user/${user.user_id}/`,{
+      const response = await fetch (`https://foster-journey-backend.herokuapp.com/api/user/${user.user_id}/`,{
         method: "PUT",
         body: JSON.stringify(userToIncriment),
         headers:{
@@ -67,7 +67,7 @@ function IndividualPlacementComponent(props) {
   // SIBLING API CALLS
   const getSiblings = async ()=>{
     try{
-      const response = await fetch('http://localhost:8000/api/siblings')
+      const response = await fetch('https://foster-journey-backend.herokuapp.com/api/siblings')
       const parsedResponse = await response.json()
       setSiblings(parsedResponse.filter((sibling)=>{return sibling.placement === props.placement.id}))
     }catch(err){
@@ -77,7 +77,7 @@ function IndividualPlacementComponent(props) {
   }
   const createSibling = async (newSibling)=>{
     try{
-      const response = await fetch ('http://localhost:8000/api/siblings',{
+      const response = await fetch ('https://foster-journey-backend.herokuapp.com/api/siblings',{
         method: "POST",
         body: JSON.stringify(newSibling),
         headers: {
@@ -97,7 +97,7 @@ function IndividualPlacementComponent(props) {
       foster_siblings: userToIncriment.foster_siblings += 1
     })
     try{
-      const response = await fetch (`http://localhost:8000/api/user/${user.user_id}/`,{
+      const response = await fetch (`https://foster-journey-backend.herokuapp.com/api/user/${user.user_id}/`,{
         method: "PUT",
         body: JSON.stringify(userToIncriment),
         headers:{
