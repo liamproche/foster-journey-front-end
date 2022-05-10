@@ -121,3 +121,4 @@ SUPER STRETCH GOAL
 
 
 LINK TO HEROKU DEPLOYMENT
+https://foster-journey-frontend.herokuapp.com/
