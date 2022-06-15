@@ -52,12 +52,12 @@
 </ul>
 
 <h2>Additional Models</h2>
-<h3>Users</h3> <p>--> TODO- Edit and delete user routes</p>
+<h3>Users</h3>
 <ul>
-	<li>Username (must be unique) --> TODO- Handling message to user if they create an account with username already taken</li>
+	<li>Username (must be unique)</li>
 	<li>First name</li>
 	<li>Last name</li>
-	<li>Password --> TODO- Confirm password field on register page</li>
+	<li>Password</li>
 	<li>Timestamp for account created</li>
 </ul>
 
@@ -78,7 +78,7 @@
 	<li>linked to placement</li>
 </ul>
 
-<h4>To-Do</h4>
+<h3>To-Do</h3>
 <ul>
 	<s><li>Add app description</li></s>
 	<s><li>Separate models for foster parents, foster siblings tied to placement model (one to many)</li></s>
@@ -107,13 +107,13 @@
 	<s><li>Average number of foster parents/siblings a foster youth encounters on journey</li></s>
 </ul>
 	
-<h4>Super-Stretch Goal</h4>
+<h3>Super-Stretch Goal</h3>
 <ul>
 	<li>Length of placement calculated by start date/end date on placement details page</li>
 </ul>
 
 
-<h4>Link to Heroku Deployment</h4>
+<h3>Link to Heroku Deployment</h3>
 <a href="https://foster-journey-frontend.herokuapp.com/">https://foster-journey-frontend.herokuapp.com/</a>
 
 
