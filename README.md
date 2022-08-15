@@ -111,11 +111,3 @@
 <ul>
 	<li>Length of placement calculated by start date/end date on placement details page</li>
 </ul>
-
-
-<h3>Link to Heroku Deployment</h3>
-<a href="https://foster-journey-frontend.herokuapp.com/">https://foster-journey-frontend.herokuapp.com/</a>
-
-
-<h4>Approval Concessions</h4>
-<p>Base app will be geared toward a single user with no log-in requirements allowing creation of placements only</p>
